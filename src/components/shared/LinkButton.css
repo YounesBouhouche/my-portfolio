@@ -1,0 +1,47 @@
+@import '../../App.css';
+
+/* Primary Button Styles */
+.primary-button {
+  @apply relative px-12 py-4 text-lg font-semibold;
+  @apply bg-white/5 backdrop-blur-[10px] text-white/90;
+  @apply border border-white/10 rounded-full;
+  @apply transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)];
+  @apply overflow-hidden cursor-pointer;
+  @apply shadow-[0_4px_15px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.1)];
+  min-width: 180px;
+}
+
+/* Sliding fill animation */
+.primary-button::before {
+  @apply content-[''] absolute top-0 left-0 w-0 h-full;
+  background: #aeea2a;
+  @apply transition-[width] duration-500 ease-in-out;
+  z-index: -1;
+}
+
+.primary-button:hover::before {
+  @apply w-full;
+}
+
+.primary-button:hover {
+  @apply border-primary/40 text-black;
+  @apply shadow-[0_6px_20px_rgba(174,234,42,0.3),inset_0_1px_0_rgba(255,255,255,0.15)];
+  @apply -translate-y-2 scale-105;
+  text-shadow: none;
+}
+
+.primary-button:active {
+  @apply translate-y-0 scale-100;
+  @apply shadow-[0_3px_12px_rgba(174,234,42,0.4),inset_0_1px_0_rgba(255,255,255,0.1)];
+}
+
+/* Focus state for accessibility */
+.primary-button:focus {
+  @apply outline-none ring-2 ring-primary/50 ring-offset-2 ring-offset-transparent;
+}
+
+/* Disabled state */
+.primary-button:disabled {
+  @apply opacity-50 cursor-not-allowed;
+  @apply hover:translate-y-0 hover:scale-100 hover:bg-white/5 hover:border-white/10 hover:text-white/90;
+}

@@ -1,0 +1,5 @@
+@import '../../App.css';
+
+.library-carousel {
+  @apply relative w-full py-8;
+}

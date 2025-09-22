@@ -1,0 +1,128 @@
+@import '../../App.css';
+
+/* Digital Footer Styles */
+.footer {
+  @apply relative overflow-hidden border-t-2 border-white;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+}
+
+/* Digital grid pattern overlay */
+.footer::before {
+  @apply absolute inset-0 pointer-events-none;
+  content: '';
+  background-image: 
+    linear-gradient(rgba(174, 234, 42, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(174, 234, 42, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: gridPulse 4s ease-in-out infinite;
+}
+
+/* Scan line effect */
+.footer::after {
+  @apply absolute inset-0 pointer-events-none;
+  content: '';
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(174, 234, 42, 0.1) 45%,
+    rgba(174, 234, 42, 0.2) 50%,
+    rgba(174, 234, 42, 0.1) 55%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  animation: scanLine 6s ease-in-out infinite;
+}
+
+.footer-logo {
+  @apply tracking-wider;
+  color: var(--primary);
+  text-shadow: 0 0 10px rgba(174, 234, 42, 0.5);
+}
+
+.footer-tagline {
+  @apply tracking-wide;
+  color: rgba(174, 234, 42, 0.8);
+}
+
+
+.footer-link {
+  @apply uppercase tracking-wide no-underline relative transition-all duration-300 ease-in-out;
+  color: rgba(174, 234, 42, 0.7);
+}
+
+.footer-link::before {
+  @apply absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 ease-out;
+  content: '';
+  background: var(--primary);
+}
+
+.footer-link:hover {
+  color: var(--primary);
+  text-shadow: 0 0 8px rgba(174, 234, 42, 0.6);
+}
+
+.footer-link:hover::before {
+  @apply w-full;
+}
+
+.social-link {
+  @apply border border-solid no-underline transition-all duration-300 ease-out;
+  background: linear-gradient(135deg, 
+    rgba(174, 234, 42, 0.1), 
+    rgba(174, 234, 42, 0.05)
+  );
+  border-color: rgba(174, 234, 42, 0.3);
+  color: var(--primary);
+}
+
+.social-link:hover {
+  @apply scale-110;
+  border-color: var(--primary);
+  box-shadow: 
+    0 0 15px rgba(174, 234, 42, 0.3),
+    inset 0 1px 0 rgba(174, 234, 42, 0.2);
+  text-shadow: 0 0 8px rgba(174, 234, 42, 0.6);
+}
+
+.footer-copyright {
+  @apply tracking-wide;
+  color: rgba(174, 234, 42, 0.6);
+}
+
+.terminal-indicator {
+  background: var(--primary);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes gridPulse {
+  0%, 100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes scanLine {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}

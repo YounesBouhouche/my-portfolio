@@ -13,8 +13,10 @@
     "@tailwindcss/vite": "^4.1.12",
     "@tanstack/react-router": "^1.131.30",
     "@tanstack/react-router-devtools": "^1.131.30",
+    "embla-carousel-react": "^8.6.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-responsive-carousel": "^3.2.23",
     "tailwindcss": "^4.1.12"
   },
   "devDependencies": {

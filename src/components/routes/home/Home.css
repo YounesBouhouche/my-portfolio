@@ -1,0 +1,119 @@
+@import '../../../App.css';
+
+.header {
+  @apply h-screen flex items-center justify-center relative overflow-hidden;
+}
+
+/* Digital grid pattern overlay */
+.header::before {
+  @apply absolute inset-0 pointer-events-none;
+  content: '';
+  background-image: 
+    linear-gradient(rgba(174, 234, 42, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(174, 234, 42, 0.1) 1px, transparent 1px);
+  background-size: 30px 30px;
+  animation: gridPulse 6s ease-in-out infinite;
+  z-index: 1;
+}
+
+.header .content {
+  @apply h-full w-full px-20 flex items-center relative z-10
+}
+
+.header .content h1 {
+  @apply font-extrabold text-6xl leading-snug
+}
+
+.header .content h1 span {
+  @apply font-mono
+}
+
+.typewriter {
+  @apply inline-block;
+}
+
+.cursor {
+  @apply inline-block text-primary;
+  animation: blink 1.5s infinite;
+  font-weight: normal;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Dynamic Text Colors */
+.text-android {
+  color: #3DDC84; /* Android Green */
+}
+
+.text-react {
+  color: #61DAFB; /* React Blue */
+}
+
+.text-laravel {
+  color: #FF2D20; /* Laravel Red */
+}
+
+/* Update cursor color to match text */
+.text-android .cursor {
+  color: #3DDC84;
+}
+
+.text-react .cursor {
+  color: #61DAFB;
+}
+
+.text-laravel .cursor {
+  color: #FF2D20;
+}
+
+.text-primary .cursor {
+  color: #aeea2a;
+}
+
+/* Dynamic Blurry Backgrounds */
+.background {
+  @apply absolute inset-0 opacity-10 blur-[100px];
+  transition: all 0.8s ease-in-out;
+  z-index: -1;
+}
+
+.bg-primary-blur {
+  background: radial-gradient(circle at 30% 40%, #aeea2a 0%, transparent 70%),
+              radial-gradient(circle at 70% 60%, #aeea2a 0%, transparent 70%),
+              radial-gradient(circle at 20% 80%, #8bc34a 0%, transparent 70%);
+}
+
+.bg-android-blur {
+  background: radial-gradient(circle at 30% 40%, #3DDC84 0%, transparent 70%),
+              radial-gradient(circle at 70% 60%, #00C851 0%, transparent 70%),
+              radial-gradient(circle at 20% 80%, #4CAF50 0%, transparent 70%);
+}
+
+.bg-react-blur {
+  background: radial-gradient(circle at 30% 40%, #61DAFB 0%, transparent 70%),
+              radial-gradient(circle at 70% 60%, #21D4FD 0%, transparent 70%),
+              radial-gradient(circle at 20% 80%, #0288D1 0%, transparent 70%);
+}
+
+.bg-laravel-blur {
+  background: radial-gradient(circle at 30% 40%, #FF2D20 0%, transparent 70%),
+              radial-gradient(circle at 70% 60%, #FF6B35 0%, transparent 70%),
+              radial-gradient(circle at 20% 80%, #E53E3E 0%, transparent 70%);
+}
+
+/* Grid pulse animation */
+@keyframes gridPulse {
+  0%, 100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
