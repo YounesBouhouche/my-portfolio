@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import picture from '../../../assets/jpg/IMG_20250922_144505_170.jpg';
 
 export default function Header() {
   const [displayedText, setDisplayedText] = useState('');
