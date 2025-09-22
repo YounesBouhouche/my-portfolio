@@ -12,7 +12,7 @@ export default function LibraryCarousel({ libraries }: { libraries: Library[] })
   const [emblaRef, embla] = useEmblaCarousel({ loop: true, active: true });
 
   useEffect(() => {
-    const autoplay = setInterval(() => embla.scrollNext(), 2000);
+    const autoplay = setInterval(() => embla?.scrollNext(), 2000);
     return () => clearInterval(autoplay);
   }, [embla]);
   
