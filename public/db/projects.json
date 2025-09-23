@@ -5,7 +5,7 @@
     "route": "assurini",
     "description": "A comprehensive insurance management platform that streamlines policy administration, claims processing, and customer service for insurance providers.",
     "heroImage": "/assets/projects/assurini/Assurini.jpg",
-    "image": "/assets/projects/assurini/Assurini.jpg",
+    "image": "/assets/projects/assurini/app-icon.svg",
     "screenshots": [
       "/assets/projects/assurini/assurini-1.jpg",
       "/assets/projects/assurini/assurini-2.jpg",
@@ -27,7 +27,7 @@
       "Customer Support Chat"
     ],
     "downloadLink": "https://play.google.com/store/apps/details?id=com.assurini.app",
-    "githubLink": "",
+    "githubLink": "https://github.com/Caravan-team-2/android-app",
     "liveDemoLink": "",
     "category": "Mobile App",
     "completed": true,
@@ -44,15 +44,25 @@
     "route": "depango",
     "description": "A mobile application that connects users with nearby automotive repair shops and mechanics for on-demand vehicle maintenance and emergency roadside assistance.",
     "heroImage": "/assets/projects/depango/depango.jpg",
-    "image": "/assets/projects/depango/depango.jpg",
+    "image": "/assets/projects/depango/app-icon.svg",
     "screenshots": [
       "/assets/projects/depango/depango-1.jpg",
       "/assets/projects/depango/depango-2.jpg",
-      "/assets/projects/depango/depango-3.jpg"
+      "/assets/projects/depango/depango-3.jpg",
+      "/assets/projects/depango/depango-4.jpg",
+      "/assets/projects/depango/depango-5.jpg",
+      "/assets/projects/depango/depango-6.jpg",
+      "/assets/projects/depango/depango-7.jpg",
+      "/assets/projects/depango/depango-8.jpg",
+      "/assets/projects/depango/depango-9.jpg",
+      "/assets/projects/depango/depango-10.jpg",
+      "/assets/projects/depango/depango-11.jpg",
+      "/assets/projects/depango/depango-12.jpg",
+      "/assets/projects/depango/depango-13.jpg"
     ],
     "technologies": ["Kotlin", "Mapbox", "MLKit", "Material You"],
     "downloadLink": "https://play.google.com/store/apps/details?id=com.depan.go",
-    "githubLink": "",
+    "githubLink": "https://github.com/roadside-assistance-platform/roadside-assistance-android-client",
     "liveDemoLink": "",
     "category": "Mobile App",
     "features": [
@@ -110,22 +120,22 @@
     "name": "Music Player",
     "route": "musicplayer",
     "description": "A sleek and user-friendly music player application that allows users to create playlists, shuffle songs, and enjoy high-quality audio playback.",
-    "heroImage": "/assets/projects/musicplayer.png",
-    "image": "/assets/projects/musicplayer.png",
+    "heroImage": "/assets/projects/musicplayer/musicplayer.jpg",
+    "image": "/assets/projects/musicplayer/app-icon.svg",
     "screenshots": [
-      "/assets/projects/musicplayer/musicplayer-1.png",
-      "/assets/projects/musicplayer/musicplayer-2.png",
-      "/assets/projects/musicplayer/musicplayer-3.png"
+      "/assets/projects/musicplayer/musicplayer-1.jpg",
+      "/assets/projects/musicplayer/musicplayer-2.jpg",
+      "/assets/projects/musicplayer/musicplayer-3.jpg",
+      "/assets/projects/musicplayer/musicplayer-4.jpg"
     ],
     "technologies": ["Jetpack Compose", "Kotlin", "ExoPlayer"],
     "downloadLink": "https://play.google.com/store/apps/details?id=com.musicplayer.app",
-    "githubLink": "",
+    "githubLink": "https://github.com/YounesBouhouche/MusicPlayer",
     "liveDemoLink": "",
     "category": "Mobile App",
     "completed": false,
     "requirements": [
-      "Android 8.0 (API level 26) or higher",
-      "Internet connection for streaming online music",
+      "Android 11 (API level 30) or higher",
       "Storage permission to access local music files"
     ],
     "features": [

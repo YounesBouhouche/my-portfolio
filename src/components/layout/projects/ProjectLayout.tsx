@@ -17,7 +17,7 @@ export default function ProjectLayout({ project }: { project: Project }) {
     image,
     screenshots = [],
   } = project;
-  const [emblaRef] = useEmblaCarousel({ loop: false, align: 'start' });
+  const [emblaRef] = useEmblaCarousel({ loop: true, active: true });
 
   return (
     <div className="min-h-screen bg-slate-950 text-white">
@@ -34,7 +34,7 @@ export default function ProjectLayout({ project }: { project: Project }) {
                   <img 
                     src={image} 
                     alt={name}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full bg-white object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
               </div>
@@ -90,7 +90,7 @@ export default function ProjectLayout({ project }: { project: Project }) {
             {screenshots.length > 0 && (
               <section className='w-full'>
                 <h2 className="text-2xl font-bold mb-6">Screenshots</h2>
-                <div className="flex gap-6 overflow-hidden" ref={emblaRef}>
+                <div className="flex gap-6 w-full overflow-hidden" ref={emblaRef}>
                   {screenshots.map((screenshot, index) => (
                     <div key={index} className="rounded-xl shrink-0 overflow-hidden shadow-lg border border-gray-600 hover:shadow-2xl transition-shadow duration-300">
                       <img 

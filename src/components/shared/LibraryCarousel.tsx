@@ -17,17 +17,17 @@ export default function LibraryCarousel({ libraries }: { libraries: Library[] })
   }, [embla]);
   
   return (
-    <div ref={emblaRef} className="overflow-hidden w-full">
-      <div className="flex gap-10 py-10 ">
+    <div ref={emblaRef} className="overflow-hidden w-full relative">
+      <div className="flex gap-10 py-10 touch-pan-y touch-pinch-zoom">
         {libraries.map((item, idx) => (
           <div 
-          key={idx} 
-          className="
-            flex flex-col items-center justify-center shrink-0
-            px-10 py-5 select-none
-            "
-            title={item.name}
-          >
+            key={idx} 
+            className="
+              flex flex-col items-center justify-center shrink-0
+              px-10 py-5 select-none
+              "
+              title={item.name}
+            >
             <div className="w-[100px] h-[100px] mb-10 flex items-center justify-center">
               <img src={item.icon} className="w-full h-full object-contain" />
             </div>

@@ -76,7 +76,7 @@ export default function HomeComponent() {
                     key={index}
                     title={project.name}
                     description={project.description}
-                    imageUrl={project.image}
+                    imageUrl={project.heroImage}
                     projectUrl={"/projects/" + project.route}
                     pictureInLeft={index % 2 === 0}
                   />
