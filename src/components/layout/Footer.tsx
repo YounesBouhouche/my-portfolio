@@ -16,7 +16,6 @@ export default function Footer() {
 
         <nav className="flex flex-wrap items-center justify-center gap-6">
           <Link to="/projects" className="footer-link text-sm font-mono font-bold">Projects</Link>
-          <Link to="/about" className="footer-link text-sm font-mono font-bold">About</Link>
           <Link to="/contact" className="footer-link text-sm font-mono font-bold">Contact</Link>
         </nav>
 
