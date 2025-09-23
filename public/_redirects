@@ -1,0 +1,4 @@
+# Netlify redirects file
+# Static files should be served directly (Netlify does this automatically)
+# Only fallback to SPA for non-static routes
+/*    /index.html   200
