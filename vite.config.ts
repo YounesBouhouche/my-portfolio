@@ -13,4 +13,10 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  publicDir: 'public',
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    copyPublicDir: true,
+  },
 })
