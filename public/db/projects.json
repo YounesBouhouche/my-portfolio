@@ -4,12 +4,12 @@
     "name": "Assurini",
     "route": "assurini",
     "description": "A comprehensive insurance management platform that streamlines policy administration, claims processing, and customer service for insurance providers.",
-    "heroImage": "/src/assets/projects/assurini/assurini.jpg",
-    "image": "/src/assets/projects/assurini/assurini.jpg",
+    "heroImage": "/assets/projects/assurini/Assurini.jpg",
+    "image": "/assets/projects/assurini/Assurini.jpg",
     "screenshots": [
-      "/src/assets/projects/assurini/assurini-1.jpg",
-      "/src/assets/projects/assurini/assurini-2.jpg",
-      "/src/assets/projects/assurini/assurini-3.jpg"
+      "/assets/projects/assurini/assurini-1.jpg",
+      "/assets/projects/assurini/assurini-2.jpg",
+      "/assets/projects/assurini/assurini-3.jpg"
     ],
     "technologies": ["Kotlin", "Mapbox", "MLKit", "Material You"],
     "features": [
@@ -35,12 +35,12 @@
     "name": "Depan.Go",
     "route": "depango",
     "description": "A mobile application that connects users with nearby automotive repair shops and mechanics for on-demand vehicle maintenance and emergency roadside assistance.",
-    "heroImage": "/src/assets/projects/depango/depango.jpg",
-    "image": "/src/assets/projects/depango/depango.jpg",
+    "heroImage": "/assets/projects/depango/depango.jpg",
+    "image": "/assets/projects/depango/depango.jpg",
     "screenshots": [
-      "/src/assets/projects/depango/depango-1.jpg",
-      "/src/assets/projects/depango/depango-2.jpg",
-      "/src/assets/projects/depango/depango-3.jpg"
+      "/assets/projects/depango/depango-1.jpg",
+      "/assets/projects/depango/depango-2.jpg",
+      "/assets/projects/depango/depango-3.jpg"
     ],
     "technologies": ["Kotlin", "Mapbox", "MLKit", "Material You"],
     "downloadLink": "https://play.google.com/store/apps/details?id=com.depan.go",
@@ -64,14 +64,14 @@
     "name": "Portfolio Website",
     "route": "portfolio",
     "description": "A personal portfolio website to showcase my projects, skills, and experience as a developer.",
-    "heroImage": "/src/assets/projects/portfolio.png",
-    "image": "/src/assets/projects/portfolio.png",
+    "heroImage": "/assets/projects/portfolio.png",
+    "image": "/assets/projects/portfolio.png",
     "screenshots": [
-      "/src/assets/projects/portfolio/portfolio-1.png",
-      "/src/assets/projects/portfolio/portfolio-2.png",
-      "/src/assets/projects/portfolio/portfolio-3.png"
+      "/assets/projects/portfolio/portfolio-1.png",
+      "/assets/projects/portfolio/portfolio-2.png",
+      "/assets/projects/portfolio/portfolio-3.png"
     ],
-    "technologies": ["Recat", "TypeScript", "Tailwind CSS", "Tanstack Query"],
+    "technologies": ["React", "TypeScript", "Tailwind CSS", "Tanstack Query"],
     "downloadLink": "",
     "githubLink": "",
     "liveDemoLink": "https://myportfolio.com",
@@ -83,12 +83,12 @@
     "name": "Tajir",
     "route": "tajir",
     "description": "A full-featured e-commerce platform that allows users to browse products, add items to their cart, and securely checkout using various payment methods.",
-    "heroImage": "/src/assets/projects/ecommerce.png",
-    "image": "/src/assets/projects/ecommerce.png",
+    "heroImage": "/assets/projects/ecommerce.png",
+    "image": "/assets/projects/ecommerce.png",
     "screenshots": [
-      "/src/assets/projects/ecommerce/ecommerce-1.png",
-      "/src/assets/projects/ecommerce/ecommerce-2.png",
-      "/src/assets/projects/ecommerce/ecommerce-3.png"
+      "/assets/projects/ecommerce/ecommerce-1.png",
+      "/assets/projects/ecommerce/ecommerce-2.png",
+      "/assets/projects/ecommerce/ecommerce-3.png"
     ],
     "technologies": ["React", "Node.js", "Express", "MongoDB"],
     "downloadLink": "",
@@ -102,12 +102,12 @@
     "name": "Music Player",
     "route": "musicplayer",
     "description": "A sleek and user-friendly music player application that allows users to create playlists, shuffle songs, and enjoy high-quality audio playback.",
-    "heroImage": "/src/assets/projects/musicplayer.png",
-    "image": "/src/assets/projects/musicplayer.png",
+    "heroImage": "/assets/projects/musicplayer.png",
+    "image": "/assets/projects/musicplayer.png",
     "screenshots": [
-      "/src/assets/projects/musicplayer/musicplayer-1.png",
-      "/src/assets/projects/musicplayer/musicplayer-2.png",
-      "/src/assets/projects/musicplayer/musicplayer-3.png"
+      "/assets/projects/musicplayer/musicplayer-1.png",
+      "/assets/projects/musicplayer/musicplayer-2.png",
+      "/assets/projects/musicplayer/musicplayer-3.png"
     ],
     "technologies": ["Jetpack Compose", "Kotlin", "ExoPlayer"],
     "downloadLink": "https://play.google.com/store/apps/details?id=com.musicplayer.app",
