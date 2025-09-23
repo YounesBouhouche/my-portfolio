@@ -97,25 +97,6 @@
     "completed": true
   },
   {
-    "id": 4,
-    "name": "Tajir",
-    "route": "tajir",
-    "description": "A full-featured e-commerce platform that allows users to browse products, add items to their cart, and securely checkout using various payment methods.",
-    "heroImage": "/assets/projects/ecommerce.png",
-    "image": "/assets/projects/ecommerce.png",
-    "screenshots": [
-      "/assets/projects/ecommerce/ecommerce-1.png",
-      "/assets/projects/ecommerce/ecommerce-2.png",
-      "/assets/projects/ecommerce/ecommerce-3.png"
-    ],
-    "technologies": ["React", "Node.js", "Express", "MongoDB"],
-    "downloadLink": "",
-    "githubLink": "",
-    "liveDemoLink": "https://myecommerceplatform.com",
-    "category": "Web App",
-    "completed": false
-  },
-  {
     "id": 5,
     "name": "Music Player",
     "route": "musicplayer",
