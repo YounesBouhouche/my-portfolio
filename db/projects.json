@@ -1,0 +1,130 @@
+[
+  {
+    "id": 1,
+    "name": "Assurini",
+    "route": "assurini",
+    "description": "A comprehensive insurance management platform that streamlines policy administration, claims processing, and customer service for insurance providers.",
+    "heroImage": "/src/assets/projects/assurini/assurini.jpg",
+    "image": "/src/assets/projects/assurini/assurini.jpg",
+    "screenshots": [
+      "/src/assets/projects/assurini/assurini-1.jpg",
+      "/src/assets/projects/assurini/assurini-2.jpg",
+      "/src/assets/projects/assurini/assurini-3.jpg"
+    ],
+    "technologies": ["Kotlin", "Mapbox", "MLKit", "Material You"],
+    "features": [
+      "User Registration and Authentication",
+      "Policy Management",
+      "Claims Processing",
+      "Customer Support Chat"
+    ],
+    "downloadLink": "https://play.google.com/store/apps/details?id=com.assurini.app",
+    "githubLink": "",
+    "liveDemoLink": "",
+    "category": "Mobile App",
+    "completed": true,
+    "requirements": [
+      "Android 11 (API level 30) or higher",
+      "Internet connection for real-time updates and data synchronization",
+      "Mapbox API key for map functionalities",
+      "Location services enabled for location-based features"
+    ]
+  }, 
+  {
+    "id": 2,
+    "name": "Depan.Go",
+    "route": "depango",
+    "description": "A mobile application that connects users with nearby automotive repair shops and mechanics for on-demand vehicle maintenance and emergency roadside assistance.",
+    "heroImage": "/src/assets/projects/depango/depango.jpg",
+    "image": "/src/assets/projects/depango/depango.jpg",
+    "screenshots": [
+      "/src/assets/projects/depango/depango-1.jpg",
+      "/src/assets/projects/depango/depango-2.jpg",
+      "/src/assets/projects/depango/depango-3.jpg"
+    ],
+    "technologies": ["Kotlin", "Mapbox", "MLKit", "Material You"],
+    "downloadLink": "https://play.google.com/store/apps/details?id=com.depan.go",
+    "githubLink": "",
+    "liveDemoLink": "",
+    "category": "Mobile App",
+    "features": [
+      "User Registration and Authentication",
+      "Search and Filter Repair Shops",
+      "Real-time Location Tracking",
+      "In-app Chat with Mechanics"
+    ],
+    "requirements": [
+      "Android 11 (API level 30) or higher",
+      "Internet connection for real-time updates and data synchronization"
+    ],
+    "completed": true
+  },
+  {
+    "id": 3,
+    "name": "Portfolio Website",
+    "route": "portfolio",
+    "description": "A personal portfolio website to showcase my projects, skills, and experience as a developer.",
+    "heroImage": "/src/assets/projects/portfolio.png",
+    "image": "/src/assets/projects/portfolio.png",
+    "screenshots": [
+      "/src/assets/projects/portfolio/portfolio-1.png",
+      "/src/assets/projects/portfolio/portfolio-2.png",
+      "/src/assets/projects/portfolio/portfolio-3.png"
+    ],
+    "technologies": ["Recat", "TypeScript", "Tailwind CSS", "Tanstack Query"],
+    "downloadLink": "",
+    "githubLink": "",
+    "liveDemoLink": "https://myportfolio.com",
+    "category": "Web App",
+    "completed": true
+  },
+  {
+    "id": 4,
+    "name": "Tajir",
+    "route": "tajir",
+    "description": "A full-featured e-commerce platform that allows users to browse products, add items to their cart, and securely checkout using various payment methods.",
+    "heroImage": "/src/assets/projects/ecommerce.png",
+    "image": "/src/assets/projects/ecommerce.png",
+    "screenshots": [
+      "/src/assets/projects/ecommerce/ecommerce-1.png",
+      "/src/assets/projects/ecommerce/ecommerce-2.png",
+      "/src/assets/projects/ecommerce/ecommerce-3.png"
+    ],
+    "technologies": ["React", "Node.js", "Express", "MongoDB"],
+    "downloadLink": "",
+    "githubLink": "",
+    "liveDemoLink": "https://myecommerceplatform.com",
+    "category": "Web App",
+    "completed": false
+  },
+  {
+    "id": 5,
+    "name": "Music Player",
+    "route": "musicplayer",
+    "description": "A sleek and user-friendly music player application that allows users to create playlists, shuffle songs, and enjoy high-quality audio playback.",
+    "heroImage": "/src/assets/projects/musicplayer.png",
+    "image": "/src/assets/projects/musicplayer.png",
+    "screenshots": [
+      "/src/assets/projects/musicplayer/musicplayer-1.png",
+      "/src/assets/projects/musicplayer/musicplayer-2.png",
+      "/src/assets/projects/musicplayer/musicplayer-3.png"
+    ],
+    "technologies": ["Jetpack Compose", "Kotlin", "ExoPlayer"],
+    "downloadLink": "https://play.google.com/store/apps/details?id=com.musicplayer.app",
+    "githubLink": "",
+    "liveDemoLink": "",
+    "category": "Mobile App",
+    "completed": false,
+    "requirements": [
+      "Android 8.0 (API level 26) or higher",
+      "Internet connection for streaming online music",
+      "Storage permission to access local music files"
+    ],
+    "features": [
+      "Create and manage playlists",
+      "Shuffle and repeat songs",
+      "High-quality audio playback",
+      "Set sleep timer"
+    ]
+  }
+]

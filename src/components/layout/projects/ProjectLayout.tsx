@@ -1,44 +1,21 @@
-import { type ReactNode } from 'react';
+import type { Project } from '../../../types/Project';
 
-interface ProjectLayoutProps {
-  children?: ReactNode;
-  title: string;
-  subtitle: string;
-  category: string;
-  developer?: string;
-  version: string;
-  lastUpdated: string;
-  heroImage: string;
-  appImage: string;
-  screenshots: string[];
-  description: string;
-  features: string[];
-  technologies: string[];
-  downloadUrl?: string;
-  githubUrl?: string;
-  demoUrl?: string;
-  requirements?: string[];
-}
+export default function ProjectLayout({ project }: { project: Project }) {
+  const {
+    name,
+    description,
+    features,
+    technologies,
+    requirements,
+    lastUpdated,
+    downloadLink,
+    liveDemoLink,
+    githubLink,
+    heroImage,
+    image,
+    screenshots = [],
+  } = project;
 
-export default function ProjectLayout({
-  children,
-  title,
-  subtitle,
-  category,
-  developer = "YounesBouhouche",
-  version,
-  lastUpdated,
-  heroImage,
-  appImage,
-  screenshots = [],
-  description,
-  features = [],
-  technologies = [],
-  downloadUrl,
-  githubUrl,
-  demoUrl,
-  requirements = []
-}: ProjectLayoutProps) {
   return (
     <div className="min-h-screen bg-slate-950 text-white">
       <div 
@@ -52,37 +29,31 @@ export default function ProjectLayout({
               <div className="lg:w-1/4 flex-shrink-0">
                 <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl border border-gray-600 bg-black/20 backdrop-blur-sm">
                   <img 
-                    src={appImage} 
-                    alt={title}
+                    src={image} 
+                    alt={name}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
               </div>
               <div className="lg:w-3/4 space-y-6 text-center lg:text-left">
                 <div>
-                  <div className="flex items-center justify-center lg:justify-start gap-3 mb-2">
-                    <span className="px-3 py-1 bg-blue-600 text-blue-100 rounded-full text-sm font-medium">
-                      {category}
-                    </span>
-                    <span className="text-gray-300 text-sm">by {developer}</span>
-                  </div>
-                  <h1 className="text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-lg">{title}</h1>
-                  <p className="text-xl lg:text-2xl text-gray-200 drop-shadow-md">{subtitle}</p>
+                  <h1 className="text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-lg">{name}</h1>
+                  <p className="text-xl lg:text-2xl text-gray-200 drop-shadow-md">{description}</p>
                 </div>
 
                 {/* Action Buttons */}
                 <div className="flex flex-wrap justify-center lg:justify-start gap-4">
-                  {downloadUrl && (
+                  {downloadLink && (
                     <a
-                      href={downloadUrl}
+                      href={downloadLink}
                       className="px-8 py-3 bg-primary hover:bg-primary/80 text-black font-bold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
                     >
                       Download
                     </a>
                   )}
-                  {demoUrl && (
+                  {liveDemoLink && (
                     <a
-                      href={demoUrl}
+                      href={liveDemoLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
@@ -90,9 +61,9 @@ export default function ProjectLayout({
                       Live Demo
                     </a>
                   )}
-                  {githubUrl && (
+                  {githubLink && (
                     <a
-                      href={githubUrl}
+                      href={githubLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="px-8 py-3 border-2 border-gray-400 hover:border-gray-200 text-white font-bold rounded-full transition-all duration-300 transform hover:scale-105 backdrop-blur-sm bg-white/10"
@@ -154,13 +125,6 @@ export default function ProjectLayout({
                 </div>
               </section>
             )}
-
-            {/* Custom Content */}
-            {children && (
-              <section>
-                {children}
-              </section>
-            )}
           </div>
 
           {/* Right Column - Sidebar */}
@@ -172,10 +136,6 @@ export default function ProjectLayout({
                 <div className="flex justify-between">
                   <span className="text-gray-400">Updated</span>
                   <span>{lastUpdated}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-400">Version</span>
-                  <span>{version}</span>
                 </div>
               </div>
             </div>

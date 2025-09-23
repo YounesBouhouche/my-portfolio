@@ -1,0 +1,86 @@
+[
+  { 
+    "name": "React",
+    "level": 90,
+    "primaryColor": "#61dafb",
+    "secondaryColor": "#21d4fd",
+    "icon": "/src/assets/react.svg"
+  },
+  { 
+    "name": "JavaScript",
+    "level": 88,
+    "primaryColor": "#f7df1e",
+    "secondaryColor": "#ffeb3b",
+    "icon": "/src/assets/javascript.svg"
+  },
+  { 
+    "name": "TypeScript",
+    "level": 85,
+    "primaryColor": "#3178c6",
+    "secondaryColor": "#007acc",
+    "icon": "/src/assets/typescript.svg"
+  },
+  { 
+    "name": "Kotlin",
+    "level": 82,
+    "primaryColor": "#7f52ff",
+    "secondaryColor": "#a855f7",
+    "icon": "/src/assets/kotlin.svg"
+  },
+  { 
+    "name": "Jetpack Compose",
+    "level": 80,
+    "primaryColor": "#4285f4",
+    "secondaryColor": "#0f9d58",
+    "icon": "/src/assets/compose.svg"
+  },
+  { 
+    "name": "Android",
+    "level": 78,
+    "primaryColor": "#3ddc84",
+    "secondaryColor": "#0f9d58",
+    "icon": "/src/assets/android.svg"
+  },
+  { 
+    "name": "Laravel",
+    "level": 35,
+    "primaryColor": "#ff2d20",
+    "secondaryColor": "#ef4444",
+    "icon": "/src/assets/laravel.svg"
+  },
+  { 
+    "name": "PHP",
+    "level": 30,
+    "primaryColor": "#777bb4",
+    "secondaryColor": "#8892bf",
+    "icon": "/src/assets/php.svg"
+  },
+  { 
+    "name": "Git",
+    "level": 75,
+    "primaryColor": "#f05032",
+    "secondaryColor": "#f14e32",
+    "icon": "/src/assets/git.svg"
+  },
+  {
+    "name": "C#",
+    "level": 40,
+    "primaryColor": "#239120",
+    "secondaryColor": "#6aa84f",
+    "icon": "/src/assets/csharp.svg"
+  },
+  {
+    "name": ".NET WinForms",
+    "level": 38,
+    "primaryColor": "#512bd4",
+    "secondaryColor": "#845ef7",
+    "icon": "/src/assets/dotnet.svg"
+  },
+  {
+    "name": "Python",
+    "level": 50,
+    "primaryColor": "#3776ab",
+    "secondaryColor": "#ffdd57",
+    "icon": "/src/assets/python.svg"
+  }
+]

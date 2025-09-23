@@ -53,7 +53,7 @@ export default function Footer() {
         <div className="max-w-6xl mx-auto text-center">
           <div className="flex items-center justify-center gap-2 text-xs font-mono">
             <div className="terminal-indicator w-2 h-2 rounded-full"></div>
-            <span className="footer-copyright">© {currentYear} YounesBouhouche. All rights reserved. | Built with React & TypeScript</span>
+            <span className="footer-copyright">© {currentYear} YounesBouhouche. All rights reserved. | Built with React & TanStack Router</span>
           </div>
         </div>
       </div>

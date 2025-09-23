@@ -1,0 +1,145 @@
+@import '../../../App.css';
+
+/* Projects Page Styling */
+.projects-page {
+  @apply relative overflow-x-hidden;
+}
+
+/* Grid Background Pattern */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(rgba(174, 234, 42, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(174, 234, 42, 0.1) 1px, transparent 1px);
+  @apply bg-[length:50px_50px];
+  animation: gridPulse 4s ease-in-out infinite;
+}
+
+@keyframes gridPulse {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.3; }
+}
+
+/* Hero Section */
+.projects-hero {
+  @apply relative;
+  background: radial-gradient(ellipse at center, rgba(174, 234, 42, 0.05) 0%, transparent 70%);
+}
+
+.projects-title {
+  animation: titleGlow 3s ease-in-out infinite alternate;
+  @apply drop-shadow-[0_0_30px_rgba(174,234,42,0.3)];
+}
+
+@keyframes titleGlow {
+  0% { 
+    text-shadow: 
+      0 0 30px rgba(174, 234, 42, 0.3),
+      0 0 60px rgba(174, 234, 42, 0.1);
+  }
+  100% { 
+    text-shadow: 
+      0 0 40px rgba(174, 234, 42, 0.5),
+      0 0 80px rgba(174, 234, 42, 0.2);
+  }
+}
+
+/* Project Cards */
+.project-card {
+  @apply perspective-[1000px];
+}
+
+.project-card-inner {
+  @apply relative transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)];
+  transform-style: preserve-3d;
+}
+
+.project-card:hover .project-card-inner {
+  transform: translateY(-10px) rotateX(5deg);
+  @apply shadow-[0_25px_50px_rgba(0,0,0,0.3),0_0_30px_rgba(174,234,42,0.1),inset_0_1px_0_rgba(255,255,255,0.1)];
+}
+
+/* Project Image Effects */
+.project-image-container::after {
+  @apply content-[''] absolute top-0 -left-full w-full h-full transition-[left] duration-700 ease-in-out;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(174, 234, 42, 0.2),
+    transparent
+  );
+}
+
+.project-card:hover .project-image-container::after {
+  @apply left-full;
+}
+
+/* Technology Tags Glow */
+.project-content span {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.project-card:hover .project-content span {
+  @apply shadow-[0_0_10px_rgba(174,234,42,0.1)] border-primary/20;
+}
+
+/* Button Hover Effects */
+.project-card a:hover {
+  @apply shadow-[0_5px_15px_rgba(0,0,0,0.2)];
+}
+
+/* Loading Animation */
+.projects-content {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .projects-title {
+    @apply text-5xl;
+  }
+  
+  .project-card:hover .project-card-inner {
+    transform: translateY(-5px);
+  }
+}
+
+/* Text Clamp Utility */
+.line-clamp-3 {
+  @apply overflow-hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* Scan Line Effect */
+.projects-hero::before {
+  @apply content-[''] absolute top-6 left-0 right-0 h-0.5;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(174, 234, 42, 0.6),
+    transparent
+  );
+  animation: scanLine 3s linear infinite;
+}
+
+@keyframes scanLine {
+  0% { 
+    transform: translateX(-100%);
+  }
+  100% { 
+    transform: translateX(100vw);
+  }
+}
