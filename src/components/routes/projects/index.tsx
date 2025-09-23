@@ -3,6 +3,7 @@ import useQueryFetch from '../../../hooks/useFetch';
 import type { Project } from '../../../types/Project';
 import LoadingContainer from '../../shared/LoadingContainer';
 import './Projects.css';
+import '../../shared/ProjectCard.css';
 
 export default function Projects() {
   const projects = useQueryFetch<Project[]>('/db/projects.json', 'projects');
@@ -22,7 +23,7 @@ export default function Projects() {
     <>
       <div className="projects-page pt-20 min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
         {/* Hero Section */}
-        <div className="projects-hero relative pt-24 pb-16">
+        <div className="projects-hero relative pt-40 pb-30">
           <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
           <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
             <h1 className="projects-title text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-blue-400 to-purple-500 bg-clip-text text-transparent">
@@ -83,18 +84,18 @@ export default function Projects() {
                           <Link 
                             to="/projects/$project"
                             params={{ project: project.route }}
-                            className="flex-1 px-4 py-2 bg-primary hover:bg-primary/80 text-black font-medium rounded-lg transition-all duration-300 text-center text-sm hover:transform hover:scale-105"
+                            className="terminal-button-link small rounded-lg flex-1 text-center"
                           >
-                            View Details
+                            <span>View Project</span>
                           </Link>
                           {project.liveDemoLink && (
                             <a
                               href={project.liveDemoLink}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-300 text-sm hover:transform hover:scale-105"
+                              className="terminal-button-link small rounded-lg"
                             >
-                              Demo
+                              <span>Demo</span>
                             </a>
                           )}
                           {project.githubLink && (
@@ -102,9 +103,9 @@ export default function Projects() {
                               href={project.githubLink}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="px-4 py-2 border border-gray-600 hover:border-gray-400 text-gray-300 hover:text-white font-medium rounded-lg transition-all duration-300 text-sm hover:transform hover:scale-105"
+                              className="terminal-button-link small rounded-lg"
                             >
-                              Code
+                              <span>Code</span>
                             </a>
                           )}
                         </div>

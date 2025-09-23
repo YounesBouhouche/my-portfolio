@@ -17,11 +17,11 @@
 }
 
 .header .content {
-  @apply h-full w-full px-20 flex items-center relative z-10
+  @apply h-full w-full px-6 lg:px-20 flex items-center relative z-10 -translate-y-20 lg:-translate-y-0;
 }
 
 .header .content h1 {
-  @apply font-extrabold text-6xl leading-snug
+  @apply font-extrabold text-3xl lg:text-6xl leading-snug
 }
 
 .header .content h1 span {

@@ -6,13 +6,13 @@ export default function ProjectCard(
   { title: string; description: string; imageUrl: string; projectUrl: string, pictureInLeft?: boolean }
 ) {
   return (
-    <div className={"glass-container mx-20 flex " + (pictureInLeft ? 'flex-row' : 'flex-row-reverse')}>
-      <img src={imageUrl} alt={title} className='rounded-xl w-1/2' />
-      <div className='p-10 w-1/2 flex flex-col justify-center space-y-5'>
+    <div className={"glass-container mx-4 lg:mx-20 flex flex-col " + (pictureInLeft ? 'lg:flex-row' : 'lg:flex-row-reverse')}>
+      <img src={imageUrl} alt={title} className='rounded-xl w-full shrink-0 lg:shrink lg:w-1/2' />
+      <div className='p-6 lg:p-10 w-full lg:w-1/2 flex flex-col justify-center space-y-5'>
         <h3 className='text-4xl font-bold mb-5'>{title}</h3>
         
         {/* Terminal-style container for description */}
-        <div className='terminal-window'>
+        <div className='terminal-window w-full'>
           <div className='terminal-header'>
             <div className='terminal-buttons'>
               <span className='terminal-button close'></span>

@@ -47,7 +47,7 @@
 
 .terminal-body {
   @apply p-5 leading-relaxed min-h-[120px];
-  background: #1e1e1e;
+  background: #0a0a0a;
   color: #e4e4e4;
 }
 
@@ -83,7 +83,7 @@
   @apply border-2 border-primary text-primary;
   @apply transition-colors duration-300 ease-in-out;
   @apply overflow-hidden z-10;
-  background: #1e1e1e !important;
+  background: #0a0a0a !important;
   font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', monospace !important;
 }
 
@@ -92,6 +92,10 @@
   @apply relative z-30;
   color: inherit;
   font-weight: bold;
+}
+
+.terminal-button-link.small {
+  @apply px-3 py-3 text-xs w-auto;
 }
 
 /* Text content wrapper */
@@ -112,6 +116,105 @@
 
 .terminal-button-link:hover {
   @apply text-gray-800;
+}
+
+/* Terminal form styles */
+.terminal-form-group {
+  @apply mb-6;
+}
+
+.terminal-label {
+  @apply block text-xs font-mono text-gray-400 mb-2 uppercase tracking-wider;
+}
+
+.terminal-input,
+.terminal-textarea {
+  @apply w-full px-4 py-3 text-sm font-mono;
+  @apply bg-transparent border-0 border-b-2 border-gray-700 text-primary;
+  @apply focus:outline-none;
+  @apply transition-colors duration-300;
+  border-radius: 0;
+  position: relative;
+}
+
+.terminal-form-group {
+  position: relative;
+}
+
+.terminal-form-group::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #aeea2a;
+  transition: width 0.3s ease-in-out;
+}
+
+.terminal-form-group:focus-within::after {
+  width: 100%;
+}
+
+.terminal-input::placeholder,
+.terminal-textarea::placeholder {
+  @apply text-gray-500 font-mono;
+  opacity: 0.7;
+}
+
+.terminal-input:focus,
+.terminal-textarea:focus {
+  color: #aeea2a;
+  border-bottom-color: #4b5563;
+  background: #000000;
+}
+
+.terminal-input:focus::placeholder,
+.terminal-textarea:focus::placeholder {
+  opacity: 0.4;
+}
+
+.terminal-textarea {
+  @apply resize-none;
+  min-height: 120px;
+  background: transparent !important;
+  border: 0;
+  border-bottom: 2px solid #374151;
+  border-radius: 0;
+}
+
+.contact-info-item {
+  @apply flex items-center space-x-3 text-sm;
+}
+
+.contact-info-icon {
+  @apply w-5 h-5 text-primary flex-shrink-0;
+}
+
+.status-indicator {
+  @apply flex items-center space-x-2 text-sm;
+}
+
+.status-dot {
+  @apply w-2 h-2 rounded-full;
+  animation: pulse 2s infinite;
+}
+
+.status-available {
+  background: #28ca42;
+}
+
+.status-busy {
+  background: #ff5f57;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 /* Responsive design */

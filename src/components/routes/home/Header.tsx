@@ -92,7 +92,7 @@ export default function Header() {
           </span>
         </h1>
       </div>
-      <div className={`overflow-hidden aspect-video w-[60%] absolute right-0 translate-x-1/4 shadow-2xl rounded-xl object-cover transition-all duration-500 ease-in-out
+      <div className={`overflow-hidden aspect-video w-auto h-1/2 lg:h-auto lg:w-[60%] absolute bottom-0 lg:bottom-auto right-0 translate-x-1/2 lg:translate-x-1/4 translate-y-1/12 lg:translate-y-0 shadow-2xl rounded-xl object-cover transition-all duration-500 ease-in-out
         ${textIndex > 0 ? 'opacity-100' : 'opacity-0 invisible'}
         `}>
         {

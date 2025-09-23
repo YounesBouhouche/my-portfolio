@@ -13,6 +13,7 @@ import KoinIcon from '/assets/png/koin.png';
 import TanStackIcon from '/assets/png/logo-color-100.png';
 import MlkitIcon from '/assets/png/mlkit.png';
 import FirebaseIcon from '/assets/firebase.svg';
+import TailwindIcon from '/assets/tailwind.svg';
 import useQueryFetch from '../../../hooks/useFetch';
 import type { Project } from '../../../types/Project';
 import type { Skill } from '../../../types/Skill';
@@ -58,6 +59,10 @@ export default function HomeComponent() {
     {
       name: 'Firebase',
       icon: FirebaseIcon
+    },
+    {
+      name: 'Tailwind',
+      icon: TailwindIcon
     },
   ]
 
