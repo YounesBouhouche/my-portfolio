@@ -9,7 +9,15 @@
     "screenshots": [
       "/assets/projects/assurini/assurini-1.jpg",
       "/assets/projects/assurini/assurini-2.jpg",
-      "/assets/projects/assurini/assurini-3.jpg"
+      "/assets/projects/assurini/assurini-3.jpg",
+      "/assets/projects/assurini/assurini-4.jpg",
+      "/assets/projects/assurini/assurini-5.jpg",
+      "/assets/projects/assurini/assurini-6.jpg",
+      "/assets/projects/assurini/assurini-7.jpg",
+      "/assets/projects/assurini/assurini-8.jpg",
+      "/assets/projects/assurini/assurini-9.jpg",
+      "/assets/projects/assurini/assurini-10.jpg",
+      "/assets/projects/assurini/assurini-11.jpg"
     ],
     "technologies": ["Kotlin", "Mapbox", "MLKit", "Material You"],
     "features": [

@@ -1,4 +1,6 @@
+import useEmblaCarousel from 'embla-carousel-react';
 import type { Project } from '../../../types/Project';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export default function ProjectLayout({ project }: { project: Project }) {
   const {
@@ -15,6 +17,7 @@ export default function ProjectLayout({ project }: { project: Project }) {
     image,
     screenshots = [],
   } = project;
+  const [emblaRef] = useEmblaCarousel({ loop: false, align: 'start' });
 
   return (
     <div className="min-h-screen bg-slate-950 text-white">
@@ -85,15 +88,15 @@ export default function ProjectLayout({ project }: { project: Project }) {
           <div className="lg:col-span-2 space-y-12">
             {/* Screenshots */}
             {screenshots.length > 0 && (
-              <section>
+              <section className='w-full'>
                 <h2 className="text-2xl font-bold mb-6">Screenshots</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="flex gap-6 overflow-hidden" ref={emblaRef}>
                   {screenshots.map((screenshot, index) => (
-                    <div key={index} className="rounded-xl overflow-hidden shadow-lg border border-gray-600 hover:shadow-2xl transition-shadow duration-300">
+                    <div key={index} className="rounded-xl shrink-0 overflow-hidden shadow-lg border border-gray-600 hover:shadow-2xl transition-shadow duration-300">
                       <img 
                         src={screenshot} 
                         alt={`Screenshot ${index + 1}`}
-                        className="w-full h-64 object-cover hover:scale-105 transition-transform duration-500"
+                        className="w-60 object-cover hover:scale-105 transition-transform duration-500"
                       />
                     </div>
                   ))}
