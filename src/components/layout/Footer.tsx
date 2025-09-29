@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="flex flex-col items-center md:items-start gap-2">
           <div>
             <div className="footer-logo text-2xl font-mono font-bold">&lt;YounesBouhouche/&gt;</div>
-            <div className="footer-tagline text-sm font-mono">Full Stack Developer</div>
+            <div className="footer-tagline text-sm font-mono">Front-end Developer</div>
           </div>
         </div>
 
