@@ -1,4 +1,3 @@
-import useEmblaCarousel from 'embla-carousel-react';
 import type { Project } from '../../../types/Project';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
@@ -17,11 +16,10 @@ export default function ProjectLayout({ project }: { project: Project }) {
     image,
     screenshots = [],
   } = project;
-  const [emblaRef] = useEmblaCarousel({ loop: true, active: true });
 
   return (
     <div className="min-h-screen bg-slate-950 text-white">
-      <div 
+      <div
         className="relative h-screen min-h-[800px] bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroImage})` }}
       >
@@ -31,8 +29,8 @@ export default function ProjectLayout({ project }: { project: Project }) {
             <div className="flex flex-col items-center   lg:flex-row gap-8 w-full">
               <div className="lg:w-1/4 flex-shrink-0">
                 <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl border border-gray-600 bg-black/20 backdrop-blur-sm">
-                  <img 
-                    src={image} 
+                  <img
+                    src={image}
                     alt={name}
                     className="w-full h-full bg-white object-cover hover:scale-105 transition-transform duration-500"
                   />
@@ -90,11 +88,11 @@ export default function ProjectLayout({ project }: { project: Project }) {
             {screenshots.length > 0 && (
               <section className='w-full'>
                 <h2 className="text-2xl font-bold mb-6">Screenshots</h2>
-                <div className="flex gap-6 w-full overflow-hidden" ref={emblaRef}>
+                <div className="flex gap-6 w-full overflow-x-auto">
                   {screenshots.map((screenshot, index) => (
                     <div key={index} className="rounded-xl shrink-0 overflow-hidden shadow-lg border border-gray-600 hover:shadow-2xl transition-shadow duration-300">
-                      <img 
-                        src={screenshot} 
+                      <img
+                        src={screenshot}
                         alt={`Screenshot ${index + 1}`}
                         className="w-60 object-cover hover:scale-105 transition-transform duration-500"
                       />
@@ -149,7 +147,7 @@ export default function ProjectLayout({ project }: { project: Project }) {
                 <h3 className="text-lg font-bold mb-4">Technologies Used</h3>
                 <div className="flex flex-wrap gap-2">
                   {technologies.map((tech, index) => (
-                    <span 
+                    <span
                       key={index}
                       className="px-3 py-1 bg-gray-700 text-gray-300 rounded-full text-sm border border-gray-600"
                     >

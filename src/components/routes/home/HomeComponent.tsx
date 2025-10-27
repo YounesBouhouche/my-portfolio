@@ -49,7 +49,7 @@ export default function HomeComponent() {
       icon: CoilIcon
     },
     {
-      name: 'Tanstack Router',
+      name: "Tanstack Router",
       icon: TanStackIcon
     },
     {
@@ -77,7 +77,7 @@ export default function HomeComponent() {
               data={projects}
               children={(data) => (
                 data.slice(0, 2).map((project, index) => (
-                <ProjectCard
+                  <ProjectCard
                     key={index}
                     title={project.name}
                     description={project.description}
@@ -99,10 +99,10 @@ export default function HomeComponent() {
               data={skills}
               children={(data) => (
                 data.map((skill, index) => (
-                  <SkillCard 
-                    key={index} 
-                    name={skill.name} 
-                    level={skill.level} 
+                  <SkillCard
+                    key={index}
+                    name={skill.name}
+                    level={skill.level}
                     delay={index * 100}
                     primaryColor={skill.primaryColor}
                     secondaryColor={skill.secondaryColor}

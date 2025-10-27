@@ -11,7 +11,7 @@ export default function ContactComponent() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
-  
+
   // Typewriter effect state
   const [displayedText, setDisplayedText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -41,7 +41,7 @@ export default function ContactComponent() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       setSubmitMessage('Message sent successfully! I\'ll get back to you soon.');
@@ -80,7 +80,7 @@ export default function ContactComponent() {
               </div>
               <span className="terminal-title">contact-form.sh</span>
             </div>
-            
+
             <div className="terminal-body p-6">
               <div className="terminal-prompt mb-4">
                 <span className="text-gray-400">$ </span>
@@ -167,7 +167,7 @@ export default function ContactComponent() {
                     <span className="text-yellow-400">./send-message.sh</span>
                     <span className="text-gray-300"> --execute</span>
                   </div>
-                  
+
                   <button
                     type="submit"
                     disabled={isSubmitting}
@@ -235,8 +235,8 @@ export default function ContactComponent() {
                   <div>
                     <span className="text-blue-400">"instagram"</span>
                     <span className="text-gray-400">: </span>
-                    <a href="https://instagram.com/ybcoding_05" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 transition-colors">
-                      "@ybcoding_05"
+                    <a href="https://instagram.com/younesb_05" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 transition-colors">
+                      "@younesb_05"
                     </a>
                   </div>
                 </div>
