@@ -12,14 +12,10 @@ export default function LoadingContainer<T>(
 
   if (isFetching) {
     return (
-      <div className={`flex items-center justify-center h-[300px] p-8 ${className}`}>
+      <div className={`flex items-center justify-center h-[300px] p-8 w-full ${className}`}>
         <div className="relative">
-          {/* Material 3 Expressive Circular Indicator */}
           <div className="relative w-16 h-16">
-            {/* Outer ring with gradient */}
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/20 to-transparent animate-spin"></div>
-            
-            {/* Main progress ring */}
             <svg className="w-16 h-16 transform -rotate-90" viewBox="0 0 64 64">
               <circle
                 cx="32"
@@ -73,7 +69,7 @@ export default function LoadingContainer<T>(
 
   if (error) {
     return (
-      <div className={`flex items-center justify-center h-[300px] p-8 ${className}`}>
+      <div className={`flex items-center justify-center h-[300px] w-full p-8 ${className}`}>
         <svg 
           className="w-12 h-12 text-red-600 mb-4" 
           fill="none" 

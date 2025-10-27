@@ -1,6 +1,5 @@
 @import '../../App.css';
 
-/* Digital Skill Card Styles */
 .skill-card {
   @apply relative p-6 rounded-lg overflow-hidden;
   @apply transition-all duration-300 ease-out;
@@ -13,7 +12,6 @@
   position: relative;
 }
 
-/* Digital grid pattern overlay */
 .skill-card::before {
   content: '';
   @apply absolute inset-0;
@@ -126,13 +124,11 @@
   text-shadow: 0 0 4px rgba(var(--primary-rgb, 0, 255, 65), 0.4);
 }
 
-/* Skill Cards Grid Container */
 .skills-grid {
   @apply grid grid-cols-1 md:grid-cols-2 gap-8;
   @apply max-w-7xl mx-auto px-8;
 }
 
-/* Digital Animations */
 @keyframes gridPulse {
   0%, 100% {
     opacity: 0.1;
@@ -178,7 +174,6 @@
   }
 }
 
-/* Animation classes for staggered effect */
 .skill-card[data-delay="0"] { animation: slideInUp 0.6s ease-out; }
 .skill-card[data-delay="1"] { animation: slideInUp 0.6s ease-out 0.1s both; }
 .skill-card[data-delay="2"] { animation: slideInUp 0.6s ease-out 0.2s both; }
@@ -190,7 +185,6 @@
 .skill-card[data-delay="8"] { animation: slideInUp 0.6s ease-out 0.8s both; }
 .skill-card[data-delay="9"] { animation: slideInUp 0.6s ease-out 0.9s both; }
 
-/* Responsive design */
 @media (max-width: 768px) {
   .skill-card {
     @apply p-4;

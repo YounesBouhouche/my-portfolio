@@ -3,6 +3,7 @@
     "id": 1,
     "name": "Assurini",
     "route": "assurini",
+    "releaseDate": "2024-05-15",
     "description": "A comprehensive insurance management platform that streamlines policy administration, claims processing, and customer service for insurance providers.",
     "heroImage": "/assets/projects/assurini/Assurini.jpg",
     "image": "/assets/projects/assurini/app-icon.svg",
@@ -42,6 +43,7 @@
     "id": 2,
     "name": "Depan.Go",
     "route": "depango",
+    "releaseDate": "2024-05-15",
     "description": "A mobile application that connects users with nearby automotive repair shops and mechanics for on-demand vehicle maintenance and emergency roadside assistance.",
     "heroImage": "/assets/projects/depango/depango.jpg",
     "image": "/assets/projects/depango/app-icon.svg",
@@ -81,6 +83,7 @@
     "id": 3,
     "name": "Portfolio Website",
     "route": "portfolio",
+    "releaseDate": "2024-05-15",
     "description": "A personal portfolio website to showcase my projects, skills, and experience as a developer.",
     "heroImage": "/assets/projects/portfolio.png",
     "image": "/assets/projects/portfolio.png",
@@ -100,6 +103,7 @@
     "id": 5,
     "name": "Music Player",
     "route": "musicplayer",
+    "releaseDate": "2024-05-15",
     "description": "A sleek and user-friendly music player application that allows users to create playlists, shuffle songs, and enjoy high-quality audio playback.",
     "heroImage": "/assets/projects/musicplayer/musicplayer.jpg",
     "image": "/assets/projects/musicplayer/app-icon.svg",
@@ -124,6 +128,53 @@
       "Shuffle and repeat songs",
       "High-quality audio playback",
       "Set sleep timer"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Personal Blog",
+    "route": "blog",
+    "releaseDate": "",
+    "description": "A personal blog platform where I share my thoughts, tutorials, and experiences in software development.",
+    "heroImage": "/assets/projects/musicplayer/musicplayer.jpg",
+    "image": "/assets/projects/musicplayer/app-icon.svg",
+    "technologies": [
+      "Laravel",
+      "Inertia.js",
+      "Sanctum",
+      "Passport",
+      "Tailwind CSS",
+      "MySQL",
+      "Jetpack Compose",
+      "Ktor"
+    ],
+    "downloadLink": "https://play.google.com/store/apps/details?id=com.musicplayer.app",
+    "githubLink": "https://github.com/YounesBouhouche/MusicPlayer",
+    "liveDemoLink": "",
+    "category": "Web App",
+    "completed": false,
+    "features": [
+      "Create and manage blog posts",
+      "Commenting system",
+      "Responsive design",
+      "SEO optimization"
+    ]
+  },
+  {
+    "name": "E-commerce Platform",
+    "route": "ecommerce",
+    "releaseDate": "",
+    "description": "A full-featured e-commerce platform that allows users to browse products, add items to their cart, and securely checkout using various payment methods.",
+    "heroImage": "/assets/projects/ecommerce/ecommerce.jpg",
+    "image": "/assets/projects/ecommerce/app-icon.svg",
+    "category": "Web App",
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Laravel",
+      "PostgreSQL",
+      "Jetpack Compose"
     ]
   }
 ]

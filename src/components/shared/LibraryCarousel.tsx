@@ -2,11 +2,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './LibraryCarousel.css';
 import useEmblaCarousel from "embla-carousel-react";
 import { useEffect } from "react";
-
-interface Library {
-  name: string;
-  icon: any;
-}
+import type { Library } from "../../types/Library";
 
 export default function LibraryCarousel({ libraries }: { libraries: Library[] }) {
   const [emblaRef, embla] = useEmblaCarousel({ loop: true, active: true });

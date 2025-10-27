@@ -7,7 +7,7 @@ export interface Project {
   image: string;
   screenshots: string[];
   technologies: string[];
-  requirements: string[];
+  requirements?: string[];
   lastUpdated: string;
   features: string[];
   downloadLink?: string;
@@ -15,4 +15,6 @@ export interface Project {
   liveDemoLink?: string;
   category: string;
   completed: boolean;
+  date: string;
+  releaseDate?: string;
 }

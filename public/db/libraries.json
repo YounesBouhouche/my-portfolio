@@ -1,0 +1,54 @@
+[
+  {
+    "name": "Mapbox",
+    "icon": "/assets/mapbox.svg"
+  },
+  {
+    "name": "RabbitMQ",
+    "icon": "/assets/rabbitmq.svg"
+  },
+  {
+    "name": "Apollo",
+    "icon": "/assets/graphql.svg"
+  },
+  {
+    "name": "Ktor",
+    "icon": "/assets/coil.svg"
+  },
+  {
+    "name": "Koin",
+    "icon": "/assets/ktor.svg"
+  },
+  {
+    "name": "Kotlin Multiplatform",
+    "icon": "/assets/kmp.svg"
+  },
+  {
+    "name": "Coil",
+    "icon": "/assets/png/koin.png"
+  },
+  {
+    "name": "Tanstack Router",
+    "icon": "/assets/png/logo-color-100.png"
+  },
+  {
+    "name": "Mlkit",
+    "icon": "/assets/png/mlkit.png"
+  },
+  {
+    "name": "Firebase",
+    "icon": "/assets/firebase.svg"
+  },
+  {
+    "name": "Tailwind",
+    "icon": "/assets/tailwind.svg"
+  },
+  {
+    "name": "Sanctum",
+    "icon": "/assets/laravel-sanctum.svg"
+  },
+  {
+    "name": "Passport",
+    "icon": "/assets/laravel-passport.svg"
+  }
+]
