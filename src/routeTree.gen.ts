@@ -9,12 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ShowroomRouteImport } from './routes/showroom'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as SplatRouteImport } from './routes/$splat'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProjectsProjectRouteImport } from './routes/projects_.$project'
 
+const ShowroomRoute = ShowroomRouteImport.update({
+  id: '/showroom',
+  path: '/showroom',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProjectsRoute = ProjectsRouteImport.update({
   id: '/projects',
   path: '/projects',
@@ -46,6 +52,7 @@ export interface FileRoutesByFullPath {
   '/$splat': typeof SplatRoute
   '/contact': typeof ContactRoute
   '/projects': typeof ProjectsRoute
+  '/showroom': typeof ShowroomRoute
   '/projects/$project': typeof ProjectsProjectRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/$splat': typeof SplatRoute
   '/contact': typeof ContactRoute
   '/projects': typeof ProjectsRoute
+  '/showroom': typeof ShowroomRoute
   '/projects/$project': typeof ProjectsProjectRoute
 }
 export interface FileRoutesById {
@@ -61,19 +69,33 @@ export interface FileRoutesById {
   '/$splat': typeof SplatRoute
   '/contact': typeof ContactRoute
   '/projects': typeof ProjectsRoute
+  '/showroom': typeof ShowroomRoute
   '/projects_/$project': typeof ProjectsProjectRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$splat' | '/contact' | '/projects' | '/projects/$project'
+  fullPaths:
+    | '/'
+    | '/$splat'
+    | '/contact'
+    | '/projects'
+    | '/showroom'
+    | '/projects/$project'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$splat' | '/contact' | '/projects' | '/projects/$project'
+  to:
+    | '/'
+    | '/$splat'
+    | '/contact'
+    | '/projects'
+    | '/showroom'
+    | '/projects/$project'
   id:
     | '__root__'
     | '/'
     | '/$splat'
     | '/contact'
     | '/projects'
+    | '/showroom'
     | '/projects_/$project'
   fileRoutesById: FileRoutesById
 }
@@ -82,11 +104,19 @@ export interface RootRouteChildren {
   SplatRoute: typeof SplatRoute
   ContactRoute: typeof ContactRoute
   ProjectsRoute: typeof ProjectsRoute
+  ShowroomRoute: typeof ShowroomRoute
   ProjectsProjectRoute: typeof ProjectsProjectRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/showroom': {
+      id: '/showroom'
+      path: '/showroom'
+      fullPath: '/showroom'
+      preLoaderRoute: typeof ShowroomRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/projects': {
       id: '/projects'
       path: '/projects'
@@ -130,6 +160,7 @@ const rootRouteChildren: RootRouteChildren = {
   SplatRoute: SplatRoute,
   ContactRoute: ContactRoute,
   ProjectsRoute: ProjectsRoute,
+  ShowroomRoute: ShowroomRoute,
   ProjectsProjectRoute: ProjectsProjectRoute,
 }
 export const routeTree = rootRouteImport
