@@ -23,15 +23,15 @@
 }
 
 .primary-button:hover {
-  @apply border-primary/40 text-black;
-  @apply shadow-[0_6px_20px_rgba(174,234,42,0.3),inset_0_1px_0_rgba(255,255,255,0.15)];
+  @apply border-primary/40 text-white;
+  @apply shadow-[0_6px_20px_rgba(59,130,246,0.3),inset_0_1px_0_rgba(255,255,255,0.15)];
   @apply -translate-y-2 scale-105;
   text-shadow: none;
 }
 
 .primary-button:active {
   @apply translate-y-0 scale-100;
-  @apply shadow-[0_3px_12px_rgba(174,234,42,0.4),inset_0_1px_0_rgba(255,255,255,0.1)];
+  @apply shadow-[0_3px_12px_rgba(59,130,246,0.4),inset_0_1px_0_rgba(255,255,255,0.1)];
 }
 
 /* Focus state for accessibility */
