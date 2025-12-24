@@ -1,0 +1,29 @@
+/* Showroom Styles */
+.showroom-page {
+  /* Inherits global fonts */
+}
+
+/* Background Grid Pattern (Reused from Projects, but scoped if needed) */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Hide scrollbar for lightbox image container if needed */
+.lightbox-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.lightbox-content::-webkit-scrollbar-track {
+  background: #09090b;
+}
+
+.lightbox-content::-webkit-scrollbar-thumb {
+  background: #27272a; 
+}
+
+.lightbox-content::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6; 
+}

@@ -1,13 +1,13 @@
 @import '../../App.css';
 
 .skill-card {
-  @apply relative p-6 rounded-lg overflow-hidden;
+  @apply relative p-6 overflow-hidden;
   @apply transition-all duration-300 ease-out;
   background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
-  border: 2px solid var(--primary-color, #00ff41);
+  border: 2px solid var(--primary-color, #3b82f6);
   box-shadow: 
-    0 0 8px rgba(var(--primary-rgb, 0, 255, 65), 0.2),
-    inset 0 1px 0 rgba(var(--primary-rgb, 0, 255, 65), 0.05);
+    0 0 8px rgba(var(--primary-rgb, 59, 130, 246), 0.2),
+    inset 0 1px 0 rgba(var(--primary-rgb, 59, 130, 246), 0.05);
   min-height: 160px;
   position: relative;
 }
@@ -16,8 +16,8 @@
   content: '';
   @apply absolute inset-0;
   background-image: 
-    linear-gradient(rgba(var(--primary-rgb, 0, 255, 65), 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(var(--primary-rgb, 0, 255, 65), 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(var(--primary-rgb, 59, 130, 246), 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--primary-rgb, 59, 130, 246), 0.03) 1px, transparent 1px);
   background-size: 20px 20px;
   animation: gridPulse 3s ease-in-out infinite;
 }
@@ -29,9 +29,9 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(var(--primary-rgb, 0, 255, 65), 0.1) 45%,
-    rgba(var(--primary-rgb, 0, 255, 65), 0.2) 50%,
-    rgba(var(--primary-rgb, 0, 255, 65), 0.1) 55%,
+    rgba(var(--primary-rgb, 59, 130, 246), 0.1) 45%,
+    rgba(var(--primary-rgb, 59, 130, 246), 0.2) 50%,
+    rgba(var(--primary-rgb, 59, 130, 246), 0.1) 55%,
     transparent 100%
   );
   transform: translateX(-100%);
@@ -40,11 +40,11 @@
 
 .skill-card:hover {
   @apply -translate-y-2;
-  border-color: var(--primary-color, #00ff41);
+  border-color: var(--primary-color, #3b82f6);
   box-shadow: 
-    0 0 12px rgba(var(--primary-rgb, 0, 255, 65), 0.3),
-    0 0 24px rgba(var(--primary-rgb, 0, 255, 65), 0.1),
-    inset 0 1px 0 rgba(var(--primary-rgb, 0, 255, 65), 0.1);
+    0 0 12px rgba(var(--primary-rgb, 59, 130, 246), 0.3),
+    0 0 24px rgba(var(--primary-rgb, 59, 130, 246), 0.1),
+    inset 0 1px 0 rgba(var(--primary-rgb, 59, 130, 246), 0.1);
   transform: translateY(-4px) scale(1.02);
 }
 
@@ -55,14 +55,14 @@
 .skill-icon {
   @apply text-2xl w-12 h-12 flex items-center justify-center font-mono;
   background: linear-gradient(135deg, 
-    rgba(var(--primary-rgb, 0, 255, 65), 0.1), 
-    rgba(var(--primary-rgb, 0, 255, 65), 0.2)
+    rgba(var(--primary-rgb, 59, 130, 246), 0.1), 
+    rgba(var(--primary-rgb, 59, 130, 246), 0.2)
   );
-  border: 1px solid var(--primary-color, #00ff41);
-  border-radius: 8px;
+  border: 1px solid var(--primary-color, #3b82f6);
+
   box-shadow: 
-    0 0 4px rgba(var(--primary-rgb, 0, 255, 65), 0.2),
-    inset 0 1px 0 rgba(var(--primary-rgb, 0, 255, 65), 0.05);
+    0 0 4px rgba(var(--primary-rgb, 59, 130, 246), 0.2),
+    inset 0 1px 0 rgba(var(--primary-rgb, 59, 130, 246), 0.05);
 }
 
 .skill-icon img {
@@ -75,22 +75,22 @@
 
 .skill-name {
   @apply text-lg font-bold font-mono;
-  color: var(--primary-color, #00ff41);
+  color: var(--primary-color, #3b82f6);
   text-transform: uppercase;
   letter-spacing: 2px;
-  text-shadow: 0 0 4px rgba(var(--primary-rgb, 0, 255, 65), 0.3);
+  text-shadow: 0 0 4px rgba(var(--primary-rgb, 59, 130, 246), 0.3);
 }
 
 .skill-level {
   @apply text-xs font-mono;
-  color: var(--secondary-color, #66ff66);
+  color: var(--secondary-color, #60a5fa);
   letter-spacing: 1px;
 }
 
 .level-number {
   @apply font-bold text-sm font-mono;
-  color: var(--primary-color, #00ff41);
-  text-shadow: 0 0 4px rgba(var(--primary-rgb, 0, 255, 65), 0.4);
+  color: var(--primary-color, #3b82f6);
+  text-shadow: 0 0 4px rgba(var(--primary-rgb, 59, 130, 246), 0.4);
 }
 
 .progress-container {
@@ -98,20 +98,20 @@
 }
 
 .progress-track {
-  @apply flex-1 h-2 rounded-sm overflow-hidden relative;
+  @apply flex-1 h-2 overflow-hidden relative;
   background: linear-gradient(90deg, 
-    rgba(var(--primary-rgb, 0, 255, 65), 0.1), 
-    rgba(var(--primary-rgb, 0, 255, 65), 0.2)
+    rgba(var(--primary-rgb, 59, 130, 246), 0.1), 
+    rgba(var(--primary-rgb, 59, 130, 246), 0.2)
   );
-  border: 1px solid rgba(var(--primary-rgb, 0, 255, 65), 0.3);
+  border: 1px solid rgba(var(--primary-rgb, 59, 130, 246), 0.3);
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 .progress-bar {
-  @apply h-full rounded-sm relative;
-  background: linear-gradient(90deg, var(--primary-color, #00ff41), var(--secondary-color, #66ff66), var(--primary-color, #00ff41));
+  @apply h-full relative;
+  background: linear-gradient(90deg, var(--primary-color, #3b82f6), var(--secondary-color, #60a5fa), var(--primary-color, #3b82f6));
   box-shadow: 
-    0 0 4px rgba(var(--primary-rgb, 0, 255, 65), 0.3),
+    0 0 4px rgba(var(--primary-rgb, 59, 130, 246), 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   @apply transition-all duration-1000 ease-out;
   animation: digitalGlow 2s ease-in-out infinite alternate;
@@ -120,8 +120,8 @@
 .progress-text {
   @apply text-xs font-mono font-bold;
   @apply min-w-[3rem] text-right;
-  color: var(--primary-color, #00ff41);
-  text-shadow: 0 0 4px rgba(var(--primary-rgb, 0, 255, 65), 0.4);
+  color: var(--primary-color, #3b82f6);
+  text-shadow: 0 0 4px rgba(var(--primary-rgb, 59, 130, 246), 0.4);
 }
 
 .skills-grid {
@@ -153,12 +153,12 @@
 @keyframes digitalGlow {
   0% {
     box-shadow: 
-      0 0 2px rgba(var(--primary-rgb, 0, 255, 65), 0.2),
+      0 0 2px rgba(var(--primary-rgb, 59, 130, 246), 0.2),
       inset 0 1px 0 rgba(255, 255, 255, 0.05);
   }
   100% {
     box-shadow: 
-      0 0 6px rgba(var(--primary-rgb, 0, 255, 65), 0.4),
+      0 0 6px rgba(var(--primary-rgb, 59, 130, 246), 0.4),
       inset 0 1px 0 rgba(255, 255, 255, 0.15);
   }
 }

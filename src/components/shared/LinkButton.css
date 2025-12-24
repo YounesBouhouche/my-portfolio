@@ -4,7 +4,7 @@
 .primary-button {
   @apply relative px-12 py-4 text-lg font-semibold;
   @apply bg-white/5 backdrop-blur-[10px] text-white/90;
-  @apply border border-white/10 rounded-full;
+  @apply border border-white/10;
   @apply transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)];
   @apply overflow-hidden cursor-pointer;
   @apply shadow-[0_4px_15px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.1)];
@@ -14,7 +14,6 @@
 /* Sliding fill animation */
 .primary-button::before {
   @apply content-[''] absolute top-0 left-0 w-0 h-full;
-  background: #aeea2a;
   @apply transition-[width] duration-500 ease-in-out;
   z-index: -1;
 }
