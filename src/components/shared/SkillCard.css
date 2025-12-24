@@ -3,49 +3,15 @@
 .skill-card {
   @apply relative p-6 overflow-hidden;
   @apply transition-all duration-300 ease-out;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
-  border: 2px solid var(--primary-color, #3b82f6);
-  box-shadow: 
-    0 0 8px rgba(var(--primary-rgb, 59, 130, 246), 0.2),
-    inset 0 1px 0 rgba(var(--primary-rgb, 59, 130, 246), 0.05);
+  @apply backdrop-blur-md bg-surface/50 border border-white/10;
   min-height: 160px;
   position: relative;
 }
 
-.skill-card::before {
-  content: '';
-  @apply absolute inset-0;
-  background-image: 
-    linear-gradient(rgba(var(--primary-rgb, 59, 130, 246), 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(var(--primary-rgb, 59, 130, 246), 0.03) 1px, transparent 1px);
-  background-size: 20px 20px;
-  animation: gridPulse 3s ease-in-out infinite;
-}
-
-/* Digital scan line effect */
-.skill-card::after {
-  content: '';
-  @apply absolute inset-0;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(var(--primary-rgb, 59, 130, 246), 0.1) 45%,
-    rgba(var(--primary-rgb, 59, 130, 246), 0.2) 50%,
-    rgba(var(--primary-rgb, 59, 130, 246), 0.1) 55%,
-    transparent 100%
-  );
-  transform: translateX(-100%);
-  animation: scanLine 4s ease-in-out infinite;
-}
-
 .skill-card:hover {
-  @apply -translate-y-2;
-  border-color: var(--primary-color, #3b82f6);
-  box-shadow: 
-    0 0 12px rgba(var(--primary-rgb, 59, 130, 246), 0.3),
-    0 0 24px rgba(var(--primary-rgb, 59, 130, 246), 0.1),
-    inset 0 1px 0 rgba(var(--primary-rgb, 59, 130, 246), 0.1);
-  transform: translateY(-4px) scale(1.02);
+  @apply border-primary/50;
+  @apply shadow-[0_0_20px_rgba(59,130,246,0.2)];
+  transform: translateY(-4px);
 }
 
 .skill-header {
@@ -53,16 +19,13 @@
 }
 
 .skill-icon {
-  @apply text-2xl w-12 h-12 flex items-center justify-center font-mono;
-  background: linear-gradient(135deg, 
-    rgba(var(--primary-rgb, 59, 130, 246), 0.1), 
-    rgba(var(--primary-rgb, 59, 130, 246), 0.2)
-  );
-  border: 1px solid var(--primary-color, #3b82f6);
+  @apply w-12 h-12 flex items-center justify-center;
+  @apply bg-white/5 border border-white/10;
+  @apply transition-all duration-300;
+}
 
-  box-shadow: 
-    0 0 4px rgba(var(--primary-rgb, 59, 130, 246), 0.2),
-    inset 0 1px 0 rgba(var(--primary-rgb, 59, 130, 246), 0.05);
+.skill-card:hover .skill-icon {
+  @apply border-primary/30 bg-primary/5;
 }
 
 .skill-icon img {
@@ -74,23 +37,17 @@
 }
 
 .skill-name {
-  @apply text-lg font-bold font-mono;
-  color: var(--primary-color, #3b82f6);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 0 0 4px rgba(var(--primary-rgb, 59, 130, 246), 0.3);
-}
-
-.skill-level {
-  @apply text-xs font-mono;
-  color: var(--secondary-color, #60a5fa);
+  @apply text-lg font-bold font-mono text-white;
   letter-spacing: 1px;
 }
 
+.skill-level {
+  @apply text-xs font-mono text-gray-400 mt-1;
+  letter-spacing: 0.5px;
+}
+
 .level-number {
-  @apply font-bold text-sm font-mono;
-  color: var(--primary-color, #3b82f6);
-  text-shadow: 0 0 4px rgba(var(--primary-rgb, 59, 130, 246), 0.4);
+  @apply font-bold text-sm font-mono text-primary;
 }
 
 .progress-container {
@@ -98,69 +55,24 @@
 }
 
 .progress-track {
-  @apply flex-1 h-2 overflow-hidden relative;
-  background: linear-gradient(90deg, 
-    rgba(var(--primary-rgb, 59, 130, 246), 0.1), 
-    rgba(var(--primary-rgb, 59, 130, 246), 0.2)
-  );
-  border: 1px solid rgba(var(--primary-rgb, 59, 130, 246), 0.3);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.8);
+  @apply flex-1 h-1.5 overflow-hidden relative;
+  @apply bg-white/5 border border-white/10;
 }
 
 .progress-bar {
-  @apply h-full relative;
-  background: linear-gradient(90deg, var(--primary-color, #3b82f6), var(--secondary-color, #60a5fa), var(--primary-color, #3b82f6));
-  box-shadow: 
-    0 0 4px rgba(var(--primary-rgb, 59, 130, 246), 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  @apply h-full relative bg-primary;
   @apply transition-all duration-1000 ease-out;
-  animation: digitalGlow 2s ease-in-out infinite alternate;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
 }
 
 .progress-text {
   @apply text-xs font-mono font-bold;
-  @apply min-w-[3rem] text-right;
-  color: var(--primary-color, #3b82f6);
-  text-shadow: 0 0 4px rgba(var(--primary-rgb, 59, 130, 246), 0.4);
+  @apply min-w-[3rem] text-right text-primary;
 }
 
 .skills-grid {
   @apply grid grid-cols-1 md:grid-cols-2 gap-8;
   @apply max-w-7xl mx-auto px-8;
-}
-
-@keyframes gridPulse {
-  0%, 100% {
-    opacity: 0.1;
-  }
-  50% {
-    opacity: 0.3;
-  }
-}
-
-@keyframes scanLine {
-  0% {
-    transform: translateX(-100%);
-  }
-  50% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-@keyframes digitalGlow {
-  0% {
-    box-shadow: 
-      0 0 2px rgba(var(--primary-rgb, 59, 130, 246), 0.2),
-      inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  }
-  100% {
-    box-shadow: 
-      0 0 6px rgba(var(--primary-rgb, 59, 130, 246), 0.4),
-      inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  }
 }
 
 @keyframes slideInUp {
