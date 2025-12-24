@@ -3,104 +3,78 @@
     "name": "React",
     "category": "Frameworks",
     "level": 90,
-    "primaryColor": "#61dafb",
-    "secondaryColor": "#21d4fd",
     "icon": "/assets/react.svg"
   },
   { 
     "name": "JavaScript",
     "category": "Languages",
     "level": 88,
-    "primaryColor": "#f7df1e",
-    "secondaryColor": "#ffeb3b",
     "icon": "/assets/javascript.svg"
   },
   { 
     "name": "TypeScript",
     "category": "Languages",
     "level": 85,
-    "primaryColor": "#3178c6",
-    "secondaryColor": "#007acc",
     "icon": "/assets/typescript.svg"
   },
   { 
     "name": "Kotlin",
     "category": "Languages",
     "level": 82,
-    "primaryColor": "#7f52ff",
-    "secondaryColor": "#a855f7",
     "icon": "/assets/kotlin.svg"
   },
   { 
     "name": "Jetpack Compose",
     "category": "Frameworks",
     "level": 80,
-    "primaryColor": "#4285f4",
-    "secondaryColor": "#0f9d58",
     "icon": "/assets/compose.svg"
   },
   { 
     "name": "Android",
     "category": "Frameworks",
     "level": 78,
-    "primaryColor": "#3ddc84",
-    "secondaryColor": "#0f9d58",
     "icon": "/assets/android.svg"
   },
   { 
     "name": "Laravel",
     "category": "Frameworks",
     "level": 35,
-    "primaryColor": "#ff2d20",
-    "secondaryColor": "#ef4444",
     "icon": "/assets/laravel.svg"
   },
   { 
     "name": "PHP",
     "category": "Languages",
     "level": 30,
-    "primaryColor": "#777bb4",
-    "secondaryColor": "#8892bf",
     "icon": "/assets/php.svg"
   },
   {
     "name": "Adobe Illustrator",
     "category": "Design",
     "level": 30,
-    "primaryColor": "#ff9a00",
-    "secondaryColor": "#ffc107",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-plain.svg"
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Adobe_Illustrator_CC_icon.svg"
   },
   { 
     "name": "Git",
     "category": "Tools",
     "level": 75,
-    "primaryColor": "#f05032",
-    "secondaryColor": "#f14e32",
     "icon": "/assets/git.svg"
   },
   {
     "name": "C#",
     "category": "Languages",
     "level": 40,
-    "primaryColor": "#239120",
-    "secondaryColor": "#6aa84f",
     "icon": "/assets/csharp.svg"
   },
   {
     "name": ".NET WinForms",
     "category": "Frameworks",
     "level": 38,
-    "primaryColor": "#512bd4",
-    "secondaryColor": "#845ef7",
     "icon": "/assets/dotnet.svg"
   },
   {
     "name": "Python",
     "category": "Languages",
     "level": 50,
-    "primaryColor": "#3776ab",
-    "secondaryColor": "#ffdd57",
     "icon": "/assets/python.svg"
   }
 ]
