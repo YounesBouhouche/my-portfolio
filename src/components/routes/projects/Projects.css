@@ -8,8 +8,8 @@
 /* Grid Background Pattern */
 .bg-grid-pattern {
   background-image: 
-    linear-gradient(rgba(174, 234, 42, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(174, 234, 42, 0.1) 1px, transparent 1px);
+    linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
   @apply bg-[length:50px_50px];
   animation: gridPulse 4s ease-in-out infinite;
 }
@@ -22,24 +22,24 @@
 /* Hero Section */
 .projects-hero {
   @apply relative;
-  background: radial-gradient(ellipse at center, rgba(174, 234, 42, 0.05) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
 }
 
 .projects-title {
   animation: titleGlow 3s ease-in-out infinite alternate;
-  @apply drop-shadow-[0_0_30px_rgba(174,234,42,0.3)];
+  @apply drop-shadow-[0_0_30px_rgba(59,130,246,0.3)];
 }
 
 @keyframes titleGlow {
   0% { 
     text-shadow: 
-      0 0 30px rgba(174, 234, 42, 0.3),
-      0 0 60px rgba(174, 234, 42, 0.1);
+      0 0 30px rgba(59, 130, 246, 0.3),
+      0 0 60px rgba(59, 130, 246, 0.1);
   }
   100% { 
     text-shadow: 
-      0 0 40px rgba(174, 234, 42, 0.5),
-      0 0 80px rgba(174, 234, 42, 0.2);
+      0 0 40px rgba(59, 130, 246, 0.5),
+      0 0 80px rgba(59, 130, 246, 0.2);
   }
 }
 
@@ -85,7 +85,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(174, 234, 42, 0.6),
+    rgba(59, 130, 246, 0.6),
     transparent
   );
   animation: scanLine 3s linear infinite;
