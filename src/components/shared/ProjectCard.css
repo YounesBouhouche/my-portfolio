@@ -7,7 +7,7 @@
 .upcoming-project .project-card-inner {
   position: relative;
   background: rgba(17, 24, 39, 0.95);
-  border: 2px solid rgba(251, 191, 36, 0.3);
+  border: 1px solid rgba(59, 130, 246, 0.3);
 }
 
 .upcoming-project::after {
@@ -15,16 +15,15 @@
   position: absolute;
   top: -8px;
   right: -8px;
-  background: linear-gradient(135deg, #fbbf24, #f59e0b);
-  color: #1f2937;
+  background: #3b82f6;
+  color: #fff;
   font-size: 10px;
   font-weight: bold;
   padding: 4px 8px;
-  border-radius: 12px;
+  border-radius: 0;
   z-index: 10;
   letter-spacing: 0.5px;
-  box-shadow: 0 2px 8px rgba(251, 191, 36, 0.4);
-  animation: glow 2s ease-in-out infinite alternate;
+  box-shadow: none;
 }
 
 .upcoming-project .project-image-container::before {
@@ -37,116 +36,66 @@
   background: linear-gradient(
     45deg,
     transparent 30%,
-    rgba(251, 191, 36, 0.1) 50%,
+    rgba(59, 130, 246, 0.1) 50%,
     transparent 70%
   );
   z-index: 1;
-  animation: shimmer 2s ease-in-out infinite;
 }
 
 .upcoming-project:hover .project-card-inner {
-  border-color: rgba(251, 191, 36, 0.6);
+  border-color: rgba(59, 130, 246, 0.6);
   box-shadow: 
     0 25px 50px rgba(0, 0, 0, 0.3),
-    0 0 30px rgba(251, 191, 36, 0.2),
+    0 0 30px rgba(59, 130, 246, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .upcoming-project .project-content h3 {
-  color: #fbbf24;
+  color: #3b82f6;
 }
 
 .upcoming-project .project-content span {
-  border-color: rgba(251, 191, 36, 0.3);
-  background: rgba(251, 191, 36, 0.1);
-}
-
-/* Upcoming project pulsing effect */
-.upcoming-project {
-  animation: upcomingPulse 4s ease-in-out infinite;
+  border-color: rgba(59, 130, 246, 0.3);
+  background: rgba(59, 130, 246, 0.1);
 }
 
 .upcoming-project .terminal-button-link {
-  background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(251, 191, 36, 0.05)) !important;
-  border-color: #fbbf24 !important;
-  color: #fbbf24 !important;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05)) !important;
+  border-color: #3b82f6 !important;
+  color: #3b82f6 !important;
 }
 
 .upcoming-project .terminal-button-link:hover {
-  background: #fbbf24 !important;
-  color: #1f2937 !important;
-}
-
-@keyframes upcomingPulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.02);
-  }
-}
-
-@keyframes gradientShift {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%) skewX(-15deg);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(200%) skewX(-15deg);
-    opacity: 0;
-  }
-}
-
-@keyframes glow {
-  from {
-    box-shadow: 0 2px 8px rgba(251, 191, 36, 0.4);
-  }
-  to {
-    box-shadow: 0 4px 16px rgba(251, 191, 36, 0.8);
-  }
+  background: #3b82f6 !important;
+  color: #fff !important;
 }
 
 /* Project Cards */
 .project-card {
-  @apply perspective-[1000px];
+  @apply perspective-[1000px] h-max;
 }
 
 .project-card-inner {
-  @apply relative transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)];
+  @apply relative transition-all duration-300 ease-out border border-white/5;
   transform-style: preserve-3d;
+  background: #121214;
 }
 
 .project-card:hover .project-card-inner {
-  transform: translateY(-10px) rotateX(5deg);
-  @apply shadow-[0_25px_50px_rgba(0,0,0,0.3),0_0_30px_rgba(174,234,42,0.1),inset_0_1px_0_rgba(255,255,255,0.1)];
+  transform: translateY(-5px);
+  @apply border-primary/50 shadow-lg shadow-primary/10;
 }
 
-.upcoming-project:hover .project-card-inner {
-  transform: translateY(-10px) rotateX(5deg);
-  box-shadow: 
-    0 25px 50px rgba(0, 0, 0, 0.3),
-    0 0 30px rgba(251, 191, 36, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+.project-image-container {
+    @apply relative overflow-hidden;
 }
 
 .project-image-container::after {
-  @apply content-[''] absolute top-0 -left-full w-full h-full transition-[left] duration-700 ease-in-out;
+  @apply content-[''] absolute top-0 -left-full w-full h-full transition-[left] duration-500 ease-in-out;
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(174, 234, 42, 0.2),
+    rgba(59, 130, 246, 0.1),
     transparent
   );
 }
@@ -155,21 +104,12 @@
   @apply left-full;
 }
 
-.upcoming-project .project-image-container::after {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(251, 191, 36, 0.3),
-    transparent
-  );
-}
-
 .project-content span {
   @apply transition-all duration-300 ease-in-out;
 }
 
 .project-card:hover .project-content span {
-  @apply shadow-[0_0_10px_rgba(174,234,42,0.1)] border-primary/20;
+  @apply border-primary/20 bg-primary/5 text-primary;
 }
 
 /* Button Hover Effects */
@@ -177,26 +117,23 @@
   @apply shadow-[0_5px_15px_rgba(0,0,0,0.2)];
 }
 
-.upcoming-project .terminal-button-link::after {
-  @apply bg-[#fbbf24]
+/* Small Button Variant to prevent wrapping */
+.terminal-button-link.small {
+  @apply px-4 py-2 text-xs h-auto;
 }
 
 .tech-chip {
-  @apply px-2 py-1 bg-gray-700/50 text-gray-300 text-xs rounded-md border border-gray-600/50
+  @apply px-2 py-1 bg-white/5 text-gray-400 text-xs border border-white/10;
 }
 
 .category-badge {
-  @apply absolute top-4 right-4 px-4 py-2 text-gray-900 text-xs font-medium rounded-full text-nowrap
-}
-
-.upcoming-project .category-badge {
-  @apply top-6
+  @apply absolute top-4 right-4 px-3 py-1 text-xs font-mono font-bold tracking-wider;
 }
 
 .category-badge.web-app {
-  @apply bg-green-400 text-green-950;
+  @apply bg-blue-500/10 text-blue-400 border border-blue-500/20;
 }
 
 .category-badge.mobile-app {
-  @apply bg-blue-400 text-blue-950;
+  @apply bg-purple-500/10 text-purple-400 border border-purple-500/20;
 }

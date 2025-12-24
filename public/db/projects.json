@@ -81,26 +81,6 @@
   },
   {
     "id": 3,
-    "name": "Portfolio Website",
-    "route": "portfolio",
-    "releaseDate": "2024-05-15",
-    "description": "A personal portfolio website to showcase my projects, skills, and experience as a developer.",
-    "heroImage": "/assets/projects/portfolio.png",
-    "image": "/assets/projects/portfolio.png",
-    "screenshots": [
-      "/assets/projects/portfolio/portfolio-1.png",
-      "/assets/projects/portfolio/portfolio-2.png",
-      "/assets/projects/portfolio/portfolio-3.png"
-    ],
-    "technologies": ["React", "TypeScript", "Tailwind CSS", "Tanstack Query"],
-    "downloadLink": "",
-    "githubLink": "https://github.com/YounesBouhouche/my-portfolio",
-    "liveDemoLink": "https://ybcoding.netlify.app/projects",
-    "category": "Web App",
-    "completed": true
-  },
-  {
-    "id": 5,
     "name": "Music Player",
     "route": "musicplayer",
     "releaseDate": "2024-05-15",
@@ -129,6 +109,26 @@
       "High-quality audio playback",
       "Set sleep timer"
     ]
+  },
+  {
+    "id": 4,
+    "name": "Portfolio Website",
+    "route": "portfolio",
+    "releaseDate": "2024-05-15",
+    "description": "A personal portfolio website to showcase my projects, skills, and experience as a developer.",
+    "heroImage": "/assets/projects/portfolio.png",
+    "image": "/assets/projects/portfolio.png",
+    "screenshots": [
+      "/assets/projects/portfolio/portfolio-1.png",
+      "/assets/projects/portfolio/portfolio-2.png",
+      "/assets/projects/portfolio/portfolio-3.png"
+    ],
+    "technologies": ["React", "TypeScript", "Tailwind CSS", "Tanstack Query"],
+    "downloadLink": "",
+    "githubLink": "https://github.com/YounesBouhouche/my-portfolio",
+    "liveDemoLink": "https://ybcoding.netlify.app/projects",
+    "category": "Web App",
+    "completed": true
   },
   {
     "id": 5,
@@ -161,6 +161,7 @@
     ]
   },
   {
+    "id": 6,
     "name": "E-commerce Platform",
     "route": "ecommerce",
     "releaseDate": "",

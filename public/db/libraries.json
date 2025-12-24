@@ -42,13 +42,5 @@
   {
     "name": "Tailwind",
     "icon": "/assets/tailwind.svg"
-  },
-  {
-    "name": "Sanctum",
-    "icon": "/assets/laravel-sanctum.svg"
-  },
-  {
-    "name": "Passport",
-    "icon": "/assets/laravel-passport.svg"
   }
 ]
