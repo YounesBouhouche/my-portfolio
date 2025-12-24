@@ -112,11 +112,11 @@ export default function Hero() {
       </div>
 
       {/* Right Content - Abstract visual or Code snippet */}
-      <div className="hidden lg:flex justify-center items-end absolute top-0 bottom-0 right-0 w-1/2 overflow-hidden pointer-events-none">
+      <div className="opacity-50 lg:opacity-100 flex justify-center items-end absolute top-0 bottom-0 right-0 w-full lg:w-1/2 overflow-hidden pointer-events-none">
         <img
           src="./assets/png/me_bw.png"
           alt="Younes Bouhouche"
-          className="h-full object-contain animate-float-in"
+          className="h-full object-cover animate-float-in"
         />
       </div>
     </section>
