@@ -4,4 +4,5 @@ export interface Skill {
   primaryColor: string;
   secondaryColor: string;
   icon: string;
+  category?: string;
 }

@@ -1,6 +1,7 @@
 [
   { 
     "name": "React",
+    "category": "Frameworks",
     "level": 90,
     "primaryColor": "#61dafb",
     "secondaryColor": "#21d4fd",
@@ -8,6 +9,7 @@
   },
   { 
     "name": "JavaScript",
+    "category": "Languages",
     "level": 88,
     "primaryColor": "#f7df1e",
     "secondaryColor": "#ffeb3b",
@@ -15,6 +17,7 @@
   },
   { 
     "name": "TypeScript",
+    "category": "Languages",
     "level": 85,
     "primaryColor": "#3178c6",
     "secondaryColor": "#007acc",
@@ -22,6 +25,7 @@
   },
   { 
     "name": "Kotlin",
+    "category": "Languages",
     "level": 82,
     "primaryColor": "#7f52ff",
     "secondaryColor": "#a855f7",
@@ -29,6 +33,7 @@
   },
   { 
     "name": "Jetpack Compose",
+    "category": "Frameworks",
     "level": 80,
     "primaryColor": "#4285f4",
     "secondaryColor": "#0f9d58",
@@ -36,6 +41,7 @@
   },
   { 
     "name": "Android",
+    "category": "Frameworks",
     "level": 78,
     "primaryColor": "#3ddc84",
     "secondaryColor": "#0f9d58",
@@ -43,6 +49,7 @@
   },
   { 
     "name": "Laravel",
+    "category": "Frameworks",
     "level": 35,
     "primaryColor": "#ff2d20",
     "secondaryColor": "#ef4444",
@@ -50,13 +57,23 @@
   },
   { 
     "name": "PHP",
+    "category": "Languages",
     "level": 30,
     "primaryColor": "#777bb4",
     "secondaryColor": "#8892bf",
     "icon": "/assets/php.svg"
   },
+  {
+    "name": "Adobe Illustrator",
+    "category": "Design",
+    "level": 30,
+    "primaryColor": "#ff9a00",
+    "secondaryColor": "#ffc107",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-plain.svg"
+  },
   { 
     "name": "Git",
+    "category": "Tools",
     "level": 75,
     "primaryColor": "#f05032",
     "secondaryColor": "#f14e32",
@@ -64,6 +81,7 @@
   },
   {
     "name": "C#",
+    "category": "Languages",
     "level": 40,
     "primaryColor": "#239120",
     "secondaryColor": "#6aa84f",
@@ -71,6 +89,7 @@
   },
   {
     "name": ".NET WinForms",
+    "category": "Frameworks",
     "level": 38,
     "primaryColor": "#512bd4",
     "secondaryColor": "#845ef7",
@@ -78,6 +97,7 @@
   },
   {
     "name": "Python",
+    "category": "Languages",
     "level": 50,
     "primaryColor": "#3776ab",
     "secondaryColor": "#ffdd57",
