@@ -28,7 +28,7 @@ export default function LargeProjectCard({
       <img
         src={imageUrl}
         alt={title}
-        className="w-full shrink-0 lg:shrink lg:w-1/2 aspect-[1/1]"
+        className="w-full shrink-0 lg:shrink lg:w-1/2 aspect-[1/1] object-cover"
       />
       <div className="p-6 lg:p-10 w-full lg:w-1/2 flex flex-col justify-center space-y-5">
         <div className="flex items-center gap-3 mb-5">

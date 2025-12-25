@@ -116,8 +116,8 @@
     "route": "portfolio",
     "releaseDate": "2024-05-15",
     "description": "A personal portfolio website to showcase my projects, skills, and experience as a developer.",
-    "heroImage": "/assets/projects/portfolio.png",
-    "image": "/assets/projects/portfolio.png",
+    "heroImage": "/assets/projects/portfolio/portfolio-1.png",
+    "image": "/assets/projects/portfolio/portfolio-1.png",
     "screenshots": [
       "/assets/projects/portfolio/portfolio-1.png",
       "/assets/projects/portfolio/portfolio-2.png",
