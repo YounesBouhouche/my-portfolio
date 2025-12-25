@@ -85,7 +85,7 @@
     "route": "musicplayer",
     "releaseDate": "2024-05-15",
     "description": "A sleek and user-friendly music player application that allows users to create playlists, shuffle songs, and enjoy high-quality audio playback.",
-    "heroImage": "/assets/projects/musicplayer/musicplayer.jpg",
+    "heroImage": "/assets/projects/musicplayer/hero.jpg",
     "image": "/assets/projects/musicplayer/app-icon.svg",
     "screenshots": [
       "/assets/projects/musicplayer/musicplayer-1.jpg",
@@ -93,7 +93,7 @@
       "/assets/projects/musicplayer/musicplayer-3.jpg",
       "/assets/projects/musicplayer/musicplayer-4.jpg"
     ],
-    "technologies": ["Jetpack Compose", "Kotlin", "ExoPlayer"],
+    "technologies": ["Jetpack Compose", "Kotlin", "ExoPlayer", "Material You"],
     "downloadLink": "https://play.google.com/store/apps/details?id=com.musicplayer.app",
     "githubLink": "https://github.com/YounesBouhouche/MusicPlayer",
     "liveDemoLink": "",
@@ -136,8 +136,8 @@
     "route": "blog",
     "releaseDate": "",
     "description": "A personal blog platform where I share my thoughts, tutorials, and experiences in software development.",
-    "heroImage": "/assets/projects/musicplayer/musicplayer.jpg",
-    "image": "/assets/projects/musicplayer/app-icon.svg",
+    "heroImage": "/assets/projects/blog/hero.jpg",
+    "image": "/assets/projects/blog/app-icon.svg",
     "technologies": [
       "Laravel",
       "Inertia.js",
