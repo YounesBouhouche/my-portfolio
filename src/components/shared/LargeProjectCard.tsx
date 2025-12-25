@@ -24,7 +24,6 @@ export default function LargeProjectCard({
     <div
       className={`glass-container mx-4 flex flex-col relative ${isUpcoming ? "upcoming-project" : ""} ${pictureInLeft ? "lg:flex-row" : "lg:flex-row-reverse"}`}
     >
-      {isUpcoming && <span className="upcoming-badge">COMING SOON</span>}
       <img
         src={imageUrl}
         alt={title}
