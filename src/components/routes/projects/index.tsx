@@ -14,19 +14,16 @@ export default function Projects() {
 
   const categories = ["All", "Web App", "Mobile App"];
 
-  // Filter logic
   const filteredProjects = useMemo(() => {
     if (!projects[0]) return [];
 
     return projects[0].filter((project) => {
-      // 1. Search Filter
       const matchesSearch =
         project.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         project.technologies?.some((tech) =>
           tech.toLowerCase().includes(searchTerm.toLowerCase())
         );
 
-      // 2. Category Filter
       const matchesCategory =
         selectedCategory === "All" || project.category === selectedCategory;
 
