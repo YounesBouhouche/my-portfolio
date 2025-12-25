@@ -1,7 +1,6 @@
 import Hero from "./Hero";
 import ExperienceSection from "./ExperienceSection";
 import EducationSection from "./EducationSection";
-import LargeProjectCard from "../shared/LargeProjectCard";
 import SkillCard from "../shared/SkillCard";
 import LibraryCarousel from "../shared/LibraryCarousel";
 import ProjectCarousel from "../shared/ProjectCarousel";
@@ -61,7 +60,7 @@ export default function Home() {
         >
           <div className="container mx-auto px-6 md:px-12">
             <h2 className="section-title text-center md:text-right">
-              Featured Work <span className="text-primary ml-2">_</span>
+              Featured Work <span className="text-primary ml-2">/</span>
             </h2>
 
             <div className="mt-16">
