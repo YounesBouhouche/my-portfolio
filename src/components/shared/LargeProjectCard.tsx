@@ -8,6 +8,7 @@ export default function LargeProjectCard({
   projectUrl,
   pictureInLeft = true,
   releaseDate,
+  technologies,
 }: {
   title: string;
   description: string;
@@ -15,22 +16,23 @@ export default function LargeProjectCard({
   projectUrl: string;
   pictureInLeft?: boolean;
   releaseDate?: string;
+  technologies?: string[];
 }) {
   // Check if the project is upcoming (future date or no release date)
   const isUpcoming = !releaseDate || new Date(releaseDate) > new Date();
   return (
     <div
-      className={`glass-container mx-4 lg:mx-20 flex flex-col ${isUpcoming ? "upcoming-project" : ""} ${pictureInLeft ? "lg:flex-row" : "lg:flex-row-reverse"}`}
+      className={`glass-container mx-4 flex flex-col relative ${isUpcoming ? "upcoming-project" : ""} ${pictureInLeft ? "lg:flex-row" : "lg:flex-row-reverse"}`}
     >
+      {isUpcoming && <span className="upcoming-badge">COMING SOON</span>}
       <img
         src={imageUrl}
         alt={title}
-        className="w-full shrink-0 lg:shrink lg:w-1/2"
+        className="w-full shrink-0 lg:shrink lg:w-1/2 aspect-[1/1]"
       />
       <div className="p-6 lg:p-10 w-full lg:w-1/2 flex flex-col justify-center space-y-5">
         <div className="flex items-center gap-3 mb-5">
           <h3 className="text-4xl font-bold">{title}</h3>
-          {isUpcoming && <span className="upcoming-badge">Coming Soon</span>}
         </div>
 
         {/* Terminal-style container for description */}
@@ -47,6 +49,22 @@ export default function LargeProjectCard({
             <p className="terminal-text">{description}</p>
           </div>
         </div>
+
+        {/* Tech Stack Tags */}
+        {technologies && technologies.length > 0 && (
+          <div className="flex flex-wrap gap-2">
+            {technologies.slice(0, 4).map((tech, techIndex) => (
+              <span key={techIndex} className="tech-chip">
+                {tech}
+              </span>
+            ))}
+            {technologies.length > 4 && (
+              <span className="tech-chip opacity-60">
+                +{technologies.length - 4} more
+              </span>
+            )}
+          </div>
+        )}
 
         <Link
           to={projectUrl}

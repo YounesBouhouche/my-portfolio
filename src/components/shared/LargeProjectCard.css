@@ -37,13 +37,17 @@
 }
 
 .upcoming-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  z-index: 10;
   @apply px-3 py-1 text-xs font-bold uppercase tracking-wider;
   @apply bg-primary text-white;
-  @apply shadow-lg shadow-primary/50;
   @apply border border-primary;
   animation: none;
   box-shadow: none;
   white-space: nowrap;
+  letter-spacing: 0.5px;
 }
 
 @keyframes glow {
@@ -248,4 +252,14 @@
   .terminal-text {
     @apply text-xs;
   }
+}
+
+/* Tech Stack Chips */
+.tech-chip {
+  @apply px-2 py-1 bg-white/5 text-gray-400 text-xs border border-white/10;
+  transition: all 0.3s ease;
+}
+
+.tech-chip:hover {
+  @apply border-primary/20 bg-primary/5 text-primary;
 }

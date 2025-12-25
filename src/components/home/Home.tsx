@@ -4,6 +4,7 @@ import EducationSection from "./EducationSection";
 import LargeProjectCard from "../shared/LargeProjectCard";
 import SkillCard from "../shared/SkillCard";
 import LibraryCarousel from "../shared/LibraryCarousel";
+import ProjectCarousel from "../shared/ProjectCarousel";
 import LinkButton from "../shared/LinkButton";
 import useQueryFetch from "../../hooks/useFetch";
 import type { Project } from "../../types/Project";
@@ -63,24 +64,10 @@ export default function Home() {
               Featured Work <span className="text-primary ml-2">_</span>
             </h2>
 
-            <div className="space-y-24 mt-16">
+            <div className="mt-16">
               <LoadingContainer
                 data={projects}
-                children={(data) =>
-                  data
-                    .slice(0, 3)
-                    .map((project, index) => (
-                      <LargeProjectCard
-                        key={index}
-                        title={project.name}
-                        description={project.description}
-                        imageUrl={project.heroImage}
-                        projectUrl={"/projects/" + project.route}
-                        pictureInLeft={index % 2 === 0}
-                        releaseDate={project.releaseDate}
-                      />
-                    ))
-                }
+                children={(data) => <ProjectCarousel projects={data} />}
               />
             </div>
 
