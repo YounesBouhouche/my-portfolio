@@ -2,7 +2,7 @@
   { 
     "name": "React",
     "category": "Frameworks",
-    "level": 90,
+    "level": 80,
     "icon": "/assets/react.svg"
   },
   { 
@@ -30,10 +30,10 @@
     "icon": "/assets/compose.svg"
   },
   { 
-    "name": "Android",
+    "name": "Kotlin Multiplatform",
     "category": "Frameworks",
-    "level": 78,
-    "icon": "/assets/android.svg"
+    "level": 50,
+    "icon": "/assets/compose.svg"
   },
   { 
     "name": "Laravel",
@@ -44,7 +44,7 @@
   { 
     "name": "PHP",
     "category": "Languages",
-    "level": 30,
+    "level": 60,
     "icon": "/assets/php.svg"
   },
   {
@@ -52,6 +52,12 @@
     "category": "Design",
     "level": 30,
     "icon": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Adobe_Illustrator_CC_icon.svg"
+  },
+  {
+    "name": "Figma",
+    "category": "Design",
+    "level": 20,
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg"
   },
   { 
     "name": "Git",
