@@ -13,10 +13,6 @@ export default function NavBar() {
       url: "/projects",
     },
     {
-      label: "Showroom",
-      url: "/showroom",
-    },
-    {
       label: "Contact",
       url: "/contact",
     },
