@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "../shared/ProjectCard.css";
+import "../shared/LargeProjectCard.css";
 import BinaryRain from "../shared/BinaryRain";
 
 export default function ContactComponent() {
@@ -12,13 +12,11 @@ export default function ContactComponent() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
 
-  // Typewriter effect state
   const [displayedText, setDisplayedText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const textToType = "Get In Touch";
   const typingSpeed = 100;
 
-  // Typewriter effect
   useEffect(() => {
     if (currentIndex < textToType.length) {
       const timeout = setTimeout(() => {
@@ -43,22 +41,58 @@ export default function ContactComponent() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitMessage("");
 
-    // Simulate form submission
-    setTimeout(() => {
-      setSubmitMessage("Message sent successfully! I'll get back to you soon.");
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+
+    if (!accessKey) {
+      setSubmitMessage(
+        "Error: Web3Forms Access Key is missing in environment variables."
+      );
       setIsSubmitting(false);
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    }, 2000);
+      return;
+    }
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          access_key: accessKey,
+          from_name: formData.name,
+          subject: `Portfolio Contact: ${formData.subject}`,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitMessage(
+          "Message sent successfully! I'll get back to you soon."
+        );
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setSubmitMessage(
+          result.message || "Something went wrong. Please try again."
+        );
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setSubmitMessage("Failed to send message. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <div className="min-h-screen bg-[#09090b] text-white pt-20 relative overflow-hidden">
-      {/* Binary Rain Background - consider refactoring to be subtle or blue */}
       <BinaryRain />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-16">
-        {/* Header Section */}
         <div className="text-center mb-16">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tighter">
             <span className="text-white">
@@ -72,7 +106,6 @@ export default function ContactComponent() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form - Terminal Style */}
           <div className="terminal-window">
             <div className="terminal-header">
               <div className="terminal-buttons">
@@ -126,7 +159,6 @@ export default function ContactComponent() {
                   />
                 </div>
 
-                {/* Subject Field */}
                 <div className="terminal-form-group">
                   <label className="terminal-label">
                     <span className="text-gray-600">$ </span>
@@ -144,7 +176,6 @@ export default function ContactComponent() {
                   />
                 </div>
 
-                {/* Message Field */}
                 <div className="terminal-form-group">
                   <label className="terminal-label">
                     <span className="text-gray-600">$ </span>
@@ -162,7 +193,6 @@ export default function ContactComponent() {
                   />
                 </div>
 
-                {/* Submit Button */}
                 <div className="terminal-submit-section">
                   <div className="terminal-prompt mb-2">
                     <span className="text-gray-600">$ </span>
@@ -179,7 +209,6 @@ export default function ContactComponent() {
                   </button>
                 </div>
 
-                {/* Success Message */}
                 {submitMessage && (
                   <div className="terminal-output mt-4">
                     <span className="text-gray-600">$ </span>
@@ -190,9 +219,7 @@ export default function ContactComponent() {
             </div>
           </div>
 
-          {/* Contact Information */}
           <div className="space-y-8">
-            {/* Direct Contact */}
             <div className="terminal-window">
               <div className="terminal-header">
                 <div className="terminal-buttons">
@@ -266,7 +293,6 @@ export default function ContactComponent() {
               </div>
             </div>
 
-            {/* Availability Status */}
             <div className="terminal-window">
               <div className="terminal-header">
                 <div className="terminal-buttons">
