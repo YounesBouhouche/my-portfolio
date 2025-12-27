@@ -47,7 +47,7 @@ export default function Hero() {
   }, [currentIndex, isDeleting, textIndex, textsToType]);
 
   return (
-    <section className="relative w-full h-screen min-h-[600px] flex items-center bg-background overflow-hidden border-b border-white/5">
+    <section className="relative w-full h-[800px] min-h-[100dvh] flex items-center bg-background overflow-hidden border-b border-white/5 py-20 lg:py-0">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--color-primary)_0%,_transparent_20%)] opacity-20 pointer-events-none"></div>
 
       <div className="container mx-auto px-6 md:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -59,7 +59,7 @@ export default function Hero() {
             </span>
           </h1>
 
-          <div className="h-20 flex items-center font-mono text-2xl md:text-4xl text-primary font-bold">
+          <div className="h-16 md:h-20 flex items-center font-mono text-2xl md:text-4xl text-primary font-bold">
             <span className="mr-2 text-gray-500">{">"}</span>
             <span>{displayedText}</span>
             <span className="animate-pulse ml-1 text-primary">_</span>
@@ -76,14 +76,14 @@ export default function Hero() {
             </a>
             <a
               href="/contact"
-              className="px-8 py-3 text-sm font-semibold tracking-wider uppercase border border-white/20 text-white bg-white/5 hover:bg-white/10 transition-all"
+              className="px-8 py-3 text-sm font-semibold tracking-wider uppercase border border-white/20 text-white bg-white/5 hover:bg-white/10 transition-all font-mono"
             >
               Contact Me
             </a>
             <a
               href="./assets/cv/document.pdf"
               download="Younes_Bouhouche_CV.pdf"
-              className="px-8 py-3 text-sm font-semibold tracking-wider uppercase border border-white/20 text-white bg-white/5 hover:bg-white/10 transition-all flex items-center gap-2"
+              className="px-8 py-3 text-sm font-semibold tracking-wider uppercase border border-white/20 text-white bg-white/5 hover:bg-white/10 transition-all flex items-center gap-2 font-mono"
             >
               <svg
                 className="w-4 h-4"
@@ -104,11 +104,11 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <div className="opacity-50 lg:opacity-100 flex justify-center items-end absolute top-0 bottom-0 right-0 w-full lg:w-1/2 overflow-hidden pointer-events-none">
+      <div className="opacity-30 lg:opacity-100 flex justify-center items-end absolute top-0 bottom-0 right-0 w-full lg:w-1/2 overflow-hidden pointer-events-none">
         <img
           src="./assets/png/me_bw.png"
           alt="Younes Bouhouche"
-          className="h-full object-cover animate-float-in"
+          className="h-[80%] lg:h-full object-contain object-bottom animate-float-in origin-bottom"
         />
       </div>
     </section>
