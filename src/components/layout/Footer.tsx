@@ -29,7 +29,6 @@ export default function Footer() {
             rel="noopener noreferrer"
             aria-label="GitHub"
           >
-            {/* GitHub Icon */}
             <svg
               width="20"
               height="20"
@@ -47,7 +46,6 @@ export default function Footer() {
             rel="noopener noreferrer"
             aria-label="LinkedIn"
           >
-            {/* LinkedIn Icon */}
             <svg
               width="20"
               height="20"
@@ -58,7 +56,6 @@ export default function Footer() {
               <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
             </svg>
           </a>
-          {/* Twitter Icon */}
           <a
             href="https://twitter.com/younesb_05"
             className="social-link"
@@ -74,6 +71,25 @@ export default function Footer() {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+          </a>
+          <a
+            href="https://linktr.ee/younes.bouh05"
+            className="social-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Linktree"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 80 97.7"
+              fill="currentColor"
+            >
+              <path
+                d="M0.2,33.1h24.2L7.1,16.7l9.5-9.6L33,23.8V0h14.2v23.8L63.6,7.1l9.5,9.6L55.8,33H80v13.5H55.7l17.3,16.7l-9.5,9.4L40,49.1
+				L16.5,72.7L7,63.2l17.3-16.7H0V33.1H0.2z M33.1,65.8h14.2v32H33.1V65.8z"
+              ></path>
             </svg>
           </a>
         </div>
