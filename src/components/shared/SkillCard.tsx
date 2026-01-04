@@ -9,6 +9,8 @@ interface SkillCardProps {
   secondaryColor?: string;
   icon?: string;
   image?: string;
+  resources?: { label: string; url: string }[];
+  onClick?: () => void;
 }
 
 export default function SkillCard({
@@ -18,6 +20,8 @@ export default function SkillCard({
   primaryColor = "#3b82f6",
   secondaryColor = "#60a5fa",
   icon,
+  resources,
+  onClick,
 }: SkillCardProps) {
   const [animatedLevel, setAnimatedLevel] = useState(0);
   const [animatedProgress, setAnimatedProgress] = useState(0);
@@ -67,7 +71,8 @@ export default function SkillCard({
 
   return (
     <div
-      className="skill-card"
+      className={`skill-card ${resources && resources.length > 0 ? "cursor-pointer" : ""}`}
+      onClick={onClick}
       data-delay={delay}
       style={
         {

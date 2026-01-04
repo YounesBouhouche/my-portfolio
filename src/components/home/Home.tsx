@@ -10,6 +10,8 @@ import type { Project } from "../../types/Project";
 import type { Skill } from "../../types/Skill";
 import LoadingContainer from "../shared/LoadingContainer";
 import type { Library } from "../../types/Library";
+import ResourceDialog from "../shared/ResourceDialog";
+import { useState } from "react";
 
 // Helper to group skills by category
 const groupSkills = (skills: Skill[] = []) => {
@@ -41,6 +43,7 @@ const groupSkills = (skills: Skill[] = []) => {
 };
 
 export default function Home() {
+  const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null);
   const projects = useQueryFetch<Project[]>("/db/projects.json", "projects-v2");
   const skills = useQueryFetch<Skill[]>("/db/skills.json", "skills");
   const [libraries] = useQueryFetch<Library[]>(
@@ -66,7 +69,13 @@ export default function Home() {
             <div className="mt-16">
               <LoadingContainer
                 data={projects}
-                children={(data) => <ProjectCarousel projects={data} />}
+                children={(data) => {
+                  const sortedData = [...data]
+                    .sort((a, b) => (a.priority || 0) - (b.priority || 0))
+                    .filter((project) => project.completed)
+                    .slice(0, 3);
+                  return <ProjectCarousel projects={sortedData} />;
+                }}
               />
             </div>
 
@@ -83,8 +92,29 @@ export default function Home() {
           id="skills"
         >
           <div className="container mx-auto px-6 md:px-12">
-            <h2 className="section-title text-center md:text-left mb-16">
-              <span className="text-primary mr-2">/</span> Skills
+            <h2 className="section-title text-center md:text-left mb-16 flex items-center justify-center md:justify-start gap-3">
+              <span className="text-primary">/</span> Skills
+              <div
+                className="group relative flex items-center"
+                title="Click on a skill card to see learning resources"
+              >
+                <svg
+                  className="w-5 h-5 text-gray-500 hover:text-primary cursor-help transition-colors"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <div className="absolute left-full ml-2 px-2 py-1 bg-white/10 backdrop-blur-md border border-white/10 text-xs text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none font-mono">
+                  Click skills for resources
+                </div>
+              </div>
             </h2>
 
             <LoadingContainer
@@ -108,6 +138,12 @@ export default function Home() {
                               primaryColor={skill.primaryColor}
                               secondaryColor={skill.secondaryColor}
                               icon={skill.icon}
+                              resources={skill.resources}
+                              onClick={() =>
+                                skill.resources &&
+                                skill.resources.length > 0 &&
+                                setSelectedSkill(skill)
+                              }
                             />
                           ))}
                         </div>
@@ -133,6 +169,13 @@ export default function Home() {
           </section>
         )}
       </main>
+
+      <ResourceDialog
+        isOpen={!!selectedSkill}
+        onClose={() => setSelectedSkill(null)}
+        skillName={selectedSkill?.name || ""}
+        resources={selectedSkill?.resources}
+      />
     </>
   );
 }

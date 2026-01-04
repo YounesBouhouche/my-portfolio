@@ -1,46 +1,57 @@
 [
   {
     "name": "Mapbox",
-    "icon": "/assets/mapbox.svg"
+    "icon": "/assets/mapbox.svg",
+    "url": "https://www.mapbox.com/"
   },
   {
     "name": "RabbitMQ",
-    "icon": "/assets/rabbitmq.svg"
+    "icon": "/assets/rabbitmq.svg",
+    "url": "https://www.rabbitmq.com/"
   },
   {
     "name": "Apollo",
-    "icon": "/assets/graphql.svg"
+    "icon": "/assets/graphql.svg",
+    "url": "https://www.apollographql.com/"
   },
   {
     "name": "Ktor",
-    "icon": "/assets/coil.svg"
+    "icon": "/assets/coil.svg",
+    "url": "https://ktor.io/"
   },
   {
     "name": "Koin",
-    "icon": "/assets/ktor.svg"
+    "icon": "/assets/ktor.svg",
+    "url": "https://insert-koin.io/"
   },
   {
     "name": "Kotlin Multiplatform",
-    "icon": "/assets/kmp.svg"
+    "icon": "/assets/kmp.svg",
+    "url": "https://kotlinlang.org/lp/multiplatform/"
   },
   {
     "name": "Coil",
-    "icon": "/assets/png/koin.png"
+    "icon": "/assets/png/koin.webp",
+    "url": "https://coil-kt.github.io/coil/"
   },
   {
     "name": "Tanstack Router",
-    "icon": "/assets/png/logo-color-100.png"
+    "icon": "/assets/png/logo-color-100.webp",
+    "url": "https://tanstack.com/router/"
   },
   {
     "name": "Mlkit",
-    "icon": "/assets/png/mlkit.png"
+    "icon": "/assets/png/mlkit.webp",
+    "url": "https://developers.google.com/ml-kit"
   },
   {
     "name": "Firebase",
-    "icon": "/assets/firebase.svg"
+    "icon": "/assets/firebase.svg",
+    "url": "https://firebase.google.com/"
   },
   {
     "name": "Tailwind",
-    "icon": "/assets/tailwind.svg"
+    "icon": "/assets/tailwind.svg",
+    "url": "https://tailwindcss.com/"
   }
 ]

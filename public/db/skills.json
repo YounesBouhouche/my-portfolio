@@ -3,49 +3,78 @@
     "name": "React",
     "category": "Frameworks",
     "level": 80,
-    "icon": "/assets/react.svg"
+    "icon": "/assets/react.svg",
+    "resources": [
+      { "label": "YouTube Playlist", "url": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9gZD-Tvwfod2gaISzfRiP9d" }
+    ]
   },
   { 
     "name": "JavaScript",
     "category": "Languages",
     "level": 88,
-    "icon": "/assets/javascript.svg"
+    "icon": "/assets/javascript.svg",
+    "resources": [
+      { "label": "YouTube Tutorial", "url": "https://www.youtube.com/watch?v=PkZNo7MFNFg" },
+      { "label": "SoloLearn Course", "url": "https://www.sololearn.com/en/learn/courses/javascript-introduction" }
+    ]
   },
   { 
     "name": "TypeScript",
     "category": "Languages",
     "level": 85,
-    "icon": "/assets/typescript.svg"
+    "icon": "/assets/typescript.svg",
+    "resources": [
+      { "label": "YouTube Tutorial", "url": "https://www.youtube.com/watch?v=30LWjhZzg50" },
+      { "label": "SoloLearn Course", "url": "https://www.sololearn.com/en/learn/courses/typescript-introduction" }
+    ]
   },
   { 
     "name": "Kotlin",
     "category": "Languages",
     "level": 82,
-    "icon": "/assets/kotlin.svg"
+    "icon": "/assets/kotlin.svg",
+    "resources": [
+      { "label": "YouTube Tutorial", "url": "https://www.youtube.com/watch?v=F9UC9DY-vIU" },
+      { "label": "SoloLearn Course", "url": "https://www.sololearn.com/en/learn/courses/kotlin-introduction" }
+    ]
   },
   { 
     "name": "Jetpack Compose",
     "category": "Frameworks",
     "level": 80,
-    "icon": "/assets/compose.svg"
+    "icon": "/assets/compose.svg",
+    "resources": [
+      { "label": "Compose Tutorial", "url": "https://developer.android.com/develop/ui/compose/tutorial" }
+    ]
   },
   { 
     "name": "Kotlin Multiplatform",
     "category": "Frameworks",
     "level": 50,
-    "icon": "/assets/compose.svg"
+    "icon": "/assets/compose.svg",
+    "resources": [
+      { "label": "KMP Get Started", "url": "https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html" }
+    ]
   },
   { 
     "name": "Laravel",
     "category": "Frameworks",
     "level": 35,
-    "icon": "/assets/laravel.svg"
+    "icon": "/assets/laravel.svg",
+    "resources": [
+      { "label": "Laravel Docs", "url": "https://laravel.com/docs" },
+      { "label": "YouTube Playlist", "url": "https://www.youtube.com/playlist?list=PL3VM-unCzF8hy47mt9-chowaHNjfkuEVz" }
+    ]
   },
   { 
     "name": "PHP",
     "category": "Languages",
     "level": 60,
-    "icon": "/assets/php.svg"
+    "icon": "/assets/php.svg",
+    "resources": [
+      { "label": "YouTube Tutorial", "url": "https://www.youtube.com/playlist?list=PLwLsbqvBlImHrYX8EKgp1st9vV04Cvymz" },
+      { "label": "SoloLearn Course", "url": "https://www.sololearn.com/en/learn/courses/php-introduction" }
+    ]
   },
   {
     "name": "Adobe Illustrator",
@@ -63,13 +92,19 @@
     "name": "Git",
     "category": "Tools",
     "level": 75,
-    "icon": "/assets/git.svg"
+    "icon": "/assets/git.svg",
+    "resources": [
+      { "label": "YouTube Playlist", "url": "https://www.youtube.com/playlist?list=PLDoPjvoNmBAw4eOj58MZPakHjaO3frVMF" }
+    ]
   },
   {
     "name": "C#",
     "category": "Languages",
     "level": 40,
-    "icon": "/assets/csharp.svg"
+    "icon": "/assets/csharp.svg",
+    "resources": [
+      { "label": "YouTube Playlist", "url": "https://www.youtube.com/playlist?list=PLwj1YcMhLRN24KqNI0xQrNscBfLnYeJpL" }
+    ]
   },
   {
     "name": ".NET WinForms",
@@ -81,6 +116,10 @@
     "name": "Python",
     "category": "Languages",
     "level": 50,
-    "icon": "/assets/python.svg"
+    "icon": "/assets/python.svg",
+    "resources": [
+      { "label": "YouTube Tutorial", "url": "https://www.youtube.com/watch?v=rfscVS0vtbw&pp=ygUWZ2lyYWZmZSBhY2FkZW15IHB5dGhvbg%3D%3D" },
+      { "label": "SoloLearn Course", "url": "https://www.sololearn.com/en/learn/courses/python-introduction" }
+    ]
   }
 ]

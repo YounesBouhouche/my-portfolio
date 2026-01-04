@@ -5,4 +5,5 @@ export interface Skill {
   secondaryColor: string;
   icon: string;
   category?: string;
+  resources?: { label: string; url: string }[];
 }
