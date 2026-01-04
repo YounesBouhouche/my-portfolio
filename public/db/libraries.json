@@ -16,12 +16,12 @@
   },
   {
     "name": "Ktor",
-    "icon": "/assets/coil.svg",
+    "icon": "/assets/ktor.svg",
     "url": "https://ktor.io/"
   },
   {
     "name": "Koin",
-    "icon": "/assets/ktor.svg",
+    "icon": "/assets/png/koin.webp",
     "url": "https://insert-koin.io/"
   },
   {
@@ -31,7 +31,7 @@
   },
   {
     "name": "Coil",
-    "icon": "/assets/png/koin.webp",
+    "icon": "/assets/coil.svg",
     "url": "https://coil-kt.github.io/coil/"
   },
   {
