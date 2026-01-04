@@ -1,4 +1,5 @@
 export interface Project {
+  priority: number;
   id: string;
   route: string;
   name: string;

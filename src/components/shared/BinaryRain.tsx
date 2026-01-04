@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 export default function BinaryRain({ className }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -7,7 +7,7 @@ export default function BinaryRain({ className }: { className?: string }) {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     // Set canvas size
@@ -16,7 +16,7 @@ export default function BinaryRain({ className }: { className?: string }) {
       canvas.height = window.innerHeight;
     };
     resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener("resize", resizeCanvas);
 
     // Binary rain configuration
     const fontSize = 14;
@@ -29,11 +29,11 @@ export default function BinaryRain({ className }: { className?: string }) {
     }
 
     // Binary characters
-    const binary = '01';
+    const binary = "01";
 
     const draw = () => {
       // Semi-transparent black background for trail effect
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
+      ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Green text with varying opacity
@@ -42,11 +42,14 @@ export default function BinaryRain({ className }: { className?: string }) {
       for (let i = 0; i < drops.length; i++) {
         // Random binary character
         const text = binary[Math.floor(Math.random() * binary.length)];
-        
+
         // Calculate opacity based on position (fade out towards bottom)
-        const opacity = Math.max(0.1, 1 - (drops[i] * fontSize) / canvas.height);
-        ctx.fillStyle = `rgba(0, 255, 65, ${opacity * .5})`;
-        
+        const opacity = Math.max(
+          0.1,
+          1 - (drops[i] * fontSize) / canvas.height
+        );
+        ctx.fillStyle = `rgba(59, 130, 246, ${opacity * 0.5})`;
+
         // Draw character
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
@@ -64,14 +67,14 @@ export default function BinaryRain({ className }: { className?: string }) {
 
     return () => {
       clearInterval(interval);
-      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener("resize", resizeCanvas);
     };
   }, []);
 
   return (
     <canvas
       ref={canvasRef}
-      className={`fixed inset-0 w-full h-full pointer-events-none ${className || ''}`}
+      className={`fixed inset-0 w-full h-full pointer-events-none ${className || ""}`}
       style={{ zIndex: 0 }}
     />
   );

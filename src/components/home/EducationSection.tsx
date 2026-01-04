@@ -9,7 +9,7 @@ export default function EducationSection() {
   );
 
   return (
-    <section className="py-20 bg-background" id="education">
+    <section className="py-20 bg-background border-b border-white/5" id="education">
       <div className="container mx-auto px-6 md:px-12">
         <h2 className="section-title text-center md:text-right">
           Education

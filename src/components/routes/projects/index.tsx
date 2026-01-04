@@ -17,18 +17,20 @@ export default function Projects() {
   const filteredProjects = useMemo(() => {
     if (!projects[0]) return [];
 
-    return projects[0].filter((project) => {
-      const matchesSearch =
-        project.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        project.technologies?.some((tech) =>
-          tech.toLowerCase().includes(searchTerm.toLowerCase())
-        );
+    return projects[0]
+      .filter((project) => {
+        const matchesSearch =
+          project.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          project.technologies?.some((tech) =>
+            tech.toLowerCase().includes(searchTerm.toLowerCase())
+          );
 
-      const matchesCategory =
-        selectedCategory === "All" || project.category === selectedCategory;
+        const matchesCategory =
+          selectedCategory === "All" || project.category === selectedCategory;
 
-      return matchesSearch && matchesCategory;
-    });
+        return matchesSearch && matchesCategory;
+      })
+      .sort((a, b) => (a.priority || 0) - (b.priority || 0));
   }, [projects, searchTerm, selectedCategory]);
 
   return (

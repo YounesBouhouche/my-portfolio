@@ -1,24 +1,25 @@
 [
   {
     "id": 1,
+    "priority": 2,
     "name": "Assurini",
     "route": "assurini",
     "releaseDate": "2024-05-15",
     "description": "A comprehensive insurance management platform that streamlines policy administration, claims processing, and customer service for insurance providers.",
-    "heroImage": "/assets/projects/assurini/Assurini.jpg",
+    "heroImage": "/assets/projects/assurini/Assurini.webp",
     "image": "/assets/projects/assurini/app-icon.svg",
     "screenshots": [
-      "/assets/projects/assurini/assurini-1.jpg",
-      "/assets/projects/assurini/assurini-2.jpg",
-      "/assets/projects/assurini/assurini-3.jpg",
-      "/assets/projects/assurini/assurini-4.jpg",
-      "/assets/projects/assurini/assurini-5.jpg",
-      "/assets/projects/assurini/assurini-6.jpg",
-      "/assets/projects/assurini/assurini-7.jpg",
-      "/assets/projects/assurini/assurini-8.jpg",
-      "/assets/projects/assurini/assurini-9.jpg",
-      "/assets/projects/assurini/assurini-10.jpg",
-      "/assets/projects/assurini/assurini-11.jpg"
+      "/assets/projects/assurini/assurini-1.webp",
+      "/assets/projects/assurini/assurini-2.webp",
+      "/assets/projects/assurini/assurini-3.webp",
+      "/assets/projects/assurini/assurini-4.webp",
+      "/assets/projects/assurini/assurini-5.webp",
+      "/assets/projects/assurini/assurini-6.webp",
+      "/assets/projects/assurini/assurini-7.webp",
+      "/assets/projects/assurini/assurini-8.webp",
+      "/assets/projects/assurini/assurini-9.webp",
+      "/assets/projects/assurini/assurini-10.webp",
+      "/assets/projects/assurini/assurini-11.webp"
     ],
     "technologies": ["Kotlin", "Mapbox", "MLKit", "Material You"],
     "features": [
@@ -37,30 +38,33 @@
       "Internet connection for real-time updates and data synchronization",
       "Mapbox API key for map functionalities",
       "Location services enabled for location-based features"
-    ]
+    ],
+    "lastUpdated": "2024-05-15",
+    "date": "2024-05-15"
   }, 
   {
     "id": 2,
+    "priority": 1,
     "name": "Depan.Go",
     "route": "depango",
     "releaseDate": "2024-05-15",
     "description": "A mobile application that connects users with nearby automotive repair shops and mechanics for on-demand vehicle maintenance and emergency roadside assistance.",
-    "heroImage": "/assets/projects/depango/depango.jpg",
+    "heroImage": "/assets/projects/depango/depango.webp",
     "image": "/assets/projects/depango/app-icon.svg",
     "screenshots": [
-      "/assets/projects/depango/depango-1.jpg",
-      "/assets/projects/depango/depango-2.jpg",
-      "/assets/projects/depango/depango-3.jpg",
-      "/assets/projects/depango/depango-4.jpg",
-      "/assets/projects/depango/depango-5.jpg",
-      "/assets/projects/depango/depango-6.jpg",
-      "/assets/projects/depango/depango-7.jpg",
-      "/assets/projects/depango/depango-8.jpg",
-      "/assets/projects/depango/depango-9.jpg",
-      "/assets/projects/depango/depango-10.jpg",
-      "/assets/projects/depango/depango-11.jpg",
-      "/assets/projects/depango/depango-12.jpg",
-      "/assets/projects/depango/depango-13.jpg"
+      "/assets/projects/depango/depango-1.webp",
+      "/assets/projects/depango/depango-2.webp",
+      "/assets/projects/depango/depango-3.webp",
+      "/assets/projects/depango/depango-4.webp",
+      "/assets/projects/depango/depango-5.webp",
+      "/assets/projects/depango/depango-6.webp",
+      "/assets/projects/depango/depango-7.webp",
+      "/assets/projects/depango/depango-8.webp",
+      "/assets/projects/depango/depango-9.webp",
+      "/assets/projects/depango/depango-10.webp",
+      "/assets/projects/depango/depango-11.webp",
+      "/assets/projects/depango/depango-12.webp",
+      "/assets/projects/depango/depango-13.webp"
     ],
     "technologies": ["Kotlin", "Mapbox", "MLKit", "Material You"],
     "downloadLink": "https://play.google.com/store/apps/details?id=com.depan.go",
@@ -77,21 +81,24 @@
       "Android 11 (API level 30) or higher",
       "Internet connection for real-time updates and data synchronization"
     ],
-    "completed": true
+    "completed": true,
+    "lastUpdated": "2024-05-15",
+    "date": "2024-05-15"
   },
   {
     "id": 3,
+    "priority": 3,
     "name": "Music Player",
     "route": "musicplayer",
     "releaseDate": "2024-05-15",
     "description": "A sleek and user-friendly music player application that allows users to create playlists, shuffle songs, and enjoy high-quality audio playback.",
-    "heroImage": "/assets/projects/musicplayer/hero.jpg",
+    "heroImage": "/assets/projects/musicplayer/hero.webp",
     "image": "/assets/projects/musicplayer/app-icon.svg",
     "screenshots": [
-      "/assets/projects/musicplayer/musicplayer-1.jpg",
-      "/assets/projects/musicplayer/musicplayer-2.jpg",
-      "/assets/projects/musicplayer/musicplayer-3.jpg",
-      "/assets/projects/musicplayer/musicplayer-4.jpg"
+      "/assets/projects/musicplayer/musicplayer-1.webp",
+      "/assets/projects/musicplayer/musicplayer-2.webp",
+      "/assets/projects/musicplayer/musicplayer-3.webp",
+      "/assets/projects/musicplayer/musicplayer-4.webp"
     ],
     "technologies": ["Jetpack Compose", "Kotlin", "ExoPlayer", "Material You"],
     "downloadLink": "https://play.google.com/store/apps/details?id=com.musicplayer.app",
@@ -108,18 +115,21 @@
       "Shuffle and repeat songs",
       "High-quality audio playback",
       "Set sleep timer"
-    ]
+    ],
+    "lastUpdated": "2024-05-15",
+    "date": "2024-05-15"
   },
   {
     "id": 4,
+    "priority": 4,
     "name": "Portfolio Website",
     "route": "portfolio",
     "releaseDate": "2024-05-15",
     "description": "A personal portfolio website to showcase my projects, skills, and experience as a developer.",
-    "heroImage": "/assets/projects/portfolio/portfolio-1.png",
-    "image": "/assets/projects/portfolio/portfolio-1.png",
+    "heroImage": "/assets/projects/portfolio/portfolio-1.webp",
+    "image": "/assets/projects/portfolio/portfolio-1.webp",
     "screenshots": [
-      "/assets/projects/portfolio/portfolio-1.png",
+      "/assets/projects/portfolio/portfolio-1.webp",
       "/assets/projects/portfolio/portfolio-2.png",
       "/assets/projects/portfolio/portfolio-3.png"
     ],
@@ -128,15 +138,18 @@
     "githubLink": "https://github.com/YounesBouhouche/my-portfolio",
     "liveDemoLink": "https://ybcoding.netlify.app/projects",
     "category": "Web App",
-    "completed": true
+    "completed": true,
+    "lastUpdated": "2024-05-15",
+    "date": "2024-05-15"
   },
   {
     "id": 5,
+    "priority": 5,
     "name": "Personal Blog",
     "route": "blog",
     "releaseDate": "",
-    "description": "A personal blog platform where I share my thoughts, tutorials, and experiences in software development.",
-    "heroImage": "/assets/projects/blog/hero.jpg",
+    "description": "A personal blog platform where I share my tutorials, experiences in software development.",
+    "heroImage": "/assets/projects/blog/hero.webp",
     "image": "/assets/projects/blog/app-icon.svg",
     "technologies": [
       "Laravel",
@@ -158,10 +171,13 @@
       "Commenting system",
       "Responsive design",
       "SEO optimization"
-    ]
+    ],
+    "lastUpdated": "2024-05-15",
+    "date": "2024-05-15"
   },
   {
     "id": 6,
+    "priority": 6,
     "name": "E-commerce Platform",
     "route": "ecommerce",
     "releaseDate": "",
@@ -176,6 +192,8 @@
       "Laravel",
       "PostgreSQL",
       "Jetpack Compose"
-    ]
+    ],
+    "lastUpdated": "2024-05-15",
+    "date": "2024-05-15"
   }
 ]
