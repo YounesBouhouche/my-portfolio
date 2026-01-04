@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 
 export default function Hero() {
@@ -71,15 +72,15 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-wrap gap-4 pt-4">
-            <a href="#projects" className="terminal-button-link">
+            <Link to="/projects" className="terminal-button-link">
               View Projects
-            </a>
-            <a
-              href="/contact"
+            </Link>
+            <Link
+              to="/contact"
               className="px-8 py-3 text-sm font-semibold tracking-wider uppercase border border-white/20 text-white bg-white/5 hover:bg-white/10 transition-all font-mono"
             >
               Contact Me
-            </a>
+            </Link>
             <a
               href="./assets/cv/document.pdf"
               download="Younes_Bouhouche_CV.pdf"
@@ -104,9 +105,9 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <div className="opacity-30 lg:opacity-100 flex justify-center items-end absolute top-0 bottom-0 right-0 w-full lg:w-1/2 overflow-hidden pointer-events-none">
+      <div className="opacity-30 lg:opacity-90 flex justify-center items-end absolute top-0 bottom-0 right-0 w-full lg:w-1/2 overflow-hidden pointer-events-none">
         <img
-          src="./assets/png/me_bw.png"
+          src="./assets/png/me_bw.webp"
           alt="Younes Bouhouche"
           className="h-[80%] lg:h-full object-contain object-bottom animate-float-in origin-bottom"
         />

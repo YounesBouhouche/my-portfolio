@@ -89,15 +89,16 @@ export default function ContactComponent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#09090b] text-white pt-20 relative overflow-hidden">
-      <BinaryRain />
+    <div className="min-h-screen bg-background text-white pt-20 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--color-primary)_0%,_transparent_20%)] opacity-20 pointer-events-none"></div>
+
+      <BinaryRain className="opacity-40" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-16">
         <div className="text-center mb-16">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tighter">
-            <span className="text-white">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">
               {displayedText}
-              <span className="cursor text-primary animate-pulse">_</span>
             </span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
@@ -137,7 +138,7 @@ export default function ContactComponent() {
                     onChange={handleInputChange}
                     required
                     className="terminal-input"
-                    placeholder="YounesBouhouche"
+                    placeholder="Put your name here"
                   />
                 </div>
 
@@ -203,7 +204,7 @@ export default function ContactComponent() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="terminal-button-link w-full cursor-pointer bg-blue-600/10 border border-blue-600/30 text-blue-400 hover:bg-blue-600 hover:text-white transition-all duration-300 py-3 font-mono text-sm uppercase tracking-wider"
+                    className="terminal-button-link w-full flex justify-center items-center gap-2"
                   >
                     <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
                   </button>
