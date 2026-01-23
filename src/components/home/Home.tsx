@@ -111,9 +111,6 @@ export default function Home() {
                     d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <div className="absolute left-full ml-2 px-2 py-1 bg-white/10 backdrop-blur-md border border-white/10 text-xs text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none font-mono">
-                  Click skills for resources
-                </div>
               </div>
             </h2>
 

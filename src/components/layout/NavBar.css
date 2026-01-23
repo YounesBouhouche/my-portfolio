@@ -2,7 +2,7 @@
 @import '../../App.css';
 
 .navbar {
-  @apply fixed top-0 left-1/2 transform -translate-x-1/2 z-50 w-full h-20 px-6;
+  @apply fixed top-0 left-0 transform z-50 w-full h-20 px-6;
   @apply flex items-center justify-between;
   @apply bg-transparent;
   @apply border-b border-white/5;
@@ -95,7 +95,7 @@
 }
 
 .mobile-menu-content {
-  @apply flex flex-col h-full p-6 pt-24 justify-start items-center;
+  @apply flex flex-col h-full p-6 pt-24 w-full justify-start items-center;
 }
 
 .mobile-nav-links {
