@@ -56,7 +56,7 @@ export default function NavBar() {
     <>
       <nav className={"navbar" + (isScrolled ? " scrolled" : "")}>
         <Link to="/" className="nav-brand">
-          &lt;<span>YounesBouhouche</span>/&gt;
+          <img src="/public/assets/logo/foreground.svg" alt="Logo" width={100}/>
         </Link>
 
         {/* Desktop Navigation */}
