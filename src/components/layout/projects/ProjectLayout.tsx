@@ -23,7 +23,7 @@ export default function ProjectLayout({ project }: { project: Project }) {
         className="relative h-screen min-h-[800px] bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroImage})` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-slate-950"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 to-background"></div>
         <div className="absolute bottom-0 w-full z-10 pt-20 pb-16">
           <div className="max-w-7xl mx-auto px-6 h-full flex items-center">
             <div className="flex flex-col items-center   lg:flex-row gap-8 w-full">
