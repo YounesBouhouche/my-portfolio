@@ -2,7 +2,7 @@
 @import '../../App.css';
 
 .navbar {
-  @apply fixed top-0 left-0 transform z-50 w-full h-20 px-6;
+  @apply absolute top-0 left-0 transform z-50 w-full h-20 px-6;
   @apply flex items-center justify-between;
   @apply bg-transparent;
   @apply border-b border-white/5;
@@ -10,7 +10,17 @@
 }
 
 .navbar.scrolled {
-  @apply backdrop-blur-[12px] bg-[#09090b]/80 border-white/10 shadow-sm;
+  @apply fixed backdrop-blur-[12px] bg-[#09090b]/80 border-white/10 shadow-sm;
+  animation: scrolled-nav 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes scrolled-nav {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .navbar.scrolled:hover {

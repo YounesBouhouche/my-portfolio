@@ -59,7 +59,6 @@ export default function NavBar() {
           <img src="/assets/logo/foreground.svg" alt="Logo" width={100} />
         </Link>
 
-        {/* Desktop Navigation */}
         <ul className="nav-links">
           {navLinks.map((link) => (
             <li key={link.url} className="nav-item">
@@ -74,7 +73,6 @@ export default function NavBar() {
           ))}
         </ul>
 
-        {/* Mobile Menu Button */}
         <button
           className="mobile-menu-button"
           onClick={toggleMobileMenu}
@@ -92,7 +90,6 @@ export default function NavBar() {
         </button>
       </nav>
 
-      {/* Mobile Menu Overlay */}
       <div className={`mobile-menu-overlay ${isMobileMenuOpen ? "open" : ""}`}>
         <div className="mobile-menu-content">
           <ul className="mobile-nav-links">
