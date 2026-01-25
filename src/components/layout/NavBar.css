@@ -62,7 +62,7 @@
 }
 
 .nav-item a[data-status="active"] {
-  @apply text-white bg-white/5;
+  @apply text-white bg-primary/90;
 }
 
 /* Mobile Menu Button */
