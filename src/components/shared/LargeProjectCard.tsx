@@ -18,59 +18,78 @@ export default function LargeProjectCard({
   releaseDate?: string;
   technologies?: string[];
 }) {
-  // Check if the project is upcoming (future date or no release date)
   const isUpcoming = !releaseDate || new Date(releaseDate) > new Date();
+
   return (
     <div
-      className={`glass-container mx-4 flex flex-col relative ${isUpcoming ? "upcoming-project" : ""} ${pictureInLeft ? "lg:flex-row" : "lg:flex-row-reverse"}`}
+      className={`group flex flex-col ${
+        pictureInLeft ? "md:flex-row" : "md:flex-row-reverse"
+      } bg-[#0f0f11] chamfered-border w-full h-full relative no-underline ${
+        isUpcoming ? "opacity-70" : ""
+      }`}
+      style={{
+        '--chamfer-border-color': 'rgba(255,255,255,0.06)',
+        '--chamfer-border-color-focus': 'var(--color-primary)'
+      } as React.CSSProperties}
     >
-      <img
-        src={imageUrl}
-        alt={title}
-        className="w-full shrink-0 lg:shrink lg:w-1/2 aspect-[1/1] object-cover"
-      />
-      <div className="p-6 lg:p-10 w-full lg:w-1/2 flex flex-col justify-center space-y-5">
-        <div className="flex items-center gap-3 mb-5">
-          <h3 className="text-4xl font-bold">{title}</h3>
+      {isUpcoming && (
+        <div className="absolute top-4 right-4 z-20 bg-primary text-white font-mono text-[0.6rem] px-3 py-1 uppercase tracking-widest chamfered">
+          UPCOMING
+        </div>
+      )}
+
+      {/* Image Container */}
+      <div className="w-full md:w-[45%] lg:w-[50%] relative overflow-hidden shrink-0 border-b md:border-b-0 border-white/5">
+        <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none" />
+        <img
+          src={imageUrl}
+          alt={title}
+          className="w-full h-full object-cover min-h-[250px] md:min-h-full opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
+        />
+      </div>
+
+      {/* Content Container */}
+      <div className="flex-1 p-8 md:p-12 flex flex-col justify-center relative">
+        <div className="mb-4 flex items-center gap-4">
+          <h3 className="font-display text-4xl md:text-5xl text-white group-hover:text-primary transition-colors duration-300 m-0 leading-none">
+            {title}
+          </h3>
         </div>
 
-        {/* Terminal-style container for description */}
-        <div className="terminal-window w-full">
-          <div className="terminal-header">
-            <div className="terminal-buttons">
-              <span className="terminal-button close"></span>
-              <span className="terminal-button minimize"></span>
-              <span className="terminal-button maximize"></span>
-            </div>
-            <span className="terminal-title">project-info.txt</span>
-          </div>
-          <div className="terminal-body">
-            <p className="terminal-text">{description}</p>
-          </div>
-        </div>
+        <p className="font-body text-gray-400 text-sm md:text-base leading-relaxed mb-8 max-w-xl">
+          {description}
+        </p>
 
         {/* Tech Stack Tags */}
         {technologies && technologies.length > 0 && (
-          <div className="flex flex-wrap gap-2">
-            {technologies.slice(0, 4).map((tech, techIndex) => (
-              <span key={techIndex} className="tech-chip">
+          <div className="flex flex-wrap gap-2 mb-10">
+            {technologies.slice(0, 5).map((tech, techIndex) => (
+              <span
+                key={techIndex}
+                className="bg-[#111113] border border-white/5 px-2.5 py-1.5 font-mono text-[0.65rem] text-gray-500 uppercase tracking-widest chamfered transition-colors group-hover:border-primary/30 group-hover:text-gray-300"
+              >
                 {tech}
               </span>
             ))}
-            {technologies.length > 4 && (
-              <span className="tech-chip opacity-60">
-                +{technologies.length - 4} more
+            {technologies.length > 5 && (
+              <span className="bg-[#111113] border border-white/5 px-2.5 py-1.5 font-mono text-[0.65rem] text-gray-600 uppercase tracking-widest chamfered">
+                +{technologies.length - 5}
               </span>
             )}
           </div>
         )}
 
-        <Link
-          to={projectUrl}
-          className="terminal-button-link mt-5 px-10 py-5 w-fit text-center"
-        >
-          <span>View Project</span>
-        </Link>
+        <div className="mt-auto">
+          <Link
+            to={projectUrl}
+            className="btn-primary"
+            onClick={(e) => {
+              if (isUpcoming) e.preventDefault();
+            }}
+          >
+            {isUpcoming ? "ACCESS DENIED" : "VIEW PROJECT"}
+          </Link>
+        </div>
       </div>
     </div>
   );
