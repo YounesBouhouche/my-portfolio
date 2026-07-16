@@ -1,0 +1,95 @@
+{
+  "nav": {
+    "work": "01/WORK",
+    "projects": "02/PROJECTS",
+    "about": "03/ABOUT",
+    "contact": "04/CONTACT"
+  },
+  "hero": {
+    "role": "3RD YEAR CS STUDENT / ANDROID & REACT DEVELOPER",
+    "specialties": "NATIVE ANDROID · REACT · CLEAN ARCHITECTURE",
+    "stat1": "ANDROID + REACT DEVELOPER",
+    "stat2": "ESI-SBA, ALGERIA",
+    "stat3": "OPEN TO REMOTE",
+    "cta": "GET IN TOUCH"
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "subtitle": "A collection of my recent work, side projects, and experiments.",
+    "searchPlaceholder": "Search projects by name or technology...",
+    "filterAll": "ALL",
+    "noResults": "No projects found matching your criteria.",
+    "clearFilters": "CLEAR FILTERS",
+    "viewDetails": "VIEW DETAILS",
+    "liveDemo": "LIVE DEMO",
+    "viewCode": "VIEW CODE",
+    "lastUpdated": "Last updated",
+    "statsUnavailable": "stats unavailable",
+    "rateLimitWarning": "GitHub API rate limit reached — showing cached data",
+    "loadError": "Could not load projects",
+    "retry": "RETRY",
+    "refresh": "REFRESH",
+    "notFound": "Project not found",
+    "notFoundMessage": "The project you're looking for doesn't exist or has been moved.",
+    "goHome": "GO HOME",
+    "goProjects": "VIEW ALL PROJECTS"
+  },
+  "about": {
+    "title": "ABOUT ME",
+    "introTitle": "WHO AM I",
+    "intro": "I'm Younes Bouhouche, a 3rd year Computer Science student at ESI-SBA, Algeria. I build native Android applications and React web experiences, with a focus on performance, clean architecture, and principled engineering decisions.",
+    "studiesTitle": "STUDIES",
+    "studiesContent": "Currently in my 3rd year of Computer Science at École Supérieure en Informatique de Sidi Bel-Abbès (ESI-SBA), Algeria. Focused on algorithms, systems programming, and software engineering fundamentals.",
+    "techTitle": "TECH FOCUS",
+    "techContent": "My primary stack is Native Android (Kotlin, Jetpack Compose, Clean Architecture) for mobile and React (TypeScript, TanStack Router) for web. I believe in mastering the platform, not abstracting it away.",
+    "compTitle": "COMPETITIVE PROGRAMMING",
+    "compContent": "Active member of the AlphaBit club at ESI-SBA — training in algorithms, data structures, and competitive problem-solving.",
+    "philosophyTitle": "NATIVE-FIRST PHILOSOPHY",
+    "philosophyContent": "Cross-platform frameworks solve 80% of use cases — but the remaining 20% (biometric auth, hardware access, real-time sensors, security-critical flows) demands native. I build native-first for the cases that matter.",
+    "cvButton": "DOWNLOAD CV",
+    "githubButton": "GITHUB",
+    "linkedinButton": "LINKEDIN"
+  },
+  "contact": {
+    "title": "CONTACT",
+    "prompt1": "> WHO ARE YOU?",
+    "prompt2": "> YOUR EMAIL?",
+    "prompt3": "> WHAT'S ON YOUR MIND?",
+    "sending": "> SENDING...",
+    "success": "> ✓ MESSAGE RECEIVED. I'LL GET BACK TO YOU SOON.",
+    "errorEmail": "✗ INVALID EMAIL FORMAT. TRY AGAIN.",
+    "errorNetwork": "✗ TRANSMISSION FAILED. CHECK YOUR CONNECTION AND RETRY.",
+    "errorMissing": "✗ THIS FIELD IS REQUIRED.",
+    "retry": "RETRY",
+    "submit": "SEND"
+  },
+  "command": {
+    "placeholder": "TYPE A COMMAND OR SEARCH...",
+    "navSection": "NAVIGATE",
+    "appearSection": "APPEARANCE",
+    "langSection": "LANGUAGE",
+    "copySection": "COPY",
+    "goWork": "Go to Work",
+    "goProjects": "Go to Projects",
+    "goAbout": "Go to About",
+    "goContact": "Go to Contact",
+    "toggleTheme": "Toggle Theme",
+    "switchAr": "Switch to Arabic",
+    "switchEn": "Switch to English",
+    "copyEmail": "Copy Email",
+    "copyGithub": "Copy GitHub Link",
+    "copyLinkedin": "Copy LinkedIn Link",
+    "copied": "Copied!",
+    "noResults": "No commands found."
+  },
+  "footer": {
+    "tagline": "Building for Android & the Web.",
+    "copyright": "© {{year}} Younes Bouhouche."
+  },
+  "notFound": {
+    "title": "404",
+    "message": "The page you're looking for has been moved to /dev/null or never existed.",
+    "goHome": "cd ~/ (Go Home)",
+    "goProjects": "ls projects/"
+  }
+}

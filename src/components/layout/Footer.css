@@ -16,9 +16,49 @@
   @apply text-gray-400 hover:text-white transition-colors duration-200 uppercase text-xs tracking-wider;
 }
 
-.social-link {
-  @apply w-10 h-10 flex items-center justify-center text-gray-400 border border-white/5 bg-white/5;
-  @apply transition-all duration-200 hover:text-white hover:border-primary/50 hover:bg-primary/10;
+.footer-social-link {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.04);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  clip-path: polygon(8px 0%, 100% 0%, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0% 100%, 0% 8px);
+  transition: color 0.2s ease;
+  z-index: 1;
+}
+
+.footer-social-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.08);
+  clip-path: polygon(
+    0% 8px, 8px 0%, 100% 0%, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0% 100%, 0% 8px,
+    1px 8.4px,
+    1px calc(100% - 1px),
+    calc(100% - 8.4px) calc(100% - 1px),
+    calc(100% - 1px) calc(100% - 8.4px),
+    calc(100% - 1px) 1px,
+    8.4px 1px,
+    1px 8.4px
+  );
+  z-index: -1;
+  pointer-events: none;
+  transition: background 0.2s ease;
+}
+
+.footer-social-link:hover {
+  color: var(--color-primary);
+}
+
+.footer-social-link:hover::before {
+  background: rgba(0, 136, 193, 0.25);
 }
 
 .footer-copyright {

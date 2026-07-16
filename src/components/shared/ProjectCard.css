@@ -1,139 +1,49 @@
-@import '../../App.css';
+.project-card-wrapper {
+  /* wrapper provides perspective for 3D hover */
+  perspective: 1000px;
+  width: 100%;
+}
 
-.upcoming-project {
+.node-card {
   position: relative;
+  background-color: #111113;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 280px;
+  /* Chamfered corners */
+  clip-path: polygon(15px 0%, 100% 0%, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0% 100%, 0% 15px);
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
-.upcoming-project .project-card-inner {
-  position: relative;
-  background: rgba(17, 24, 39, 0.95);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-}
-
-.upcoming-project::after {
-  content: 'COMING SOON';
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background: #3b82f6;
-  color: #fff;
-  font-size: 10px;
-  font-weight: bold;
-  padding: 4px 8px;
-  border-radius: 0;
-  z-index: 10;
-  letter-spacing: 0.5px;
-  box-shadow: none;
-}
-
-.upcoming-project .project-image-container::before {
+.node-card::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    45deg,
-    transparent 30%,
-    rgba(59, 130, 246, 0.1) 50%,
-    transparent 70%
+  inset: 0;
+  background: #232328;
+  /* Polygon with a hole to draw a 1px border on 15px chamfer corners */
+  clip-path: polygon(
+    0% 15px, 15px 0%, 100% 0%, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0% 100%, 0% 15px,
+    1px 15.4px,
+    1px calc(100% - 1px), 
+    calc(100% - 15.4px) calc(100% - 1px), 
+    calc(100% - 1px) calc(100% - 15.4px), 
+    calc(100% - 1px) 1px, 
+    15.4px 1px, 
+    1px 15.4px
   );
-  z-index: 1;
+  pointer-events: none;
+  z-index: 20;
+  transition: background 0.2s ease;
 }
 
-.upcoming-project:hover .project-card-inner {
-  border-color: rgba(59, 130, 246, 0.6);
-  box-shadow: 
-    0 25px 50px rgba(0, 0, 0, 0.3),
-    0 0 30px rgba(59, 130, 246, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+.card-dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+  background-size: 16px 16px;
 }
 
-.upcoming-project .project-content h3 {
-  color: #3b82f6;
-}
-
-.upcoming-project .project-content span {
-  border-color: rgba(59, 130, 246, 0.3);
-  background: rgba(59, 130, 246, 0.1);
-}
-
-.upcoming-project .terminal-button-link {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05)) !important;
-  border-color: #3b82f6 !important;
-  color: #3b82f6 !important;
-}
-
-.upcoming-project .terminal-button-link:hover {
-  background: #3b82f6 !important;
-  color: #fff !important;
-}
-
-/* Project Cards */
-.project-card {
-  @apply perspective-[1000px] h-max;
-}
-
-.project-card-inner {
-  @apply relative transition-all duration-300 ease-out border border-white/5;
-  transform-style: preserve-3d;
-  background: #121214;
-}
-
-.project-card:hover .project-card-inner {
-  transform: translateY(-5px);
-  @apply border-primary/50 shadow-lg shadow-primary/10;
-}
-
-.project-image-container {
-    @apply relative overflow-hidden;
-}
-
-.project-image-container::after {
-  @apply content-[''] absolute top-0 -left-full w-full h-full transition-[left] duration-500 ease-in-out;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(59, 130, 246, 0.1),
-    transparent
-  );
-}
-
-.project-card:hover .project-image-container::after {
-  @apply left-full;
-}
-
-.project-content span {
-  @apply transition-all duration-300 ease-in-out;
-}
-
-.project-card:hover .project-content span {
-  @apply border-primary/20 bg-primary/5 text-primary;
-}
-
-/* Button Hover Effects */
-.project-card a:hover {
-  @apply shadow-[0_5px_15px_rgba(0,0,0,0.2)];
-}
-
-/* Small Button Variant to prevent wrapping */
-.terminal-button-link.small {
-  @apply px-4 py-2 text-xs h-auto;
-}
-
-.tech-chip {
-  @apply px-2 py-1 bg-white/5 text-gray-400 text-xs border border-white/10;
-}
-
-.category-badge {
-  @apply absolute top-4 right-4 px-3 py-1 text-xs font-mono font-bold tracking-wider;
-}
-
-.category-badge.web-app {
-  @apply bg-blue-500/10 text-blue-400 border border-blue-500/20;
-}
-
-.category-badge.mobile-app {
-  @apply bg-purple-500/10 text-purple-400 border border-purple-500/20;
+.node-card:hover::before {
+  background: rgba(0, 136, 193, 0.4);
 }

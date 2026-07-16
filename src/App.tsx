@@ -1,18 +1,19 @@
-import { type ReactNode } from 'react'
-import './App.css'
-import NavBar from './components/layout/NavBar'
-import Footer from './components/layout/Footer'
-import { LoadingBar } from './components/shared/LoadingBar'
+import NavBar from "./components/layout/NavBar";
+import Footer from "./components/layout/Footer";
+import { Outlet, ScrollRestoration } from "@tanstack/react-router";
+import "./App.css";
+import CommandPalette from "./components/shared/CommandPalette";
 
-function App({ children }: { children: ReactNode }) {
+function App() {
   return (
     <>
-      <LoadingBar />
       <NavBar />
-      {children}
+      <Outlet />
       <Footer />
+      <CommandPalette />
+      <ScrollRestoration />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
