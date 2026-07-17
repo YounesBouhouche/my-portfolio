@@ -1,13 +1,5 @@
-import { Link } from "@tanstack/react-router";
 import LogoAnimation from "../shared/LogoAnimation";
 import "./Footer.css";
-
-const navLinks = [
-  { label: "01/WORK", to: "/" as const },
-  { label: "02/PROJECTS", to: "/projects" as const, search: { q: "", stack: "" } },
-  { label: "03/ABOUT", to: "/about" as const },
-  { label: "04/CONTACT", to: "/contact" as const },
-];
 
 const socials = [
   {
@@ -49,8 +41,6 @@ const socials = [
 ];
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer className="footer">
       <div className="footer-inner">
