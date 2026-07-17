@@ -11,11 +11,11 @@
     transform: translateY(341px);
   }
 
-  53.125% {
+  78.125% {
     transform: translateY(341px);
   }
 
-  68.75% {
+  93.75% {
     transform: translateY(682px);
   }
 
@@ -37,11 +37,11 @@
     transform: translateX(860px);
   }
 
-  78.125% {
+  62.5% {
     transform: translateX(860px);
   }
 
-  93.75% {
+  78.125% {
     transform: translateX(1680px);
   }
 
@@ -63,11 +63,11 @@
     transform: translateX(160px);
   }
 
-  78.125% {
+  62.5% {
     transform: translateX(160px);
   }
 
-  93.75% {
+  78.125% {
     transform: translateX(318px);
   }
 
