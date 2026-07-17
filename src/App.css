@@ -54,37 +54,82 @@ body {
 }
 
 /* ============================================================
+   CHAMFER TOKENS
+   ============================================================ */
+:root {
+  --chamfer-sm: 6px;
+  --chamfer: 10px;
+  --chamfer-lg: 20px;
+
+  --chamfered-small-shape: polygon(6px 0%, 100% 0%, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0% 100%, 0% 6px);
+  --chamfered-shape: polygon(10px 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0% 100%, 0% 10px);
+  --chamfered-large-shape: polygon(20px 0%, 100% 0%, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0% 100%, 0% 20px);
+
+  --chamfered-small-border: polygon(0% 6px, 6px 0%, 100% 0%, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0% 100%, 0% 6px,
+      1px 6.4px, 1px calc(100% - 1px),
+      calc(100% - 6.4px) calc(100% - 1px),
+      calc(100% - 1px) calc(100% - 6.4px),
+      calc(100% - 1px) 1px, 6.4px 1px, 1px 6.4px);
+
+  --chamfered-border: polygon(0% 10px, 10px 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0% 100%, 0% 10px,
+      1px 10.4px, 1px calc(100% - 1px),
+      calc(100% - 10.4px) calc(100% - 1px),
+      calc(100% - 1px) calc(100% - 10.4px),
+      calc(100% - 1px) 1px, 10.4px 1px, 1px 10.4px);
+
+  --chamfered-border-thick: polygon(0% 10px, 10px 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0% 100%, 0% 10px,
+      1.5px 10.6px, 1.5px calc(100% - 1.5px),
+      calc(100% - 10.6px) calc(100% - 1.5px),
+      calc(100% - 1.5px) calc(100% - 10.6px),
+      calc(100% - 1.5px) 1.5px, 10.6px 1.5px, 1.5px 10.6px);
+
+  --chamfered-large-border: polygon(0% 20px, 20px 0%, 100% 0%, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0% 100%, 0% 20px,
+      1.5px 21px, 1.5px calc(100% - 1.5px),
+      calc(100% - 21px) calc(100% - 1.5px),
+      calc(100% - 1.5px) calc(100% - 21px),
+      calc(100% - 1.5px) 1.5px, 21px 1.5px, 1.5px 21px);
+}
+
+/* ============================================================
    CHAMFERED SHAPE — THE GLOBAL DESIGN SIGNATURE
    clip-path: top-left + bottom-right chamfer
    ============================================================ */
+.chamfered-sm {
+  clip-path: var(--chamfered-small-shape);
+}
+
 .chamfered {
-  clip-path: polygon(10px 0%,
-      100% 0%,
-      100% calc(100% - 10px),
-      calc(100% - 10px) 100%,
-      0% 100%,
-      0% 10px);
+  clip-path: var(--chamfered-shape);
 }
 
-/* Larger chamfer for big cards */
 .chamfered-lg {
-  clip-path: polygon(20px 0%,
-      100% 0%,
-      100% calc(100% - 20px),
-      calc(100% - 20px) 100%,
-      0% 100%,
-      0% 20px);
+  clip-path: var(--chamfered-large-shape);
 }
 
-/* Chamfered with visible border (uses outline trick via pseudo-element) */
+.chamfered-border-sm {
+  position: relative;
+  clip-path: var(--chamfered-small-shape);
+}
+
+.chamfered-border-sm::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--chamfer-border-color, rgba(255, 255, 255, 0.1));
+  clip-path: var(--chamfered-small-border);
+  z-index: 20;
+  pointer-events: none;
+  transition: background 0.2s ease;
+}
+
+.chamfered-border-sm:focus-within::before,
+.chamfered-border-sm:hover::before {
+  background: var(--chamfer-border-color-focus, var(--color-primary));
+}
+
 .chamfered-border {
   position: relative;
-  clip-path: polygon(10px 0%,
-      100% 0%,
-      100% calc(100% - 10px),
-      calc(100% - 10px) 100%,
-      0% 100%,
-      0% 10px);
+  clip-path: var(--chamfered-shape);
 }
 
 .chamfered-border::before {
@@ -92,14 +137,7 @@ body {
   position: absolute;
   inset: 0;
   background: var(--chamfer-border-color, var(--color-border));
-  clip-path: polygon(0% 10px, 10px 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0% 100%, 0% 10px,
-      1px 10.4px,
-      1px calc(100% - 1px),
-      calc(100% - 10.4px) calc(100% - 1px),
-      calc(100% - 1px) calc(100% - 10.4px),
-      calc(100% - 1px) 1px,
-      10.4px 1px,
-      1px 10.4px);
+  clip-path: var(--chamfered-border);
   z-index: 20;
   pointer-events: none;
   transition: background 0.2s ease;
@@ -220,15 +258,7 @@ body {
   position: absolute;
   inset: 0;
   background: var(--color-primary);
-  /* Polygon with a hole to create a 1.5px border outline */
-  clip-path: polygon(0% 10px, 10px 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0% 100%, 0% 10px,
-      1.5px 10.6px,
-      1.5px calc(100% - 1.5px),
-      calc(100% - 10.6px) calc(100% - 1.5px),
-      calc(100% - 1.5px) calc(100% - 10.6px),
-      calc(100% - 1.5px) 1.5px,
-      10.6px 1.5px,
-      1.5px 10.6px);
+  clip-path: var(--chamfered-border-thick);
   z-index: -1;
   pointer-events: none;
   transition: background-color 0.2s ease;
@@ -243,7 +273,7 @@ body {
   left: 0;
   width: 0;
   background: var(--color-primary-dim);
-  clip-path: polygon(10px 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0% 100%, 0% 10px);
+  clip-path: var(--chamfered-shape);
   z-index: -2;
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
 }
@@ -258,10 +288,19 @@ body {
 }
 
 .btn-primary.filled {
-  background-color: var(--color-primary-glow);
   color: #fff !important;
 }
 
+.btn-primary.filled::before {
+  clip-path: var(--chamfered-shape);
+  background-color: var(--color-primary-glow);
+}
+
+.btn-primary.filled::after {
+  background-color: var(--color-primary);
+}
+
+/* 
 .btn-primary.filled::before {
   clip-path: polygon(0% 10px, 10px 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0% 100%, 0% 10px,
       1.5px 10.6px,
@@ -271,7 +310,7 @@ body {
       calc(100% - 1.5px) 1.5px,
       10.6px 1.5px,
       1.5px 10.6px);
-}
+} */
 
 .btn-ghost {
   position: relative;
@@ -298,14 +337,7 @@ body {
   position: absolute;
   inset: 0;
   background: rgba(255, 255, 255, 0.15);
-  clip-path: polygon(0% 10px, 10px 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0% 100%, 0% 10px,
-      1px 10.4px,
-      1px calc(100% - 1px),
-      calc(100% - 10.4px) calc(100% - 1px),
-      calc(100% - 1px) calc(100% - 10.4px),
-      calc(100% - 1px) 1px,
-      10.4px 1px,
-      1px 10.4px);
+  clip-path: var(--chamfered-border);
   z-index: -1;
   pointer-events: none;
   transition: background 0.2s ease;
@@ -319,7 +351,7 @@ body {
   left: 0;
   width: 0;
   background: rgba(255, 255, 255, 0.05);
-  clip-path: polygon(10px 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0% 100%, 0% 10px);
+  clip-path: var(--chamfered-shape);
   z-index: -2;
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -370,14 +402,7 @@ body {
   position: absolute;
   inset: 0;
   background: var(--color-primary);
-  clip-path: polygon(0% 10px, 10px 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0% 100%, 0% 10px,
-      1.5px 10.6px,
-      1.5px calc(100% - 1.5px),
-      calc(100% - 10.6px) calc(100% - 1.5px),
-      calc(100% - 1.5px) calc(100% - 10.6px),
-      calc(100% - 1.5px) 1.5px,
-      10.6px 1.5px,
-      1.5px 10.6px);
+  clip-path: var(--chamfered-border-thick);
   z-index: -1;
   pointer-events: none;
   transition: background 0.2s ease;
@@ -391,7 +416,7 @@ body {
    Actually, the easiest way is to add a hover glow to ::after instead or add a span wrapper.
    Let's just change ::after background on hover to fill it. */
 .terminal-button-link:hover::after {
-  clip-path: polygon(10px 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0% 100%, 0% 10px);
+  clip-path: var(--chamfered-shape);
   background: var(--color-primary-dim);
   box-shadow: 0 0 20px var(--color-primary-glow);
 }
@@ -410,7 +435,7 @@ body {
   font-size: 0.7rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  clip-path: polygon(6px 0%, 100% 0%, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0% 100%, 0% 6px);
+  clip-path: var(--chamfered-small-shape);
   border: none;
   z-index: 1;
 }
@@ -420,11 +445,7 @@ body {
   position: absolute;
   inset: 0;
   background: rgba(0, 136, 193, 0.25);
-  clip-path: polygon(0% 6px, 6px 0%, 100% 0%, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0% 100%, 0% 6px,
-      1px 6.4px, 1px calc(100% - 1px),
-      calc(100% - 6.4px) calc(100% - 1px),
-      calc(100% - 1px) calc(100% - 6.4px),
-      calc(100% - 1px) 1px, 6.4px 1px, 1px 6.4px);
+  clip-path: var(--chamfered-small-border);
   z-index: -1;
   pointer-events: none;
 }
@@ -567,61 +588,6 @@ body {
 }
 
 /* ============================================================
-   LOADING CONTAINER
-   ============================================================ */
-.loading-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 200px;
-  gap: 1rem;
-}
-
-.loader-bar-container {
-  width: 200px;
-  height: 2px;
-  background: var(--color-border);
-  overflow: hidden;
-}
-
-.loader-bar {
-  height: 100%;
-  background: var(--color-primary);
-  animation: loader 1.4s ease-in-out infinite;
-}
-
-@keyframes loader {
-  0% {
-    width: 0%;
-    margin-left: 0;
-  }
-
-  50% {
-    width: 70%;
-    margin-left: 15%;
-  }
-
-  100% {
-    width: 0%;
-    margin-left: 100%;
-  }
-}
-
-.loading-text {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: #4b5563;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.error-container {
-  text-align: center;
-  font-family: var(--font-mono);
-}
-
-/* ============================================================
    GLASS CONTAINER (kept for legacy use)
    ============================================================ */
 .glass-container {
@@ -685,7 +651,7 @@ body {
   font-size: 0.6rem;
   letter-spacing: 0.1em;
   padding: 0.2rem 0.5rem;
-  clip-path: polygon(6px 0%, 100% 0%, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0% 100%, 0% 6px);
+  clip-path: var(--chamfered-small-shape);
 }
 
 /* ============================================================

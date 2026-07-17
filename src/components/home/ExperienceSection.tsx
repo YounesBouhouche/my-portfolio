@@ -26,6 +26,7 @@ export default function ExperienceSection() {
         <div className="mt-16 reveal-stagger" ref={containerRef}>
           <LoadingContainer
             data={experiences}
+            size={120}
             children={(data) => (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {data.map((exp, index) => (
@@ -38,15 +39,15 @@ export default function ExperienceSection() {
                       <h3 className="text-xl md:text-2xl font-heading font-bold text-white group-hover:text-primary transition-colors duration-300">
                         {exp.role}
                       </h3>
-                      <span className="inline-flex items-center self-start sm:self-auto font-mono text-xs text-gray-500 bg-white/5 border border-white/10 px-3 py-1 chamfered">
+                      <span className="inline-flex items-center self-start sm:self-auto font-mono text-xs text-gray-500 bg-white/5 px-3 py-1 chamfered-border-sm">
                         {exp.date}
                       </span>
                     </div>
-                    
+
                     <h4 className="text-base text-primary mb-4 font-mono uppercase tracking-wider">
                       {exp.company}
                     </h4>
-                    
+
                     <p className="text-gray-400 font-body leading-relaxed text-sm md:text-base">
                       {exp.description}
                     </p>

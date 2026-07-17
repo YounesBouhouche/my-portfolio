@@ -4,6 +4,7 @@ import ProjectCarousel from "../shared/ProjectCarousel";
 import { usePortfolioData } from "../../hooks/usePortfolioData";
 import useQueryFetch from "../../hooks/useFetch";
 import type { Skill } from "../../types/Skill";
+import LoadingContainer from "../shared/LoadingContainer";
 import ResourceDialog from "../shared/ResourceDialog";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -44,8 +45,8 @@ export default function Home() {
   const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null);
 
   // Data
-  const { projects, isLoading: projectsLoading } = usePortfolioData();
-  const [skills] = useQueryFetch<Skill[]>("/db/skills.json", "skills");
+  const { projects, isLoading: projectsLoading, error: projectsError } = usePortfolioData();
+  const skillsData = useQueryFetch<Skill[]>("/db/skills.json", "skills");
 
   // Scroll reveals
   const projectsRef = useScrollReveal<HTMLDivElement>({ stagger: true });
@@ -71,11 +72,14 @@ export default function Home() {
             </h2>
 
             <div className="mt-16 reveal-ready" ref={projectsRef}>
-              {projectsLoading ? (
-                <div className="text-gray-500 font-mono text-sm">LOADING_PROJECTS...</div>
-              ) : (
-                <ProjectCarousel projects={featuredProjects} />
-              )}
+              <LoadingContainer
+                data={[projects.length > 0 ? projects : null, projectsError, projectsLoading && projects.length === 0]}
+                size={120}
+              >
+                {() => (
+                  <ProjectCarousel projects={featuredProjects} />
+                )}
+              </LoadingContainer>
             </div>
 
             <div className="mt-16 flex justify-center md:justify-end reveal-ready" ref={projectsBtnRef}>
@@ -93,21 +97,21 @@ export default function Home() {
               <span className="text-primary">/</span> Skills
             </h2>
 
-            {skills ? (
-              <div className="space-y-8 reveal-stagger" ref={skillsRef}>
-                {groupSkills(skills).map((group) => (
-                  <div key={group.category} className="reveal-ready">
-                    <SkillGanttChart
-                      category={group.category}
-                      skills={group.skills}
-                      onSkillClick={setSelectedSkill}
-                    />
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="text-gray-500 font-mono text-sm">LOADING_SKILLS...</div>
-            )}
+            <LoadingContainer data={skillsData} size={120}>
+              {(data) => (
+                <div className="space-y-8 reveal-stagger" ref={skillsRef}>
+                  {groupSkills(data).map((group) => (
+                    <div key={group.category} className="reveal-ready">
+                      <SkillGanttChart
+                        category={group.category}
+                        skills={group.skills}
+                        onSkillClick={setSelectedSkill}
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </LoadingContainer>
           </div>
         </section>
 

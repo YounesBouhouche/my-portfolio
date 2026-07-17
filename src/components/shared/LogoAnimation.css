@@ -1,0 +1,118 @@
+@keyframes lfc-clip2 {
+  0% {
+    transform: translateY(0px);
+  }
+
+  6.25% {
+    transform: translateY(0px);
+  }
+
+  21.875% {
+    transform: translateY(341px);
+  }
+
+  53.125% {
+    transform: translateY(341px);
+  }
+
+  68.75% {
+    transform: translateY(682px);
+  }
+
+  100% {
+    transform: translateY(682px);
+  }
+}
+
+@keyframes lfc-clip13 {
+  0% {
+    transform: translateX(0px);
+  }
+
+  28.125% {
+    transform: translateX(0px);
+  }
+
+  40.625% {
+    transform: translateX(860px);
+  }
+
+  78.125% {
+    transform: translateX(860px);
+  }
+
+  93.75% {
+    transform: translateX(1680px);
+  }
+
+  100% {
+    transform: translateX(1680px);
+  }
+}
+
+@keyframes lfc-clip3 {
+  0% {
+    transform: translateX(0px);
+  }
+
+  28.125% {
+    transform: translateX(0px);
+  }
+
+  40.625% {
+    transform: translateX(160px);
+  }
+
+  78.125% {
+    transform: translateX(160px);
+  }
+
+  93.75% {
+    transform: translateX(318px);
+  }
+
+  100% {
+    transform: translateX(318px);
+  }
+}
+
+.logo-animation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  --logo-fill: var(--color-primary);
+  --logo-ghost: color-mix(in srgb, var(--color-primary) 12%, transparent);
+}
+
+.logo-animation svg {
+  display: block;
+}
+
+.lfc-clip2-rect {
+  animation: lfc-clip2 3200ms cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.lfc-clip13-rect {
+  animation: lfc-clip13 3200ms cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.lfc-clip3-rect {
+  animation: lfc-clip3 3200ms cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* @media (prefers-reduced-motion: reduce) {
+  .lfc-clip2-rect,
+  .lfc-clip13-rect,
+  .lfc-clip3-rect {
+    animation: none;
+    transform: translateY(341px);
+  }
+
+  .lfc-clip13-rect {
+    transform: translateX(860px);
+  }
+
+  .lfc-clip3-rect {
+    transform: translateX(160px);
+  }
+} */

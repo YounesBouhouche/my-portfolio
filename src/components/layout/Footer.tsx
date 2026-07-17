@@ -1,12 +1,20 @@
 import { Link } from "@tanstack/react-router";
+import LogoAnimation from "../shared/LogoAnimation";
 import "./Footer.css";
+
+const navLinks = [
+  { label: "01/WORK", to: "/" as const },
+  { label: "02/PROJECTS", to: "/projects" as const, search: { q: "", stack: "" } },
+  { label: "03/ABOUT", to: "/about" as const },
+  { label: "04/CONTACT", to: "/contact" as const },
+];
 
 const socials = [
   {
     label: "GitHub",
     url: "https://github.com/YounesBouhouche",
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
       </svg>
     ),
@@ -15,7 +23,7 @@ const socials = [
     label: "LinkedIn",
     url: "https://www.linkedin.com/in/younesbouh05",
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
       </svg>
     ),
@@ -24,7 +32,7 @@ const socials = [
     label: "Twitter",
     url: "https://twitter.com/younesb_05",
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
       </svg>
     ),
@@ -33,7 +41,7 @@ const socials = [
     label: "Linktree",
     url: "https://linktr.ee/younes.bouh05",
     icon: (
-      <svg width="18" height="18" viewBox="0 0 80 97.7" fill="currentColor">
+      <svg width="16" height="16" viewBox="0 0 80 97.7" fill="currentColor" aria-hidden="true">
         <path d="M0.2,33.1h24.2L7.1,16.7l9.5-9.6L33,23.8V0h14.2v23.8L63.6,7.1l9.5,9.6L55.8,33H80v13.5H55.7l17.3,16.7l-9.5,9.4L40,49.1L16.5,72.7L7,63.2l17.3-16.7H0V33.1H0.2z M33.1,65.8h14.2v32H33.1V65.8z" />
       </svg>
     ),
@@ -44,45 +52,30 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="footer py-12 px-6">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
-        <div className="flex flex-col items-center md:items-start text-center md:text-left">
-          <div className="footer-logo text-xl font-bold">YounesBouhouche</div>
-          <div className="footer-tagline">Building for the web and mobile.</div>
-        </div>
+    <footer className="footer">
+      <div className="footer-inner">
+        <div className="footer-panel chamfered-border">
+          <div className="footer-brand">
+            <LogoAnimation size={44} className="footer-logo-animation" />
+            <div className="footer-brand-text">
+              <span className="footer-name">YOUNES BOUHOUCHE</span>
+              <span className="footer-tagline">Building for the web and mobile.</span>
+            </div>
+          </div>
 
-        <nav className="flex flex-wrap items-center justify-center gap-4">
-          <Link to="/projects" search={{ q: "", stack: "" }} className="footer-link">
-            Projects
-          </Link>
-          <Link to="/contact" className="footer-link">
-            Contact
-          </Link>
-        </nav>
-
-        {/* Social links — chamfered shape */}
-        <div className="flex items-center gap-3">
-          {socials.map((s) => (
-            <a
-              key={s.label}
-              href={s.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={s.label}
-              className="footer-social-link"
-            >
-              {s.icon}
-            </a>
-          ))}
-        </div>
-      </div>
-
-      <div className="mt-8 pt-8 border-t border-white/5">
-        <div className="max-w-6xl mx-auto text-center">
-          <div className="flex items-center justify-center gap-2 text-xs font-mono">
-            <span className="footer-copyright">
-              &copy; {currentYear} YounesBouhouche.
-            </span>
+          <div className="footer-socials">
+            {socials.map((s) => (
+              <a
+                key={s.label}
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.label}
+                className="footer-social-link"
+              >
+                {s.icon}
+              </a>
+            ))}
           </div>
         </div>
       </div>

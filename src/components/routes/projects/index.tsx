@@ -4,11 +4,12 @@ import { usePortfolioData } from "../../../hooks/usePortfolioData";
 import { useScrollReveal } from "../../../hooks/useScrollReveal";
 import LargeProjectCard from "../../shared/LargeProjectCard";
 import ProjectCard from "../../shared/ProjectCard";
+import LoadingContainer from "../../shared/LoadingContainer";
 import { useMemo } from "react";
 
 export default function Projects() {
   const { t } = useTranslation();
-  const { projects, lastFetched, isLoading, rateLimited, refresh } = usePortfolioData();
+  const { projects, lastFetched, isLoading, error, rateLimited, refresh } = usePortfolioData();
   const search = useSearch({ from: '/projects' });
   const navigate = useNavigate({ from: '/projects' });
 
@@ -24,7 +25,7 @@ export default function Projects() {
     const newStacks = selectedStacks.includes(stack)
       ? selectedStacks.filter((s) => s !== stack)
       : [...selectedStacks, stack];
-    
+
     navigate({ search: (prev) => ({ ...prev, stack: newStacks.join(",") }) });
   };
 
@@ -43,7 +44,7 @@ export default function Projects() {
   const filteredProjects = useMemo(() => {
     return projects.filter((p) => {
       // Name or desc fuzzy search (simple substring match)
-      const matchesSearch = !searchTerm || 
+      const matchesSearch = !searchTerm ||
         p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         p.description.toLowerCase().includes(searchTerm.toLowerCase());
 
@@ -72,7 +73,7 @@ export default function Projects() {
     <>
       <div className="min-h-screen bg-background text-white pt-28 md:pt-32 pb-24">
         <div className="max-w-7xl mx-auto px-6">
-          
+
           {/* New Hero Section */}
           <div className="mb-16 reveal-ready" ref={headerRef}>
             <p className="font-mono text-[0.65rem] tracking-[0.25em] text-primary uppercase mb-4">
@@ -82,7 +83,7 @@ export default function Projects() {
               <h1 className="font-display text-[14vw] md:text-[5rem] lg:text-[6.5rem] leading-[0.85] tracking-tight text-white m-0">
                 {t("projects.title", "PROJECTS")}<span className="text-primary">.</span>
               </h1>
-              
+
               {/* Cache status / refresh */}
               {lastFetched && (
                 <div className="flex items-center gap-4 font-mono text-[0.65rem] text-gray-500 bg-[#0f0f11] chamfered-border px-4 py-2 shrink-0">
@@ -93,7 +94,7 @@ export default function Projects() {
                     </span>
                   )}
                   <span>{t("projects.lastUpdated", "LAST SYNC")}: {formatTime(lastFetched)}</span>
-                  <button 
+                  <button
                     onClick={refresh}
                     className="hover:text-primary transition-colors flex items-center gap-1 ml-2"
                     disabled={isLoading}
@@ -109,10 +110,10 @@ export default function Projects() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 items-start">
-            
+
             {/* Sidebar Controls */}
             <div className="lg:col-span-1 space-y-8 reveal-ready lg:sticky lg:top-32" ref={sidebarRef}>
-              
+
               {/* Search */}
               <div>
                 <h3 className="font-heading text-sm text-gray-300 uppercase tracking-widest mb-4">Search</h3>
@@ -138,11 +139,10 @@ export default function Projects() {
                       <button
                         key={stack}
                         onClick={() => toggleStack(stack)}
-                        className={`px-3 py-1.5 font-mono text-xs uppercase tracking-wider transition-colors chamfered border-none ${
-                          isActive 
-                            ? "bg-primary text-white" 
+                        className={`px-3 py-1.5 font-mono text-xs uppercase tracking-wider transition-colors chamfered border-none ${isActive
+                            ? "bg-primary text-white"
                             : "bg-[#111113] text-gray-500 hover:text-white hover:bg-[#1a1a1e]"
-                        }`}
+                          }`}
                       >
                         {stack}
                       </button>
@@ -159,57 +159,57 @@ export default function Projects() {
 
             {/* Main Content: Projects Grid */}
             <div className="lg:col-span-3 min-h-[50vh]">
-              {/* Loading State */}
-              {isLoading && projects.length === 0 ? (
-                <div className="py-20 text-center font-mono text-sm text-gray-500">
-                  LOADING_PROJECTS...
-                </div>
-              ) : (
-                <div className="space-y-16">
-                  {/* Featured Projects (Large Cards) */}
-                  {featuredProjects.length > 0 && (
-                    <div className="space-y-8 reveal-stagger" ref={featuredRef}>
-                      {featuredProjects.map((project, idx) => (
-                        <div key={project.route || project.id} className="reveal-ready">
-                          <LargeProjectCard
-                            title={project.name}
-                            description={project.overrideDescription || project.description}
-                            imageUrl={project.heroImage}
-                            projectUrl={`/projects/${project.route}`}
-                            pictureInLeft={idx % 2 === 0}
-                            releaseDate={project.releaseDate}
-                            technologies={project.technologies}
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Regular Projects (Node Cards Grid) */}
-                  {regularProjects.length > 0 ? (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 reveal-stagger" ref={gridRef}>
-                      {regularProjects.map((project) => (
-                        <div key={project.route || project.id} className="reveal-ready h-full">
-                          <ProjectCard project={project} />
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    /* Empty State */
-                    filteredProjects.length === 0 && (
-                      <div className="text-center py-24 border border-dashed border-gray-800 bg-[#111113]/50 chamfered">
-                        <div className="text-gray-600 font-mono mb-4 text-4xl">¯\_(ツ)_/¯</div>
-                        <p className="text-gray-400 font-mono text-sm uppercase tracking-widest mb-6">
-                          {t("projects.noResults", "NO PROJECTS FOUND")}
-                        </p>
-                        <button onClick={clearFilters} className="btn-ghost">
-                          {t("projects.clearFilters", "CLEAR FILTERS")}
-                        </button>
+              <LoadingContainer
+                data={[projects.length > 0 ? projects : null, error, isLoading && projects.length === 0]}
+                size={180}
+              >
+                {() => (
+                  <div className="space-y-16">
+                    {/* Featured Projects (Large Cards) */}
+                    {featuredProjects.length > 0 && (
+                      <div className="reveal-stagger" ref={featuredRef}>
+                        {featuredProjects.map((project, idx) => (
+                          <div key={project.route || project.id} className="reveal-ready">
+                            <LargeProjectCard
+                              title={project.name}
+                              description={project.overrideDescription || project.description}
+                              imageUrl={project.heroImage}
+                              projectUrl={`/projects/${project.route}`}
+                              pictureInLeft={idx % 2 === 0}
+                              releaseDate={project.releaseDate}
+                              technologies={project.technologies}
+                            />
+                          </div>
+                        ))}
                       </div>
-                    )
-                  )}
-                </div>
-              )}
+                    )}
+
+                    {/* Regular Projects (Node Cards Grid) */}
+                    {regularProjects.length > 0 ? (
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 reveal-stagger" ref={gridRef}>
+                        {regularProjects.map((project, idx) => (
+                          <div key={project.route || project.id} className="reveal-ready h-full">
+                            <ProjectCard project={project} index={idx + 1} />
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      /* Empty State */
+                      filteredProjects.length === 0 && (
+                        <div className="text-center py-24 border border-dashed border-gray-800 bg-[#111113]/50 chamfered">
+                          <div className="text-gray-600 font-mono mb-4 text-4xl">¯\_(ツ)_/¯</div>
+                          <p className="text-gray-400 font-mono text-sm uppercase tracking-widest mb-6">
+                            {t("projects.noResults", "NO PROJECTS FOUND")}
+                          </p>
+                          <button onClick={clearFilters} className="btn-ghost">
+                            {t("projects.clearFilters", "CLEAR FILTERS")}
+                          </button>
+                        </div>
+                      )
+                    )}
+                  </div>
+                )}
+              </LoadingContainer>
             </div>
 
           </div>

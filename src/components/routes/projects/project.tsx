@@ -2,9 +2,10 @@ import ProjectLayout from "../../layout/projects/ProjectLayout";
 import { usePortfolioData } from "../../../hooks/usePortfolioData";
 import NotFoundPage from "../NotFoundPage";
 import { useAppContext } from "../../../context/AppContext";
+import LoadingContainer from "../../shared/LoadingContainer";
 
 export default function Project({ name }: { name: string }) {
-  const { projects, isLoading } = usePortfolioData();
+  const { projects, isLoading, error } = usePortfolioData();
   const { cardTransition } = useAppContext();
   
   // Find project by route (case-insensitive)
@@ -13,17 +14,21 @@ export default function Project({ name }: { name: string }) {
   // Wait a bit if we're in the middle of a card transition
   const isEntering = cardTransition.active && cardTransition.projectId === name;
 
-  if (isLoading) {
-    return <div className="min-h-screen bg-background flex items-center justify-center font-mono text-gray-500">LOADING...</div>;
-  }
-
-  if (!project) {
-    return <NotFoundPage />;
-  }
-
   return (
-    <div className={isEntering ? "page-enter" : ""}>
-      <ProjectLayout project={project} />
-    </div>
+    <LoadingContainer
+      data={[project || null, error, isLoading]}
+      className="min-h-screen bg-background"
+      size={280}
+      fullscreen
+    >
+      {(data) => {
+        if (!data) return <NotFoundPage />;
+        return (
+          <div className={isEntering ? "page-enter" : ""}>
+            <ProjectLayout project={data} />
+          </div>
+        );
+      }}
+    </LoadingContainer>
   );
 }

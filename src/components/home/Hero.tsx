@@ -10,7 +10,7 @@ export default function Hero() {
   return (
     <section className="relative w-full h-[100dvh] min-h-[600px] flex items-center bg-[#0a0a0a] overflow-hidden border-b border-white/5 pt-16">
       <div
-        className="absolute inset-0 z-0 pointer-events-none opacity-50 mix-blend-screen"
+        className="absolute inset-0 z-0 pointer-events-none opacity-40 mix-blend-screen"
         style={{
           backgroundImage: `url('/assets/me-dithered.svg')`,
           backgroundPosition: 'right center',

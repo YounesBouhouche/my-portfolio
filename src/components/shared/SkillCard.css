@@ -3,19 +3,34 @@
 .skill-card {
   @apply relative p-6 overflow-hidden;
   @apply transition-all duration-300 ease-out;
-  @apply backdrop-blur-md bg-surface/50 border border-white/10;
+  @apply backdrop-blur-md bg-surface/50;
   min-height: 160px;
   position: relative;
+  clip-path: var(--chamfered-shape);
+}
+
+.skill-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.1);
+  clip-path: var(--chamfered-border);
+  z-index: 0;
+  pointer-events: none;
+  transition: background 0.3s ease;
+}
+
+.skill-card:hover::before {
+  background: rgba(0, 136, 193, 0.5);
 }
 
 .skill-card:hover {
-  @apply border-primary/50;
-  @apply shadow-[0_0_20px_rgba(59, 130, 246, 0.2)];
+  @apply shadow-[0_0_20px_rgba(59,130,246,0.2)];
   transform: translateY(-4px);
 }
 
-.skill-card.cursor-pointer:hover {
-  @apply border-primary/80;
+.skill-card.cursor-pointer:hover::before {
+  background: rgba(0, 136, 193, 0.8);
 }
 
 .skill-header {
@@ -24,16 +39,32 @@
 
 .skill-icon {
   @apply w-12 h-12 flex items-center justify-center;
-  @apply bg-white/5 border border-white/10;
+  @apply bg-white/5;
   @apply transition-all duration-300;
+  position: relative;
+  clip-path: var(--chamfered-small-shape);
+}
+
+.skill-icon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.1);
+  clip-path: var(--chamfered-small-border);
+  pointer-events: none;
+  transition: background 0.3s ease;
+}
+
+.skill-card:hover .skill-icon::before {
+  background: rgba(0, 136, 193, 0.3);
 }
 
 .skill-card:hover .skill-icon {
-  @apply border-primary/30 bg-primary/5;
+  @apply bg-primary/5;
 }
 
 .skill-icon img {
-  @apply w-8 h-8 object-contain;
+  @apply w-8 h-8 object-contain relative z-10;
 }
 
 .skill-info {
@@ -62,7 +93,17 @@
 
 .progress-track {
   @apply flex-1 h-1.5 overflow-hidden relative;
-  @apply bg-white/5 border border-white/10;
+  @apply bg-white/5;
+  clip-path: var(--chamfered-small-shape);
+}
+
+.progress-track::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.1);
+  clip-path: var(--chamfered-small-border);
+  pointer-events: none;
 }
 
 .progress-bar {

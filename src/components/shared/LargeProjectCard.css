@@ -1,1 +1,337 @@
-/* Empty, as all styling is now handled by Tailwind and global CSS (App.css) */
+/* ============================================================
+   LARGE PROJECT CARD — HUD / EDITORIAL STYLE
+   ============================================================ */
+
+.lpc-root {
+  position: relative;
+  width: 100%;
+  min-height: 480px;
+  overflow: hidden;
+  cursor: pointer;
+  clip-path: var(--chamfered-large-shape);
+}
+
+/* Chamfered border frame via outline pseudo-element */
+.lpc-root::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.07);
+  clip-path: var(--chamfered-large-border);
+  z-index: 30;
+  pointer-events: none;
+  transition: background 0.4s ease;
+}
+
+.lpc-root:hover::before {
+  background: var(--color-primary);
+}
+
+/* Full-bleed background image */
+.lpc-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              filter 0.6s ease,
+              opacity 0.6s ease;
+  filter: grayscale(30%);
+  opacity: 0.45;
+}
+
+.lpc-root:hover .lpc-image {
+  transform: scale(1.04);
+  filter: grayscale(0%);
+  opacity: 0.55;
+}
+
+/* Directional gradient overlay */
+.lpc-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.lpc-overlay-left {
+  background: linear-gradient(
+    to right,
+    #0a0a0a 0%,
+    rgba(10, 10, 10, 0.92) 40%,
+    rgba(10, 10, 10, 0.4) 70%,
+    transparent 100%
+  );
+}
+
+.lpc-overlay-right {
+  background: linear-gradient(
+    to left,
+    #0a0a0a 0%,
+    rgba(10, 10, 10, 0.92) 40%,
+    rgba(10, 10, 10, 0.4) 70%,
+    transparent 100%
+  );
+}
+
+/* Scan-line shimmer that sweeps across on hover */
+.lpc-scanline {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 136, 193, 0.04) 50%,
+    transparent 100%
+  );
+  background-size: 100% 8px;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.lpc-root:hover .lpc-scanline {
+  opacity: 1;
+}
+
+/* Content panel */
+.lpc-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  min-height: 480px;
+  padding: 3rem;
+}
+
+.lpc-content-right {
+  align-items: flex-end;
+  text-align: right;
+}
+
+/* Index watermark */
+.lpc-index {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: clamp(8rem, 18vw, 14rem);
+  line-height: 0.8;
+  color: rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+  z-index: 1;
+  transition: color 0.4s ease;
+  user-select: none;
+}
+
+.lpc-index-left {
+  right: -2rem;
+  bottom: -2rem;
+}
+
+.lpc-index-right {
+  left: -2rem;
+  bottom: -2rem;
+}
+
+.lpc-root:hover .lpc-index {
+  color: rgba(0, 136, 193, 0.06);
+}
+
+/* Corner accent brackets */
+.lpc-corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.lpc-corner-tl {
+  top: 0;
+  left: 0;
+  border-top: 1.5px solid var(--color-primary);
+  border-left: 1.5px solid var(--color-primary);
+  opacity: 0;
+  transform: translate(-4px, -4px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.lpc-corner-br {
+  bottom: 0;
+  right: 0;
+  border-bottom: 1.5px solid var(--color-primary);
+  border-right: 1.5px solid var(--color-primary);
+  opacity: 0;
+  transform: translate(4px, 4px);
+  transition: opacity 0.3s ease 0.05s, transform 0.3s ease 0.05s;
+}
+
+.lpc-root:hover .lpc-corner-tl,
+.lpc-root:hover .lpc-corner-br {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* Accent rule */
+.lpc-accent-rule {
+  width: 2.5rem;
+  height: 2px;
+  background: var(--color-primary);
+  margin-bottom: 1.25rem;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lpc-content-right .lpc-accent-rule {
+  margin-left: auto;
+}
+
+.lpc-root:hover .lpc-accent-rule {
+  width: 5rem;
+}
+
+/* Category label */
+.lpc-category {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+/* Title */
+.lpc-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 0.9;
+  color: #ffffff;
+  margin: 0 0 1.25rem;
+  transition: color 0.3s ease;
+}
+
+.lpc-root:hover .lpc-title {
+  color: #ffffff;
+}
+
+/* Description */
+.lpc-description {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.45);
+  max-width: 36ch;
+  margin-bottom: 1.75rem;
+  transition: color 0.3s ease;
+}
+
+.lpc-root:hover .lpc-description {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.lpc-content-right .lpc-description {
+  margin-left: auto;
+}
+
+/* Tech chips row */
+.lpc-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.75rem;
+}
+
+.lpc-content-right .lpc-chips {
+  justify-content: flex-end;
+}
+
+.lpc-chip {
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  padding: 0.3rem 0.75rem;
+  background: rgba(255, 255, 255, 0.04);
+  clip-path: var(--chamfered-small-shape);
+  transition: color 0.3s ease, background 0.3s ease;
+  z-index: 1;
+}
+
+.lpc-chip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.08);
+  clip-path: var(--chamfered-small-border);
+  z-index: -1;
+  pointer-events: none;
+  transition: background 0.3s ease;
+}
+
+.lpc-root:hover .lpc-chip {
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(0, 136, 193, 0.06);
+}
+
+.lpc-root:hover .lpc-chip::before {
+  background: rgba(0, 136, 193, 0.25);
+}
+
+/* CTA button row */
+.lpc-cta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.lpc-content-right .lpc-cta {
+  justify-content: flex-end;
+}
+
+/* Upcoming overlay */
+.lpc-upcoming-badge {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 25;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  padding: 0.35rem 0.75rem;
+  background: rgba(0, 136, 193, 0.08);
+  clip-path: var(--chamfered-small-shape);
+}
+
+.lpc-upcoming-badge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color-primary);
+  clip-path: var(--chamfered-small-border);
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+@media (max-width: 768px) {
+  .lpc-content {
+    padding: 2rem 1.75rem;
+  }
+
+  .lpc-overlay-left,
+  .lpc-overlay-right {
+    background: linear-gradient(
+      to top,
+      #0a0a0a 0%,
+      rgba(10, 10, 10, 0.85) 50%,
+      transparent 100%
+    );
+  }
+}

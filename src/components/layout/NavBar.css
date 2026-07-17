@@ -43,19 +43,19 @@
   background: var(--color-primary);
   color: #fff;
   padding: 0.25rem 0.5rem;
-  clip-path: polygon(6px 0%, 100% 0%, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0% 100%, 0% 6px);
+  clip-path: var(--chamfered-small-shape);
 }
 
-/* Logo image sizing with transition */
-.nav-logo-img {
-  height: 60px;
-  width: 60px;
-  transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1), width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+/* Logo animation sizing with transition */
+.nav-logo-animation {
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.navbar--scrolled .nav-logo-img {
-  height: 40px;
-  width: 40px;
+.nav-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
 }
 
 /* ── Nav Links ─────────────────────────────────────── */
@@ -110,7 +110,7 @@
   background: rgba(255, 255, 255, 0.05);
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: -1;
-  clip-path: polygon(6px 0%, 100% 0%, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0% 100%, 0% 6px);
+  clip-path: var(--chamfered-small-shape);
 }
 
 .nav-link:hover::after {
@@ -123,7 +123,7 @@
 
 /* Active state — chamfered border box */
 .nav-link--active {
-  color: #ffffff;
+  color: var(--color-primary);
   position: relative;
   z-index: 1;
 }
@@ -133,14 +133,7 @@
   position: absolute;
   inset: 0;
   background: var(--color-primary);
-  clip-path: polygon(0% 10px, 10px 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0% 100%, 0% 10px,
-      1.5px 10.6px,
-      1.5px calc(100% - 1.5px),
-      calc(100% - 10.6px) calc(100% - 1.5px),
-      calc(100% - 1.5px) calc(100% - 10.6px),
-      calc(100% - 1.5px) 1.5px,
-      10.6px 1.5px,
-      1.5px 10.6px);
+  clip-path: var(--chamfered-border-thick);
   z-index: -1;
   pointer-events: none;
 }
@@ -191,7 +184,7 @@
   cursor: pointer;
   position: relative;
   z-index: 1;
-  clip-path: polygon(8px 0%, 100% 0%, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0% 100%, 0% 8px);
+  clip-path: var(--chamfered-small-shape);
   transition: color 0.2s ease, padding 0.4s cubic-bezier(0.4, 0, 0.2, 1), font-size 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -200,13 +193,7 @@
   position: absolute;
   inset: 0;
   background: rgba(255, 255, 255, 0.12);
-  clip-path: polygon(
-    0% 8px, 8px 0%, 100% 0%, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0% 100%, 0% 8px,
-    1px 8.4px, 1px calc(100% - 1px),
-    calc(100% - 8.4px) calc(100% - 1px),
-    calc(100% - 1px) calc(100% - 8.4px),
-    calc(100% - 1px) 1px, 8.4px 1px, 1px 8.4px
-  );
+  clip-path: var(--chamfered-small-border);
   z-index: -1;
   pointer-events: none;
   transition: background 0.2s ease;
@@ -248,7 +235,7 @@
   min-height: 34px;
   position: relative;
   z-index: 1;
-  clip-path: polygon(8px 0%, 100% 0%, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0% 100%, 0% 8px);
+  clip-path: var(--chamfered-small-shape);
   transition: color 0.2s ease, padding 0.4s cubic-bezier(0.4, 0, 0.2, 1), font-size 0.4s cubic-bezier(0.4, 0, 0.2, 1), min-width 0.4s cubic-bezier(0.4, 0, 0.2, 1), min-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -257,13 +244,7 @@
   position: absolute;
   inset: 0;
   background: rgba(255, 255, 255, 0.12);
-  clip-path: polygon(
-    0% 8px, 8px 0%, 100% 0%, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0% 100%, 0% 8px,
-    1px 8.4px, 1px calc(100% - 1px),
-    calc(100% - 8.4px) calc(100% - 1px),
-    calc(100% - 1px) calc(100% - 8.4px),
-    calc(100% - 1px) 1px, 8.4px 1px, 1px 8.4px
-  );
+  clip-path: var(--chamfered-small-border);
   z-index: -1;
   pointer-events: none;
   transition: background 0.2s ease;
@@ -307,14 +288,7 @@
   position: absolute;
   inset: 0;
   background: rgba(255, 255, 255, 0.12);
-  clip-path: polygon(0% 6px, 6px 0%, 100% 0%, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0% 100%, 0% 6px,
-      1px 6.4px,
-      1px calc(100% - 1px),
-      calc(100% - 6.4px) calc(100% - 1px),
-      calc(100% - 1px) calc(100% - 6.4px),
-      calc(100% - 1px) 1px,
-      6.4px 1px,
-      1px 6.4px);
+  clip-path: var(--chamfered-small-border);
   z-index: -1;
   pointer-events: none;
   transition: background 0.2s ease;

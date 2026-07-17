@@ -27,12 +27,14 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
           >
             <LargeProjectCard
               title={project.name}
-              description={project.description}
+              description={project.overrideDescription || project.description}
               imageUrl={project.heroImage}
-              projectUrl={"/projects/" + project.route}
+              projectUrl={"/" + project.route}
               pictureInLeft={index % 2 === 0}
               releaseDate={project.releaseDate}
               technologies={project.technologies}
+              index={index + 1}
+              category={project.category}
             />
           </div>
         ))}

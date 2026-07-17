@@ -45,7 +45,7 @@ export default function SkillGanttChart({ category, skills, onSkillClick }: Skil
               {/* Skill Label */}
               <div className="w-36 shrink-0 flex items-center gap-3">
                 {skill.icon && (
-                  <div className="w-6 h-6 flex items-center justify-center bg-white/5 border border-white/10 p-1 chamfered shrink-0">
+                  <div className="w-6 h-6 flex items-center justify-center bg-white/5 p-1 chamfered-border-sm shrink-0">
                     <img src={skill.icon} alt={skill.name} className="w-full h-full object-contain opacity-70 group-hover:opacity-100 transition-opacity" />
                   </div>
                 )}

@@ -1,7 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
-// removed useTranslation
 import { useAppContext } from "../../context/AppContext";
+import LogoAnimation from "../shared/LogoAnimation";
 import "./NavBar.css";
 
 const navLinks = [
@@ -49,7 +49,7 @@ export default function NavBar() {
       <nav className={`navbar${isScrolled ? " navbar--scrolled" : ""}`} role="navigation" aria-label="Main navigation">
         {/* ── Left: Logo ─────────────────────────────────── */}
         <Link to="/" className="nav-logo" aria-label="Home">
-          <img src="../public/assets/logo/foreground.svg" alt="Logo" className="nav-logo-img" />
+          <LogoAnimation size={isScrolled ? 40 : 60} className="nav-logo-animation" />
         </Link>
 
         {/* ── Center: Nav Links ───────────────────────────── */}

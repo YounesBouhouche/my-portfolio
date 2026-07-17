@@ -1,6 +1,18 @@
 import { Link } from "@tanstack/react-router";
 import "./LargeProjectCard.css";
 
+interface LargeProjectCardProps {
+  title: string;
+  description: string;
+  imageUrl: string;
+  projectUrl: string;
+  pictureInLeft?: boolean;
+  releaseDate?: string;
+  technologies?: string[];
+  index?: number;
+  category?: string;
+}
+
 export default function LargeProjectCard({
   title,
   description,
@@ -9,85 +21,86 @@ export default function LargeProjectCard({
   pictureInLeft = true,
   releaseDate,
   technologies,
-}: {
-  title: string;
-  description: string;
-  imageUrl: string;
-  projectUrl: string;
-  pictureInLeft?: boolean;
-  releaseDate?: string;
-  technologies?: string[];
-}) {
+  index = 1,
+  category = "PROJECT",
+}: LargeProjectCardProps) {
   const isUpcoming = !releaseDate || new Date(releaseDate) > new Date();
+  const indexLabel = String(index).padStart(2, "0");
 
   return (
-    <div
-      className={`group flex flex-col ${
-        pictureInLeft ? "md:flex-row" : "md:flex-row-reverse"
-      } bg-[#0f0f11] chamfered-border w-full h-full relative no-underline ${
-        isUpcoming ? "opacity-70" : ""
-      }`}
-      style={{
-        '--chamfer-border-color': 'rgba(255,255,255,0.06)',
-        '--chamfer-border-color-focus': 'var(--color-primary)'
-      } as React.CSSProperties}
-    >
-      {isUpcoming && (
-        <div className="absolute top-4 right-4 z-20 bg-primary text-white font-mono text-[0.6rem] px-3 py-1 uppercase tracking-widest chamfered">
-          UPCOMING
-        </div>
-      )}
+    <div className="lpc-root">
 
-      {/* Image Container */}
-      <div className="w-full md:w-[45%] lg:w-[50%] relative overflow-hidden shrink-0 border-b md:border-b-0 border-white/5">
-        <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none" />
-        <img
-          src={imageUrl}
-          alt={title}
-          className="w-full h-full object-cover min-h-[250px] md:min-h-full opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
-        />
+      {/* Full-bleed background image */}
+      <img
+        src={imageUrl}
+        alt={title}
+        className="lpc-image"
+        draggable={false}
+      />
+
+      {/* Scan-line shimmer */}
+      <div className="lpc-scanline" />
+
+      {/* Directional gradient overlay */}
+      <div className={`lpc-overlay ${pictureInLeft ? "lpc-overlay-left" : "lpc-overlay-right"}`} />
+
+      {/* Watermark index number */}
+      <div className={`lpc-index ${pictureInLeft ? "lpc-index-left" : "lpc-index-right"}`}>
+        {indexLabel}
       </div>
 
-      {/* Content Container */}
-      <div className="flex-1 p-8 md:p-12 flex flex-col justify-center relative">
-        <div className="mb-4 flex items-center gap-4">
-          <h3 className="font-display text-4xl md:text-5xl text-white group-hover:text-primary transition-colors duration-300 m-0 leading-none">
-            {title}
-          </h3>
+      {/* Upcoming badge */}
+      {isUpcoming && (
+        <div className="lpc-upcoming-badge">UPCOMING</div>
+      )}
+
+      {/* Corner accent brackets */}
+      <div className="lpc-corner lpc-corner-tl" />
+      <div className="lpc-corner lpc-corner-br" />
+
+      {/* Content */}
+      <div className={`lpc-content ${!pictureInLeft ? "lpc-content-right" : ""}`}>
+
+        <div className="lpc-accent-rule" />
+
+        {/* Meta row: category + year */}
+        <div className="flex items-center gap-3 mb-3" style={{ justifyContent: !pictureInLeft ? "flex-end" : "flex-start" }}>
+          <p className="lpc-category" style={{ margin: 0 }}>{category}</p>
+          {releaseDate && !isUpcoming && (
+            <>
+              <span className="font-mono text-[0.55rem] text-gray-700">—</span>
+              <span className="font-mono text-[0.6rem] text-gray-600 tracking-widest uppercase flex items-center gap-1">
+                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+                {new Date(releaseDate).getFullYear()}
+              </span>
+            </>
+          )}
         </div>
 
-        <p className="font-body text-gray-400 text-sm md:text-base leading-relaxed mb-8 max-w-xl">
-          {description}
-        </p>
+        <h3 className="lpc-title">{title}</h3>
 
-        {/* Tech Stack Tags */}
+        <p className="lpc-description">{description}</p>
+
         {technologies && technologies.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-10">
-            {technologies.slice(0, 5).map((tech, techIndex) => (
-              <span
-                key={techIndex}
-                className="bg-[#111113] border border-white/5 px-2.5 py-1.5 font-mono text-[0.65rem] text-gray-500 uppercase tracking-widest chamfered transition-colors group-hover:border-primary/30 group-hover:text-gray-300"
-              >
-                {tech}
-              </span>
+          <div className="lpc-chips">
+            {technologies.slice(0, 5).map((tech) => (
+              <span key={tech} className="lpc-chip">{tech}</span>
             ))}
             {technologies.length > 5 && (
-              <span className="bg-[#111113] border border-white/5 px-2.5 py-1.5 font-mono text-[0.65rem] text-gray-600 uppercase tracking-widest chamfered">
-                +{technologies.length - 5}
-              </span>
+              <span className="lpc-chip">+{technologies.length - 5}</span>
             )}
           </div>
         )}
 
-        <div className="mt-auto">
+        <div className="lpc-cta">
           <Link
             to={projectUrl}
             className="btn-primary"
-            onClick={(e) => {
-              if (isUpcoming) e.preventDefault();
-            }}
+            onClick={(e) => { if (isUpcoming) e.preventDefault(); }}
           >
-            {isUpcoming ? "ACCESS DENIED" : "VIEW PROJECT"}
+            {isUpcoming ? "ACCESS DENIED" : "VIEW PROJECT →"}
           </Link>
         </div>
       </div>

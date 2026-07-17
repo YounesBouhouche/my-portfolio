@@ -22,6 +22,7 @@ export default function EducationSection() {
         <div className="mt-16 space-y-8 reveal-stagger" ref={containerRef}>
           <LoadingContainer
             data={education}
+            size={120}
             children={(data) => (
               <>
                 {data.map((edu, index) => (
