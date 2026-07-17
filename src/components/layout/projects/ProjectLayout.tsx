@@ -7,6 +7,7 @@ export default function ProjectLayout({ project }: { project: Project }) {
 
   const heroRef = useScrollReveal<HTMLDivElement>();
   const statsRef = useScrollReveal<HTMLDivElement>({ stagger: true });
+  const screenshotsRef = useScrollReveal<HTMLDivElement>({ stagger: true });
   const contentRef = useScrollReveal<HTMLDivElement>({ stagger: true });
   const featuresRef = useScrollReveal<HTMLDivElement>({ stagger: true });
 
@@ -14,7 +15,6 @@ export default function ProjectLayout({ project }: { project: Project }) {
     name,
     description,
     overrideDescription,
-    heroImage,
     screenshots,
     technologies,
     features,
@@ -125,12 +125,6 @@ export default function ProjectLayout({ project }: { project: Project }) {
       <section className="max-w-4xl mx-auto px-6 mt-24 gap-4">
         {content && (
           <div className="space-y-16 reveal-stagger" ref={contentRef}>
-            {heroImage && (
-              <div className="reveal-ready rounded-sm overflow-hidden border border-white/10 bg-[#111113] p-1">
-                <img src={heroImage} alt={name} className="w-full h-auto rounded-[2px]" />
-              </div>
-            )}
-
             {content.problem && (
               <div className="reveal-ready">
                 <h2 className="font-heading text-3xl font-bold mb-6 text-white">The Problem</h2>
@@ -155,8 +149,8 @@ export default function ProjectLayout({ project }: { project: Project }) {
         )}
 
         {screenshots && screenshots.length > 0 && (
-          <div className="reveal-ready mt-16">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="reveal-stagger mt-16" ref={screenshotsRef}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {screenshots.map((src, idx) => (
                 <div key={idx} className="border border-white/10 bg-[#111113] p-1 rounded-sm">
                   <img src={src} alt={`Screenshot ${idx + 1}`} className="w-full h-auto rounded-[2px]" />
@@ -178,18 +172,6 @@ export default function ProjectLayout({ project }: { project: Project }) {
                   </li>
                 ))}
               </ul>
-            </div>
-          )}
-
-          {screenshots && screenshots.length > 0 && (
-            <div className="reveal-ready mt-16">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {screenshots.map((src, idx) => (
-                  <div key={idx} className="border border-white/10 bg-[#111113] p-1 rounded-sm">
-                    <img src={src} alt={`Screenshot ${idx + 1}`} className="w-full h-auto rounded-[2px]" />
-                  </div>
-                ))}
-              </div>
             </div>
           )}
         </div>
