@@ -4,15 +4,15 @@ import NotFoundPage from "../NotFoundPage";
 import { useAppContext } from "../../../context/AppContext";
 import LoadingContainer from "../../shared/LoadingContainer";
 
-export default function Project({ name }: { name: string }) {
+export default function Project({ id }: { id: string }) {
   const { projects, isLoading, error } = usePortfolioData();
   const { cardTransition } = useAppContext();
-  
+
   // Find project by route (case-insensitive)
-  const project = projects.find(p => p.route.toLowerCase() === name.toLowerCase());
+  const project = projects.find(p => p.id.toString() === id.toString());
 
   // Wait a bit if we're in the middle of a card transition
-  const isEntering = cardTransition.active && cardTransition.projectId === name;
+  const isEntering = cardTransition.active && cardTransition.projectId === id;
 
   return (
     <LoadingContainer

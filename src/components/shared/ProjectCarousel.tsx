@@ -29,7 +29,7 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
               title={project.name}
               description={project.overrideDescription || project.description}
               imageUrl={project.heroImage}
-              projectUrl={"/" + project.route}
+              projectUrl={"/projects/" + project.id}
               pictureInLeft={index % 2 === 0}
               releaseDate={project.releaseDate}
               technologies={project.technologies}
