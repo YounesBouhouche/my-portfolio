@@ -46,7 +46,7 @@ export default function ProjectLayout({ project }: { project: Project }) {
             {/* Tag / Category */}
             <div className="font-mono text-xs tracking-[0.2em] text-primary uppercase mb-6 flex items-center gap-2">
               <span className="w-8 h-px bg-primary/50"></span>
-              {project.category}
+              {project.category ?? "Project"}
             </div>
 
             {/* Title */}
