@@ -1,139 +1,260 @@
-@import '../../App.css';
+/* ============================================================
+   SMALL PROJECT CARD — compact HUD / editorial style
+   ============================================================ */
 
-.upcoming-project {
+.spc-root {
   position: relative;
+  width: 100%;
+  min-height: 320px;
+  overflow: hidden;
+  cursor: pointer;
+  clip-path: var(--chamfered-shape);
 }
 
-.upcoming-project .project-card-inner {
-  position: relative;
-  background: rgba(17, 24, 39, 0.95);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-}
-
-.upcoming-project::after {
-  content: 'COMING SOON';
+.spc-root::before {
+  content: "";
   position: absolute;
-  top: -8px;
-  right: -8px;
-  background: #3b82f6;
-  color: #fff;
-  font-size: 10px;
-  font-weight: bold;
-  padding: 4px 8px;
-  border-radius: 0;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.07);
+  clip-path: var(--chamfered-border);
+  z-index: 30;
+  pointer-events: none;
+  transition: background 0.4s ease;
+}
+
+.spc-root:hover::before {
+  background: var(--color-primary);
+}
+
+.spc-root--upcoming {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.spc-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              filter 0.6s ease,
+              opacity 0.6s ease;
+  filter: grayscale(30%);
+  opacity: 0.45;
+}
+
+.spc-root:hover .spc-image {
+  transform: scale(1.04);
+  filter: grayscale(0%);
+  opacity: 0.55;
+}
+
+.spc-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    #0a0a0a 0%,
+    rgba(10, 10, 10, 0.92) 40%,
+    rgba(10, 10, 10, 0.4) 70%,
+    transparent 100%
+  );
+}
+
+.spc-scanline {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 136, 193, 0.04) 50%,
+    transparent 100%
+  );
+  background-size: 100% 8px;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.spc-root:hover .spc-scanline {
+  opacity: 1;
+}
+
+.spc-content {
+  position: relative;
   z-index: 10;
-  letter-spacing: 0.5px;
-  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  min-height: 320px;
+  padding: 1.75rem;
 }
 
-.upcoming-project .project-image-container::before {
-  content: '';
+.spc-index {
   position: absolute;
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 12vw, 6rem);
+  line-height: 0.8;
+  color: rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+  z-index: 1;
+  right: -0.5rem;
+  bottom: -0.5rem;
+  user-select: none;
+  transition: color 0.4s ease;
+}
+
+.spc-root:hover .spc-index {
+  color: rgba(0, 136, 193, 0.06);
+}
+
+.spc-corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.spc-corner-tl {
   top: 0;
   left: 0;
-  right: 0;
+  border-top: 1.5px solid var(--color-primary);
+  border-left: 1.5px solid var(--color-primary);
+  opacity: 0;
+  transform: translate(-4px, -4px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.spc-corner-br {
   bottom: 0;
-  background: linear-gradient(
-    45deg,
-    transparent 30%,
-    rgba(59, 130, 246, 0.1) 50%,
-    transparent 70%
-  );
-  z-index: 1;
+  right: 0;
+  border-bottom: 1.5px solid var(--color-primary);
+  border-right: 1.5px solid var(--color-primary);
+  opacity: 0;
+  transform: translate(4px, 4px);
+  transition: opacity 0.3s ease 0.05s, transform 0.3s ease 0.05s;
 }
 
-.upcoming-project:hover .project-card-inner {
-  border-color: rgba(59, 130, 246, 0.6);
-  box-shadow: 
-    0 25px 50px rgba(0, 0, 0, 0.3),
-    0 0 30px rgba(59, 130, 246, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+.spc-root:hover .spc-corner-tl,
+.spc-root:hover .spc-corner-br {
+  opacity: 1;
+  transform: translate(0, 0);
 }
 
-.upcoming-project .project-content h3 {
-  color: #3b82f6;
+.spc-accent-rule {
+  width: 2rem;
+  height: 2px;
+  background: var(--color-primary);
+  margin-bottom: 0.75rem;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.upcoming-project .project-content span {
-  border-color: rgba(59, 130, 246, 0.3);
-  background: rgba(59, 130, 246, 0.1);
+.spc-root:hover .spc-accent-rule {
+  width: 3.5rem;
 }
 
-.upcoming-project .terminal-button-link {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05)) !important;
-  border-color: #3b82f6 !important;
-  color: #3b82f6 !important;
+.spc-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
 }
 
-.upcoming-project .terminal-button-link:hover {
-  background: #3b82f6 !important;
-  color: #fff !important;
+.spc-category {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-primary);
 }
 
-/* Project Cards */
-.project-card {
-  @apply perspective-[1000px] h-max;
+.spc-year {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 }
 
-.project-card-inner {
-  @apply relative transition-all duration-300 ease-out border border-white/5;
-  transform-style: preserve-3d;
-  background: #121214;
+.spc-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  line-height: 0.9;
+  color: #ffffff;
+  margin: 0 0 0.75rem;
 }
 
-.project-card:hover .project-card-inner {
-  transform: translateY(-5px);
-  @apply border-primary/50 shadow-lg shadow-primary/10;
+.spc-description {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.3s ease;
 }
 
-.project-image-container {
-    @apply relative overflow-hidden;
+.spc-root:hover .spc-description {
+  color: rgba(255, 255, 255, 0.65);
 }
 
-.project-image-container::after {
-  @apply content-[''] absolute top-0 -left-full w-full h-full transition-[left] duration-500 ease-in-out;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(59, 130, 246, 0.1),
-    transparent
-  );
+.spc-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
 }
 
-.project-card:hover .project-image-container::after {
-  @apply left-full;
+.spc-cta {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  transition: color 0.3s ease;
 }
 
-.project-content span {
-  @apply transition-all duration-300 ease-in-out;
+.spc-root:hover .spc-cta {
+  color: #fff;
 }
 
-.project-card:hover .project-content span {
-  @apply border-primary/20 bg-primary/5 text-primary;
+.spc-upcoming-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 25;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  padding: 0.3rem 0.65rem;
+  background: rgba(0, 136, 193, 0.08);
+  clip-path: var(--chamfered-small-shape);
 }
 
-/* Button Hover Effects */
-.project-card a:hover {
-  @apply shadow-[0_5px_15px_rgba(0,0,0,0.2)];
+.spc-upcoming-badge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color-primary);
+  clip-path: var(--chamfered-small-border);
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.35;
 }
 
-/* Small Button Variant to prevent wrapping */
-.terminal-button-link.small {
-  @apply px-4 py-2 text-xs h-auto;
-}
-
-.tech-chip {
-  @apply px-2 py-1 bg-white/5 text-gray-400 text-xs border border-white/10;
-}
-
-.category-badge {
-  @apply absolute top-4 right-4 px-3 py-1 text-xs font-mono font-bold tracking-wider;
-}
-
-.category-badge.web-app {
-  @apply bg-blue-500/10 text-blue-400 border border-blue-500/20;
-}
-
-.category-badge.mobile-app {
-  @apply bg-purple-500/10 text-purple-400 border border-purple-500/20;
+@media (max-width: 768px) {
+  .spc-content {
+    padding: 1.5rem;
+  }
 }

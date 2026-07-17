@@ -1,6 +1,18 @@
 import { Link } from "@tanstack/react-router";
 import "./LargeProjectCard.css";
 
+interface LargeProjectCardProps {
+  title: string;
+  description: string;
+  imageUrl: string;
+  projectUrl: string;
+  pictureInLeft?: boolean;
+  releaseDate?: string;
+  technologies?: string[];
+  index?: number;
+  category?: string;
+}
+
 export default function LargeProjectCard({
   title,
   description,
@@ -9,68 +21,88 @@ export default function LargeProjectCard({
   pictureInLeft = true,
   releaseDate,
   technologies,
-}: {
-  title: string;
-  description: string;
-  imageUrl: string;
-  projectUrl: string;
-  pictureInLeft?: boolean;
-  releaseDate?: string;
-  technologies?: string[];
-}) {
-  // Check if the project is upcoming (future date or no release date)
+  index = 1,
+  category = "PROJECT",
+}: LargeProjectCardProps) {
   const isUpcoming = !releaseDate || new Date(releaseDate) > new Date();
+  const indexLabel = String(index).padStart(2, "0");
+
   return (
-    <div
-      className={`glass-container mx-4 flex flex-col relative ${isUpcoming ? "upcoming-project" : ""} ${pictureInLeft ? "lg:flex-row" : "lg:flex-row-reverse"}`}
-    >
+    <div className="lpc-root">
+
+      {/* Full-bleed background image */}
       <img
         src={imageUrl}
         alt={title}
-        className="w-full shrink-0 lg:shrink lg:w-1/2 aspect-[1/1] object-cover"
+        className="lpc-image"
+        draggable={false}
       />
-      <div className="p-6 lg:p-10 w-full lg:w-1/2 flex flex-col justify-center space-y-5">
-        <div className="flex items-center gap-3 mb-5">
-          <h3 className="text-4xl font-bold">{title}</h3>
+
+      {/* Scan-line shimmer */}
+      <div className="lpc-scanline" />
+
+      {/* Directional gradient overlay */}
+      <div className={`lpc-overlay ${pictureInLeft ? "lpc-overlay-left" : "lpc-overlay-right"}`} />
+
+      {/* Watermark index number */}
+      <div className={`lpc-index ${pictureInLeft ? "lpc-index-left" : "lpc-index-right"}`}>
+        {indexLabel}
+      </div>
+
+      {/* Upcoming badge */}
+      {isUpcoming && (
+        <div className="lpc-upcoming-badge">UPCOMING</div>
+      )}
+
+      {/* Corner accent brackets */}
+      <div className="lpc-corner lpc-corner-tl" />
+      <div className="lpc-corner lpc-corner-br" />
+
+      {/* Content */}
+      <div className={`lpc-content ${!pictureInLeft ? "lpc-content-right" : ""}`}>
+
+        <div className="lpc-accent-rule" />
+
+        {/* Meta row: category + year */}
+        <div className="flex items-center gap-3 mb-3" style={{ justifyContent: !pictureInLeft ? "flex-end" : "flex-start" }}>
+          <p className="lpc-category" style={{ margin: 0 }}>{category}</p>
+          {releaseDate && !isUpcoming && (
+            <>
+              <span className="font-mono text-[0.55rem] text-gray-700">—</span>
+              <span className="font-mono text-[0.6rem] text-gray-600 tracking-widest uppercase flex items-center gap-1">
+                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+                {new Date(releaseDate).getFullYear()}
+              </span>
+            </>
+          )}
         </div>
 
-        {/* Terminal-style container for description */}
-        <div className="terminal-window w-full">
-          <div className="terminal-header">
-            <div className="terminal-buttons">
-              <span className="terminal-button close"></span>
-              <span className="terminal-button minimize"></span>
-              <span className="terminal-button maximize"></span>
-            </div>
-            <span className="terminal-title">project-info.txt</span>
-          </div>
-          <div className="terminal-body">
-            <p className="terminal-text">{description}</p>
-          </div>
-        </div>
+        <h3 className="lpc-title">{title}</h3>
 
-        {/* Tech Stack Tags */}
+        <p className="lpc-description">{description}</p>
+
         {technologies && technologies.length > 0 && (
-          <div className="flex flex-wrap gap-2">
-            {technologies.slice(0, 4).map((tech, techIndex) => (
-              <span key={techIndex} className="tech-chip">
-                {tech}
-              </span>
+          <div className="lpc-chips">
+            {technologies.slice(0, 5).map((tech) => (
+              <span key={tech} className="lpc-chip">{tech}</span>
             ))}
-            {technologies.length > 4 && (
-              <span className="tech-chip opacity-60">
-                +{technologies.length - 4} more
-              </span>
+            {technologies.length > 5 && (
+              <span className="lpc-chip">+{technologies.length - 5}</span>
             )}
           </div>
         )}
 
-        <Link
-          to={projectUrl}
-          className="terminal-button-link mt-5 px-10 py-5 w-fit text-center"
-        >
-          <span>View Project</span>
-        </Link>
+        <div className="lpc-cta">
+          <Link
+            to={projectUrl}
+            className="btn-primary"
+            onClick={(e) => { if (isUpcoming) e.preventDefault(); }}
+          >
+            {isUpcoming ? "ACCESS DENIED" : "VIEW PROJECT →"}
+          </Link>
+        </div>
       </div>
     </div>
   );

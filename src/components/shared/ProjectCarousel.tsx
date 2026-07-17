@@ -19,20 +19,22 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
 
   return (
     <div ref={emblaRef} className="overflow-hidden w-full relative">
-      <div className="flex gap-8 py-10 touch-pan-y touch-pinch-zoom">
+      <div className="flex py-10 touch-pan-y touch-pinch-zoom">
         {projects.map((project, index) => (
           <div
             key={index}
-            className="flex-shrink-0 w-full md:w-[90%] lg:w-[85%] select-none"
+            className="flex-shrink-0 w-full md:w-[90%] lg:w-[85%] select-none mx-4"
           >
             <LargeProjectCard
               title={project.name}
-              description={project.description}
+              description={project.overrideDescription || project.description}
               imageUrl={project.heroImage}
-              projectUrl={"/projects/" + project.route}
+              projectUrl={"/" + project.route}
               pictureInLeft={index % 2 === 0}
               releaseDate={project.releaseDate}
               technologies={project.technologies}
+              index={index + 1}
+              category={project.category}
             />
           </div>
         ))}
