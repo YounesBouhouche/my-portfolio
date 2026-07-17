@@ -70,7 +70,7 @@ export default function ProjectCard({ project, index = 1 }: ProjectCardProps) {
         <div className="spc-accent-rule" />
 
         <div className="spc-meta">
-          <span className="spc-category">{project.category}</span>
+          <span className="spc-category">{project.category ?? "Project"}</span>
           {project.releaseDate && !upcoming && (
             <>
               <span className="text-gray-700 font-mono text-[0.5rem]">—</span>
@@ -93,10 +93,6 @@ export default function ProjectCard({ project, index = 1 }: ProjectCardProps) {
             )}
           </div>
         )}
-
-        <span className="spc-cta">
-          {upcoming ? "ACCESS DENIED" : "VIEW PROJECT →"}
-        </span>
       </div>
     </div>
   );

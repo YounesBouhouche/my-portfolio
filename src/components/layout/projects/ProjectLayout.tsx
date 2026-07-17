@@ -7,15 +7,17 @@ export default function ProjectLayout({ project }: { project: Project }) {
 
   const heroRef = useScrollReveal<HTMLDivElement>();
   const statsRef = useScrollReveal<HTMLDivElement>({ stagger: true });
+  const screenshotsRef = useScrollReveal<HTMLDivElement>({ stagger: true });
   const contentRef = useScrollReveal<HTMLDivElement>({ stagger: true });
+  const featuresRef = useScrollReveal<HTMLDivElement>({ stagger: true });
 
   const {
     name,
     description,
     overrideDescription,
-    heroImage,
     screenshots,
     technologies,
+    features,
     githubLink,
     liveDemoLink,
     extraLinks,
@@ -26,8 +28,8 @@ export default function ProjectLayout({ project }: { project: Project }) {
   } = project;
 
   const formatDate = (isoStr: string) => {
-    return new Date(isoStr).toLocaleDateString(undefined, { 
-      year: 'numeric', month: 'short', day: 'numeric' 
+    return new Date(isoStr).toLocaleDateString(undefined, {
+      year: 'numeric', month: 'short', day: 'numeric'
     });
   };
 
@@ -44,7 +46,7 @@ export default function ProjectLayout({ project }: { project: Project }) {
             {/* Tag / Category */}
             <div className="font-mono text-xs tracking-[0.2em] text-primary uppercase mb-6 flex items-center gap-2">
               <span className="w-8 h-px bg-primary/50"></span>
-              {project.category}
+              {project.category ?? "Project"}
             </div>
 
             {/* Title */}
@@ -120,16 +122,9 @@ export default function ProjectLayout({ project }: { project: Project }) {
       )}
 
       {/* Main Content Area */}
-      <section className="max-w-4xl mx-auto px-6 mt-24">
-        {content ? (
-          /* Structured Narrative (New Schema) */
-          <div className="space-y-24 reveal-stagger" ref={contentRef}>
-            {heroImage && (
-              <div className="reveal-ready rounded-sm overflow-hidden border border-white/10 bg-[#111113] p-1">
-                <img src={heroImage} alt={name} className="w-full h-auto rounded-[2px]" />
-              </div>
-            )}
-            
+      <section className="max-w-4xl mx-auto px-6 mt-24 gap-4">
+        {content && (
+          <div className="space-y-16 reveal-stagger" ref={contentRef}>
             {content.problem && (
               <div className="reveal-ready">
                 <h2 className="font-heading text-3xl font-bold mb-6 text-white">The Problem</h2>
@@ -150,55 +145,36 @@ export default function ProjectLayout({ project }: { project: Project }) {
                 <div className="font-body text-gray-400 leading-relaxed space-y-4 text-lg" dangerouslySetInnerHTML={{ __html: content.outcome }} />
               </div>
             )}
-
-            {screenshots && screenshots.length > 0 && (
-              <div className="reveal-ready mt-16">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {screenshots.map((src, idx) => (
-                    <div key={idx} className="border border-white/10 bg-[#111113] p-1 rounded-sm">
-                      <img src={src} alt={`Screenshot ${idx + 1}`} className="w-full h-auto rounded-[2px]" />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-        ) : (
-          /* Fallback for Legacy Projects (Old Schema) */
-          <div className="space-y-16 reveal-stagger" ref={contentRef}>
-            {heroImage && (
-              <div className="reveal-ready rounded-sm overflow-hidden border border-white/10 bg-[#111113] p-1">
-                <img src={heroImage} alt={name} className="w-full h-auto rounded-[2px]" />
-              </div>
-            )}
-            
-            {project.features && project.features.length > 0 && (
-              <div className="reveal-ready">
-                <h2 className="font-heading text-3xl font-bold mb-6 text-white">Features</h2>
-                <ul className="list-none space-y-3 font-body text-gray-400 text-lg">
-                  {project.features.map((feature, idx) => (
-                    <li key={idx} className="flex gap-3">
-                      <span className="text-primary font-bold">→</span>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {screenshots && screenshots.length > 0 && (
-              <div className="reveal-ready mt-16">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {screenshots.map((src, idx) => (
-                    <div key={idx} className="border border-white/10 bg-[#111113] p-1 rounded-sm">
-                      <img src={src} alt={`Screenshot ${idx + 1}`} className="w-full h-auto rounded-[2px]" />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
         )}
+
+        {screenshots && screenshots.length > 0 && (
+          <div className="reveal-stagger mt-16" ref={screenshotsRef}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {screenshots.map((src, idx) => (
+                <div key={idx} className="border border-white/10 bg-[#111113] p-1 rounded-sm">
+                  <img src={src} alt={`Screenshot ${idx + 1}`} className="w-full h-auto rounded-[2px]" />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div className="space-y-24 reveal-stagger" ref={featuresRef}>
+          {features && features.length > 0 && (
+            <div className="reveal-ready">
+              <h2 className="font-heading text-3xl font-bold mb-6 text-white">Features</h2>
+              <ul className="list-none space-y-3 font-body text-gray-400 text-lg">
+                {features.map((feature, idx) => (
+                  <li key={idx} className="flex gap-3">
+                    <span className="text-primary font-bold">→</span>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
       </section>
     </article>
   );

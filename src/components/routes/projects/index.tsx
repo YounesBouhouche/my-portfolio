@@ -140,8 +140,8 @@ export default function Projects() {
                         key={stack}
                         onClick={() => toggleStack(stack)}
                         className={`px-3 py-1.5 font-mono text-xs uppercase tracking-wider transition-colors chamfered border-none ${isActive
-                            ? "bg-primary text-white"
-                            : "bg-[#111113] text-gray-500 hover:text-white hover:bg-[#1a1a1e]"
+                          ? "bg-primary text-white"
+                          : "bg-[#111113] text-gray-500 hover:text-white hover:bg-[#1a1a1e]"
                           }`}
                       >
                         {stack}
@@ -169,12 +169,12 @@ export default function Projects() {
                     {featuredProjects.length > 0 && (
                       <div className="reveal-stagger" ref={featuredRef}>
                         {featuredProjects.map((project, idx) => (
-                          <div key={project.route || project.id} className="reveal-ready">
+                          <div key={project.id} className="reveal-ready">
                             <LargeProjectCard
                               title={project.name}
                               description={project.overrideDescription || project.description}
                               imageUrl={project.heroImage}
-                              projectUrl={`/projects/${project.route}`}
+                              projectUrl={`/projects/${project.id}`}
                               pictureInLeft={idx % 2 === 0}
                               releaseDate={project.releaseDate}
                               technologies={project.technologies}
@@ -188,7 +188,7 @@ export default function Projects() {
                     {regularProjects.length > 0 ? (
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 reveal-stagger" ref={gridRef}>
                         {regularProjects.map((project, idx) => (
-                          <div key={project.route || project.id} className="reveal-ready h-full">
+                          <div key={project.id} className="reveal-ready h-full">
                             <ProjectCard project={project} index={idx + 1} />
                           </div>
                         ))}
