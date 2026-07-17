@@ -51,20 +51,17 @@ async function enrichWithGitHub(project: Project): Promise<Project> {
     const res = await fetch(`${GITHUB_API}/${project.repo}`, {
       headers: {
         Accept: 'application/vnd.github.v3+json',
-        // If you add a VITE_GITHUB_TOKEN env var, uncomment this:
-        // ...(import.meta.env.VITE_GITHUB_TOKEN
-        //   ? { Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}` }
-        //   : {}),
+        ...(import.meta.env.VITE_GITHUB_TOKEN
+          ? { Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}` }
+          : {}),
       },
     });
 
     if (res.status === 403) {
-      // Rate limited — return project with statsUnavailable flag
       return { ...project, statsUnavailable: true };
     }
 
     if (res.status === 404) {
-      // Repo not found — skip enrichment
       return { ...project, statsUnavailable: true };
     }
 
@@ -73,12 +70,18 @@ async function enrichWithGitHub(project: Project): Promise<Project> {
     }
 
     const data = await res.json();
+    console.log("Github data", data);
 
     return {
       ...project,
+      id: data.id,
+      name: project.name ?? data.name,
       stargazers_count: data.stargazers_count,
       primary_language: data.language,
-      pushed_at: data.pushed_at,
+      lastUpdated: data.pushed_at,
+      releaseDate: data.created_at,
+      description: data.description,
+      githubLink: data.html_url,
       html_url: data.html_url,
       statsUnavailable: false,
     };
@@ -96,7 +99,7 @@ async function fetchProjects(): Promise<Project[]> {
   try {
     const res = await fetch(CONFIG_URL);
     if (!res.ok) throw new Error(`Config fetch failed: ${res.status}`);
-    configData = await res.json();
+    configData = (await res.json()).projects;
     if (!Array.isArray(configData)) throw new Error('Config is not an array');
   } catch (err) {
     throw new Error(
@@ -159,6 +162,8 @@ export function usePortfolioData(): UsePortfolioDataReturn {
         if (cancelled) return;
 
         // Check if any project hit rate limit
+        console.log("Data: ", data);
+
         const hasRateLimit = data.some(
           (p) => p.statsUnavailable && p.repo
         );
