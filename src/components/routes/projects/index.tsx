@@ -105,7 +105,7 @@ export default function Projects() {
 
   const filtersContent = (
     <div className="pa-sidebar-content">
-      <div className="pa-search-wrapper mb-8">
+      <div className="pa-search-wrapper chamfered-border mb-8">
         <svg className="pa-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="11" cy="11" r="8"></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -204,7 +204,7 @@ export default function Projects() {
 
         {/* Desktop Sidebar */}
         <aside className="pa-sidebar reveal-ready" ref={filterRef}>
-          <div className="pa-sidebar-sticky chamfered-large-shape">
+          <div className="pa-sidebar-sticky chamfered-large-shape chamfered-border">
             {filtersContent}
           </div>
         </aside>
@@ -232,7 +232,7 @@ export default function Projects() {
                 {filteredProjects.length > 0 ? (
                   <div className="pa-grid reveal-stagger" ref={gridRef}>
                     {filteredProjects.map((project, idx) => (
-                      <div key={project.id} className="reveal-ready h-full">
+                      <div key={project.id} className="reveal-stagger h-full">
                         <ProjectCard project={project} index={idx + 1} />
                       </div>
                     ))}

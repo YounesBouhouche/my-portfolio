@@ -91,9 +91,9 @@
   background: var(--color-surface);
   padding: 1.5rem;
   clip-path: var(--chamfered-large-shape);
-  border: 1px solid rgba(255, 255, 255, 0.05);
   overflow-y: auto;
-  scrollbar-width: none; /* Hide scrollbar for cleaner look */
+  scrollbar-width: none;
+  /* Hide scrollbar for cleaner look */
   max-height: 100%;
 }
 
@@ -153,12 +153,11 @@
 
 .pa-filter-btn {
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
   color: rgba(255, 255, 255, 0.6);
   font-family: var(--font-mono);
+  clip-path: var(--chamfered-small-shape);
   font-size: 0.75rem;
   padding: 0.5rem;
-  clip-path: var(--chamfered-small-shape);
   cursor: pointer;
   text-align: center;
   transition: all 0.2s ease;
@@ -183,7 +182,6 @@
 
 .pa-filter-chip {
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
   color: rgba(255, 255, 255, 0.6);
   font-family: var(--font-mono);
   font-size: 0.7rem;
@@ -302,8 +300,13 @@
 }
 
 @keyframes pa-backdrop-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .pa-drawer {
@@ -319,8 +322,13 @@
 }
 
 @keyframes pa-drawer-in {
-  from { transform: translateX(100%); }
-  to   { transform: translateX(0); }
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
 }
 
 .pa-drawer-header {
@@ -416,7 +424,9 @@
 }
 
 @keyframes pa-spin {
-  100% { transform: rotate(360deg); }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .pa-fab-text {
@@ -452,15 +462,19 @@
   .pa-fab {
     transition: none;
   }
+
   .pa-fab:hover {
     transform: none;
   }
+
   .pa-fab-icon.spinning svg {
     animation: none;
   }
+
   .pa-drawer {
     animation: none;
   }
+
   .pa-drawer-backdrop {
     animation: none;
   }
