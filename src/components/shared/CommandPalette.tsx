@@ -70,7 +70,7 @@ export default function CommandPalette() {
       id: "nav-projects",
       label: t("command.goProjects", "Go to Projects"),
       category: "Navigation",
-      action: () => { navigate({ to: "/projects", search: { q: "", stack: "" } }); closeCommandPalette(); },
+      action: () => { navigate({ to: "/projects", search: { q: "", stack: "", category: "", status: "" } }); closeCommandPalette(); },
     },
     {
       id: "nav-about",

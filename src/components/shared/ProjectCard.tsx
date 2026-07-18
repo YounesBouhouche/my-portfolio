@@ -25,12 +25,12 @@ export default function ProjectCard({ project, index = 1 }: ProjectCardProps) {
     if (cardRef.current) {
       cardRef.current.classList.add("card-exit");
     }
-    startCardTransition(project.route);
+    startCardTransition(project.id.toString());
 
     window.setTimeout(() => {
       navigate({
         to: "/projects/$project",
-        params: { project: project.route },
+        params: { project: project.id.toString() },
       });
     }, 200);
   };

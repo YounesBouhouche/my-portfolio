@@ -2,10 +2,11 @@ import { Outlet, useNavigate, useSearch } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { usePortfolioData } from "../../../hooks/usePortfolioData";
 import { useScrollReveal } from "../../../hooks/useScrollReveal";
-import LargeProjectCard from "../../shared/LargeProjectCard";
 import ProjectCard from "../../shared/ProjectCard";
+import ProjectCarousel from "../../shared/ProjectCarousel";
 import LoadingContainer from "../../shared/LoadingContainer";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
+import "./Projects.css";
 
 export default function Projects() {
   const { t } = useTranslation();
@@ -13,12 +14,17 @@ export default function Projects() {
   const search = useSearch({ from: '/projects' });
   const navigate = useNavigate({ from: '/projects' });
 
+  // Mobile sidebar toggle
+  const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
+
   // Search state from URL
   const searchTerm = search.q || "";
   const selectedStacks = search.stack ? search.stack.split(",").filter(Boolean) : [];
+  const selectedCategory = search.category || "All";
+  const selectedStatus = search.status || "All";
 
   const handleSearchChange = (val: string) => {
-    navigate({ search: (prev) => ({ ...prev, q: val }) });
+    navigate({ search: (prev) => ({ ...prev, q: val }), resetScroll: false });
   };
 
   const toggleStack = (stack: string) => {
@@ -26,42 +32,64 @@ export default function Projects() {
       ? selectedStacks.filter((s) => s !== stack)
       : [...selectedStacks, stack];
 
-    navigate({ search: (prev) => ({ ...prev, stack: newStacks.join(",") }) });
+    navigate({ search: (prev) => ({ ...prev, stack: newStacks.join(",") }), resetScroll: false });
+  };
+
+  const setCategory = (cat: string) => {
+    navigate({ search: (prev) => ({ ...prev, category: cat === "All" ? "" : cat }), resetScroll: false });
+  };
+
+  const setStatus = (status: string) => {
+    navigate({ search: (prev) => ({ ...prev, status: status === "All" ? "" : status }), resetScroll: false });
   };
 
   const clearFilters = () => {
-    navigate({ search: { q: "", stack: "" } });
+    navigate({ search: { q: "", stack: "", category: "", status: "" }, resetScroll: false });
   };
 
-  // Collect all unique tech stacks
+  // Extract unique data for filters
   const allStacks = useMemo(() => {
     const set = new Set<string>();
     projects.forEach(p => p.technologies?.forEach(t => set.add(t)));
     return Array.from(set).sort();
   }, [projects]);
 
+  const allCategories = useMemo(() => {
+    const set = new Set<string>();
+    projects.forEach(p => p.category && set.add(p.category));
+    return ["All", ...Array.from(set).sort()];
+  }, [projects]);
+
+  const statuses = ["All", "Completed", "In Progress", "Upcoming"];
+
   // Filter projects
   const filteredProjects = useMemo(() => {
     return projects.filter((p) => {
-      // Name or desc fuzzy search (simple substring match)
       const matchesSearch = !searchTerm ||
-        p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        p.description.toLowerCase().includes(searchTerm.toLowerCase());
+        (p.name?.toLowerCase() || "").includes(searchTerm.toLowerCase()) ||
+        (p.description?.toLowerCase() || "").includes(searchTerm.toLowerCase());
 
-      // Multi-select stack filter (must contain ALL selected stacks)
       const matchesStack = selectedStacks.length === 0 ||
         selectedStacks.every((s) => p.technologies?.includes(s));
 
-      return matchesSearch && matchesStack;
+      const matchesCategory = selectedCategory === "All" || p.category === selectedCategory;
+
+      let matchesStatus = true;
+      if (selectedStatus !== "All") {
+        const isUpcoming = !p.releaseDate || new Date(p.releaseDate) > new Date();
+        if (selectedStatus === "Upcoming") matchesStatus = isUpcoming;
+        else if (selectedStatus === "Completed") matchesStatus = p.completed === true && !isUpcoming;
+        else if (selectedStatus === "In Progress") matchesStatus = p.completed === false && !isUpcoming;
+      }
+
+      return matchesSearch && matchesStack && matchesCategory && matchesStatus;
     });
-  }, [projects, searchTerm, selectedStacks]);
+  }, [projects, searchTerm, selectedStacks, selectedCategory, selectedStatus]);
 
-  const featuredProjects = filteredProjects.filter(p => p.featured);
-  const regularProjects = filteredProjects.filter(p => !p.featured);
+  const featuredProjects = useMemo(() => projects.filter(p => p.featured), [projects]);
 
-  const headerRef = useScrollReveal<HTMLDivElement>();
-  const sidebarRef = useScrollReveal<HTMLDivElement>();
-  const featuredRef = useScrollReveal<HTMLDivElement>({ stagger: true });
+  const headerRef = useScrollReveal<HTMLElement>();
+  const filterRef = useScrollReveal<HTMLElement>();
   const gridRef = useScrollReveal<HTMLDivElement>({ stagger: true });
 
   const formatTime = (ms: number) => {
@@ -69,153 +97,209 @@ export default function Projects() {
     return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
 
-  return (
-    <>
-      <div className="min-h-screen bg-background text-white pt-28 md:pt-32 pb-24">
-        <div className="max-w-7xl mx-auto px-6">
+  const activeFiltersCount =
+    (searchTerm ? 1 : 0) +
+    (selectedCategory !== "All" ? 1 : 0) +
+    (selectedStatus !== "All" ? 1 : 0) +
+    selectedStacks.length;
 
-          {/* New Hero Section */}
-          <div className="mb-16 reveal-ready" ref={headerRef}>
-            <p className="font-mono text-[0.65rem] tracking-[0.25em] text-primary uppercase mb-4">
-              PORTFOLIO_ARCHIVE
-            </p>
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-6">
-              <h1 className="font-display text-[14vw] md:text-[5rem] lg:text-[6.5rem] leading-[0.85] tracking-tight text-white m-0">
-                {t("projects.title", "PROJECTS")}<span className="text-primary">.</span>
-              </h1>
+  const filtersContent = (
+    <div className="pa-sidebar-content">
+      <div className="pa-search-wrapper mb-8">
+        <svg className="pa-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input
+          type="text"
+          placeholder="Search query..."
+          value={searchTerm}
+          onChange={(e) => handleSearchChange(e.target.value)}
+          className="pa-search-input"
+        />
+      </div>
 
-              {/* Cache status / refresh */}
-              {lastFetched && (
-                <div className="flex items-center gap-4 font-mono text-[0.65rem] text-gray-500 bg-[#0f0f11] chamfered-border px-4 py-2 shrink-0">
-                  {rateLimited && (
-                    <span className="text-yellow-500 mr-2 flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 bg-yellow-500 rounded-full animate-pulse"></span>
-                      {t("projects.rateLimitWarning", "API RATE LIMIT")}
-                    </span>
-                  )}
-                  <span>{t("projects.lastUpdated", "LAST SYNC")}: {formatTime(lastFetched)}</span>
-                  <button
-                    onClick={refresh}
-                    className="hover:text-primary transition-colors flex items-center gap-1 ml-2"
-                    disabled={isLoading}
-                  >
-                    {isLoading ? "..." : t("projects.refresh", "REFRESH")}
-                  </button>
-                </div>
-              )}
-            </div>
-            <p className="font-body text-gray-500 leading-relaxed max-w-2xl text-base">
-              {t("projects.subtitle", "A comprehensive archive of my work, side projects, open-source contributions, and technical experiments.")}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 items-start">
-
-            {/* Sidebar Controls */}
-            <div className="lg:col-span-1 space-y-8 reveal-ready lg:sticky lg:top-32" ref={sidebarRef}>
-
-              {/* Search */}
-              <div>
-                <h3 className="font-heading text-sm text-gray-300 uppercase tracking-widest mb-4">Search</h3>
-                <div className="relative chamfered-border">
-                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 font-mono text-sm z-10">{'>'}</span>
-                  <input
-                    type="text"
-                    placeholder="Search query..."
-                    value={searchTerm}
-                    onChange={(e) => handleSearchChange(e.target.value)}
-                    className="w-full bg-[#111113] text-white pl-10 pr-4 py-3 focus:outline-none transition-colors font-mono text-sm placeholder-gray-600 border-none"
-                  />
-                </div>
-              </div>
-
-              {/* Stack Filter */}
-              <div>
-                <h3 className="font-heading text-sm text-gray-300 uppercase tracking-widest mb-4">Technologies</h3>
-                <div className="flex flex-wrap gap-2">
-                  {allStacks.map((stack) => {
-                    const isActive = selectedStacks.includes(stack);
-                    return (
-                      <button
-                        key={stack}
-                        onClick={() => toggleStack(stack)}
-                        className={`px-3 py-1.5 font-mono text-xs uppercase tracking-wider transition-colors chamfered border-none ${isActive
-                          ? "bg-primary text-white"
-                          : "bg-[#111113] text-gray-500 hover:text-white hover:bg-[#1a1a1e]"
-                          }`}
-                      >
-                        {stack}
-                      </button>
-                    );
-                  })}
-                </div>
-                {selectedStacks.length > 0 && (
-                  <button onClick={clearFilters} className="mt-4 font-mono text-[0.65rem] text-gray-500 hover:text-primary uppercase tracking-widest">
-                    [ Clear Filters ]
-                  </button>
-                )}
-              </div>
-            </div>
-
-            {/* Main Content: Projects Grid */}
-            <div className="lg:col-span-3 min-h-[50vh]">
-              <LoadingContainer
-                data={[projects.length > 0 ? projects : null, error, isLoading && projects.length === 0]}
-                size={180}
-              >
-                {() => (
-                  <div className="space-y-16">
-                    {/* Featured Projects (Large Cards) */}
-                    {featuredProjects.length > 0 && (
-                      <div className="reveal-stagger" ref={featuredRef}>
-                        {featuredProjects.map((project, idx) => (
-                          <div key={project.id} className="reveal-ready">
-                            <LargeProjectCard
-                              title={project.name}
-                              description={project.overrideDescription || project.description}
-                              imageUrl={project.heroImage}
-                              projectUrl={`/projects/${project.id}`}
-                              pictureInLeft={idx % 2 === 0}
-                              releaseDate={project.releaseDate}
-                              technologies={project.technologies}
-                            />
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                    {/* Regular Projects (Node Cards Grid) */}
-                    {regularProjects.length > 0 ? (
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 reveal-stagger" ref={gridRef}>
-                        {regularProjects.map((project, idx) => (
-                          <div key={project.id} className="reveal-ready h-full">
-                            <ProjectCard project={project} index={idx + 1} />
-                          </div>
-                        ))}
-                      </div>
-                    ) : (
-                      /* Empty State */
-                      filteredProjects.length === 0 && (
-                        <div className="text-center py-24 border border-dashed border-gray-800 bg-[#111113]/50 chamfered">
-                          <div className="text-gray-600 font-mono mb-4 text-4xl">¯\_(ツ)_/¯</div>
-                          <p className="text-gray-400 font-mono text-sm uppercase tracking-widest mb-6">
-                            {t("projects.noResults", "NO PROJECTS FOUND")}
-                          </p>
-                          <button onClick={clearFilters} className="btn-ghost">
-                            {t("projects.clearFilters", "CLEAR FILTERS")}
-                          </button>
-                        </div>
-                      )
-                    )}
-                  </div>
-                )}
-              </LoadingContainer>
-            </div>
-
-          </div>
+      <div className="pa-filter-section mb-6">
+        <span className="pa-filter-label">Category</span>
+        <div className="pa-filter-grid">
+          {allCategories.map(cat => (
+            <button
+              key={cat}
+              onClick={() => setCategory(cat)}
+              className={`pa-filter-btn ${selectedCategory === cat ? "active" : ""}`}
+            >
+              {cat}
+            </button>
+          ))}
         </div>
       </div>
+
+      <div className="pa-filter-section mb-6">
+        <span className="pa-filter-label">Status</span>
+        <div className="pa-filter-grid">
+          {statuses.map(stat => (
+            <button
+              key={stat}
+              onClick={() => setStatus(stat)}
+              className={`pa-filter-btn ${selectedStatus === stat ? "active" : ""}`}
+            >
+              {stat}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {allStacks.length > 0 && (
+        <div className="pa-filter-section mb-8">
+          <span className="pa-filter-label">Stack</span>
+          <div className="pa-filter-chips">
+            {allStacks.map(stack => (
+              <button
+                key={stack}
+                onClick={() => toggleStack(stack)}
+                className={`pa-filter-chip ${selectedStacks.includes(stack) ? "active" : ""}`}
+              >
+                {stack}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {activeFiltersCount > 0 && (
+        <button onClick={clearFilters} className="pa-clear-btn w-full">
+          {t("projects.clearFilters", "CLEAR ALL FILTERS")}
+        </button>
+      )}
+    </div>
+  );
+
+  return (
+    <div className="projects-page-wrapper">
+      {/* ── Header ──────────────────────────────────────────────── */}
+      <header className="pa-header reveal-ready" ref={headerRef}>
+        <h1 className="pa-title">
+          {t("projects.title", "PROJECTS")}<span className="text-primary">.</span>
+        </h1>
+        <p className="pa-subtitle">
+          {t("projects.subtitle", "A comprehensive archive of my work, side projects, open-source contributions, and technical experiments.")}
+        </p>
+      </header>
+
+      {/* ── Featured Carousel ───────────────────────────────────── */}
+      {featuredProjects.length > 0 && (
+        <section className="pa-featured-section">
+          <LoadingContainer data={[projects.length > 0 ? projects : null, error, isLoading && projects.length === 0]} size={120}>
+            {() => (
+              <div className="pa-carousel-wrapper">
+                <ProjectCarousel projects={featuredProjects} />
+              </div>
+            )}
+          </LoadingContainer>
+        </section>
+      )}
+
+      {/* ── Main Content Layout ─────────────────────────────────── */}
+      <div className="pa-main-layout">
+
+        {/* Desktop Sidebar */}
+        <aside className="pa-sidebar reveal-ready" ref={filterRef}>
+          <div className="pa-sidebar-sticky chamfered-large-shape">
+            {filtersContent}
+          </div>
+        </aside>
+
+        {/* All Projects Grid */}
+        <section className="pa-content">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="pa-results-title">
+              {filteredProjects.length} {filteredProjects.length === 1 ? 'Project' : 'Projects'}
+            </h2>
+            <button
+              className="pa-mobile-filter-btn"
+              onClick={() => setMobileFilterOpen(true)}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+              </svg>
+              FILTERS {activeFiltersCount > 0 && `(${activeFiltersCount})`}
+            </button>
+          </div>
+
+          <LoadingContainer data={[projects.length > 0 ? projects : null, error, isLoading && projects.length === 0]} size={180}>
+            {() => (
+              <>
+                {filteredProjects.length > 0 ? (
+                  <div className="pa-grid reveal-stagger" ref={gridRef}>
+                    {filteredProjects.map((project, idx) => (
+                      <div key={project.id} className="reveal-ready h-full">
+                        <ProjectCard project={project} index={idx + 1} />
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="pa-empty-state">
+                    <div className="pa-empty-icon">¯\_(ツ)_/¯</div>
+                    <div className="pa-empty-text">{t("projects.noResults", "NO PROJECTS FOUND")}</div>
+                    <button onClick={clearFilters} className="btn-ghost">
+                      {t("projects.clearFilters", "CLEAR FILTERS")}
+                    </button>
+                  </div>
+                )}
+              </>
+            )}
+          </LoadingContainer>
+        </section>
+
+      </div>
+
+      {/* ── Mobile Filter Drawer ────────────────────────────────── */}
+      {mobileFilterOpen && (
+        <div
+          className="pa-drawer-backdrop"
+          onClick={() => setMobileFilterOpen(false)}
+        >
+          <aside
+            className="pa-drawer"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="pa-drawer-header">
+              <span className="pa-drawer-title">Filters</span>
+              <button
+                className="pa-drawer-close"
+                onClick={() => setMobileFilterOpen(false)}
+              >✕</button>
+            </div>
+            <div className="pa-drawer-body">
+              {filtersContent}
+            </div>
+          </aside>
+        </div>
+      )}
+
+      {/* ── Floating Action Button (Refresh) ────────────────────── */}
+      {lastFetched && (
+        <button
+          className={`pa-fab ${rateLimited ? "rate-limited" : ""}`}
+          onClick={refresh}
+          disabled={isLoading}
+          aria-label="Refresh data"
+        >
+          <div className="pa-fab-text">
+            <span className="pa-fab-label">Last Sync</span>
+            <span className="pa-fab-time">{formatTime(lastFetched)}</span>
+          </div>
+          <div className={`pa-fab-icon ${isLoading ? "spinning" : ""}`}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="23 4 23 10 17 10"></polyline>
+              <polyline points="1 20 1 14 7 14"></polyline>
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+            </svg>
+          </div>
+        </button>
+      )}
+
       <Outlet />
-    </>
+    </div>
   );
 }

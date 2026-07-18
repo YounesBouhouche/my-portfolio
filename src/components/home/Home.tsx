@@ -83,7 +83,7 @@ export default function Home() {
             </div>
 
             <div className="mt-16 flex justify-center md:justify-end reveal-ready" ref={projectsBtnRef}>
-              <Link to="/projects" search={{ q: "", stack: "" }} className="btn-ghost">
+              <Link to="/projects" search={{ q: "", stack: "", category: "", status: "" }} className="btn-ghost">
                 {t("projects.goProjects", "VIEW ALL PROJECTS")}
               </Link>
             </div>
