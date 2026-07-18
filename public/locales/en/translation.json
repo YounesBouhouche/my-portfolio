@@ -1,6 +1,6 @@
 {
   "nav": {
-    "work": "01/WORK",
+    "home": "01/home",
     "projects": "02/PROJECTS",
     "about": "03/ABOUT",
     "contact": "04/CONTACT"
@@ -34,7 +34,21 @@
     "notFound": "Project not found",
     "notFoundMessage": "The project you're looking for doesn't exist or has been moved.",
     "goHome": "GO HOME",
-    "goProjects": "VIEW ALL PROJECTS"
+    "goProjects": "VIEW ALL PROJECTS",
+    "access_denied": "Access Denied",
+    "view_project": "View Project"
+  },
+  "skills": {
+    "title": "Skills",
+    "languages": "LANGUAGES",
+    "frameworks": "FRAMEWORKS",
+    "design": "Design",
+    "tools": "Tools",
+    "other": "Other",
+    "expert": "Expert",
+    "advanced": "Advanced",
+    "intermediate": "Intermediate",
+    "beginner": "Beginner"
   },
   "about": {
     "title": "ABOUT ME",
@@ -54,6 +68,9 @@
   },
   "contact": {
     "title": "CONTACT",
+    "subtitle": "Have a project, collaboration, or just want to say hello? Open a connection below or send a message.",
+    "welcome1": "> Secure channel open. Fill the form to initiate contact.",
+    "welcome2": "> Type your response and press [ENTER] to proceed.",
     "prompt1": "> WHO ARE YOU?",
     "prompt2": "> YOUR EMAIL?",
     "prompt3": "> WHAT'S ON YOUR MIND?",
@@ -63,7 +80,8 @@
     "errorNetwork": "✗ TRANSMISSION FAILED. CHECK YOUR CONNECTION AND RETRY.",
     "errorMissing": "✗ THIS FIELD IS REQUIRED.",
     "retry": "RETRY",
-    "submit": "SEND"
+    "submit": "SEND",
+    "goHome": "cd ~/ (GO HOME)"
   },
   "command": {
     "placeholder": "TYPE A COMMAND OR SEARCH...",
@@ -85,8 +103,8 @@
     "noResults": "No commands found."
   },
   "footer": {
-    "tagline": "Building for Android & the Web.",
-    "copyright": "© {{year}} Younes Bouhouche."
+    "name": "Younes Bouhouche",
+    "tagline": "Building for Android & the Web."
   },
   "notFound": {
     "title": "404",

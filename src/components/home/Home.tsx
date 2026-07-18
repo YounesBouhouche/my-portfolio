@@ -15,11 +15,11 @@ import SkillGanttChart from "./SkillGanttChart";
 // Helper to group skills by category
 const groupSkills = (skills: Skill[] = []) => {
   const groups: Record<string, Skill[]> = {
-    Languages: [],
-    Frameworks: [],
-    Design: [],
-    Tools: [],
-    Other: [],
+    languages: [],
+    frameworks: [],
+    design: [],
+    tools: [],
+    other: [],
   };
 
   skills.forEach((skill) => {
@@ -31,7 +31,7 @@ const groupSkills = (skills: Skill[] = []) => {
     }
   });
 
-  const orderedGroups = ["Languages", "Frameworks", "Design", "Tools", "Other"];
+  const orderedGroups = ["languages", "frameworks", "design", "tools", "other"];
   return orderedGroups
     .map((key) => ({
       category: key,
@@ -94,7 +94,7 @@ export default function Home() {
         <section className="py-24 bg-[#0d0d0f] border-b border-white/5" id="skills">
           <div className="container mx-auto px-6 md:px-12">
             <h2 className="section-title text-center md:text-left mb-16 flex items-center justify-center md:justify-start gap-3 reveal-ready" ref={skillsTitleRef}>
-              <span className="text-primary">/</span> Skills
+              <span className="text-primary">/</span> {t("skills.title")}
             </h2>
 
             <LoadingContainer data={skillsData} size={120}>

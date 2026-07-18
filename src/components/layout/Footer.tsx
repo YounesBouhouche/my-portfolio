@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import LogoAnimation from "../shared/LogoAnimation";
 import "./Footer.css";
 
@@ -41,6 +42,7 @@ const socials = [
 ];
 
 export default function Footer() {
+  const { t } = useTranslation();
   return (
     <footer className="footer">
       <div className="footer-inner">
@@ -48,8 +50,8 @@ export default function Footer() {
           <div className="footer-brand">
             <LogoAnimation size={44} className="footer-logo-animation" />
             <div className="footer-brand-text">
-              <span className="footer-name">YOUNES BOUHOUCHE</span>
-              <span className="footer-tagline">Building for the web and mobile.</span>
+              <span className="footer-name">{t("footer.name")}</span>
+              <span className="footer-tagline">{t("footer.tagline")}</span>
             </div>
           </div>
 

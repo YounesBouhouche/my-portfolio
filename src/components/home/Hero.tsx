@@ -22,7 +22,7 @@ export default function Hero() {
         <div className="flex flex-col items-start gap-3 max-w-4xl">
 
           {/* Top labels */}
-          <div className="font-heading text-xs md:text-sm font-semibold tracking-wider text-gray-500 uppercase mb-2">
+          <div className="font-heading text-xs md:text-lg font-semibold tracking-wider text-gray-500 uppercase mb-2">
             {t("hero.prefix", "WELCOME, I'M")}
           </div>
 
@@ -52,7 +52,7 @@ export default function Hero() {
         {/* CTA Buttons */}
         <div className="mt-12 md:mt-0 md:absolute md:bottom-24 md:right-12 z-20 flex gap-4">
           <a href="/resume.pdf" target="_blank" rel="noreferrer" className="btn-ghost">
-            {t("hero.downloadCv", "DOWNLOAD CV")}
+            {t("about.cvButton", "DOWNLOAD CV")}
           </a>
           <Link to="/contact" className="btn-primary filled">
             {t("hero.cta", "GET IN TOUCH")}

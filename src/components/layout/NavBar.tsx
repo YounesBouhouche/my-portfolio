@@ -6,7 +6,7 @@ import "./NavBar.css";
 import { useTranslation } from "react-i18next";
 
 const navLinks = [
-  { key: "work", url: "/" },
+  { key: "home", url: "/" },
   { key: "projects", url: "/projects" },
   { key: "about", url: "/about" },
   { key: "contact", url: "/contact" },

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./SkillCard.css";
+import { useTranslation } from "react-i18next";
 
 interface SkillCardProps {
   name: string;
@@ -62,12 +63,13 @@ export default function SkillCard({
   };
 
   const getLeveltext = (level: number) => {
-    if (level >= 90) return "Expert";
-    if (level >= 70) return "Advanced";
-    if (level >= 50) return "Intermediate";
-    if (level >= 30) return "Beginner";
-    return "Novice";
+    if (level >= 90) return "expert";
+    if (level >= 70) return "advanced";
+    if (level >= 50) return "intermediate";
+    return "beginner";
   };
+
+  const { t } = useTranslation();
 
   return (
     <div
@@ -90,7 +92,7 @@ export default function SkillCard({
         <div className="skill-info">
           <h3 className="skill-name">{name}</h3>
           <div className="skill-level">
-            Level: <span className="level-number">{getLeveltext(level)}</span>
+            Level: <span className="level-number">{t("skills." + getLeveltext(level))}</span>
           </div>
         </div>
       </div>
