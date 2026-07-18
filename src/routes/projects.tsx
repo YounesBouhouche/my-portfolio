@@ -6,6 +6,8 @@ export const Route = createFileRoute('/projects')({
     return {
       q: (search.q as string) || '',
       stack: (search.stack as string) || '',
+      category: (search.category as string) || '',
+      status: (search.status as string) || '',
     }
   },
   component: Projects,

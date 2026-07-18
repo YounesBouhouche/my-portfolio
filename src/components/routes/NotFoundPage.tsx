@@ -41,7 +41,7 @@ export default function NotFoundPage() {
                 {t("notFound.goHome", "cd ~/ (GO HOME)")}
               </button>
               <button 
-                onClick={() => navigate({ to: "/projects", search: { q: "", stack: "" } })} 
+                onClick={() => navigate({ to: "/projects", search: { q: "", stack: "", category: "", status: "" } })} 
                 className="btn-ghost"
               >
                 {t("notFound.goProjects", "ls projects/")}

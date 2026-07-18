@@ -70,7 +70,7 @@ export default function CommandPalette() {
       id: "nav-projects",
       label: t("command.goProjects", "Go to Projects"),
       category: "Navigation",
-      action: () => { navigate({ to: "/projects", search: { q: "", stack: "" } }); closeCommandPalette(); },
+      action: () => { navigate({ to: "/projects", search: { q: "", stack: "", category: "", status: "" } }); closeCommandPalette(); },
     },
     {
       id: "nav-about",
@@ -128,7 +128,7 @@ export default function CommandPalette() {
     label: `Project: ${p.name}`,
     category: "Projects",
     action: () => {
-      navigate({ to: "/projects/$project", params: { project: p.route } });
+      navigate({ to: "/projects/$project", params: { project: p.id.toString() } });
       closeCommandPalette();
     },
   }));
