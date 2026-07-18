@@ -51,7 +51,7 @@ export default function Hero() {
 
         {/* CTA Buttons */}
         <div className="mt-12 md:mt-0 md:absolute md:bottom-24 md:right-12 z-20 flex gap-4">
-          <a href="/resume.pdf" target="_blank" rel="noreferrer" className="btn-ghost">
+          <a href="/assets/cv/document.pdf" target="_blank" rel="noreferrer" className="btn-ghost">
             {t("about.cvButton", "DOWNLOAD CV")}
           </a>
           <Link to="/contact" className="btn-primary filled">
