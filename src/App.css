@@ -28,6 +28,7 @@ html[lang="ar"] {
   --font-display: 'Thmanyah display', sans-serif;
   --font-heading: 'Thmanyah serif', sans-serif;
   --font-body: 'Thmanyah sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Kawkab', monospace;
 }
 
 
