@@ -12,7 +12,7 @@ export default function SkillGanttChart({ category, skills, onSkillClick }: Skil
   const { t } = useTranslation();
   return (
     <div className="bg-[#0f0f11] shadow-xl chamfered-border p-6 md:p-8 mb-8">
-      <h3 className="text-lg font-heading font-bold text-white mb-6 border-l-2 border-primary pl-4 tracking-wide uppercase">
+      <h3 className="text-lg font-heading font-bold text-white mb-6 ltr:border-l-2 rtl:border-r-2 border-primary px-4 tracking-wide uppercase">
         {t("skills." + category)}
       </h3>
       <div className="space-y-5">
@@ -58,7 +58,7 @@ export default function SkillGanttChart({ category, skills, onSkillClick }: Skil
               <div className="flex-grow h-6 bg-white/5 relative chamfered flex items-center">
                 {/* Progress bar inside (also chamfered!) */}
                 <div
-                  className="h-full transition-all duration-1000 ease-out absolute left-0 top-0 chamfered"
+                  className="h-full transition-all duration-1000 ease-out absolute ltr:left-0 rtl:right-0 top-0 chamfered"
                   style={{
                     width: `${progress}%`,
                     background: `linear-gradient(90deg, ${skill.primaryColor || '#0088C1'} 0%, ${skill.secondaryColor || '#00b4d8'} 100%)`,
@@ -67,7 +67,7 @@ export default function SkillGanttChart({ category, skills, onSkillClick }: Skil
                 />
 
                 {/* Level label overlaid on the bar */}
-                <span className="absolute left-3 font-mono text-[0.6rem] md:text-xs text-white font-bold tracking-wider z-10 select-none drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+                <span className="absolute ltr:left-3 rtl:right-3 font-mono text-[0.6rem] md:text-xs text-white font-bold tracking-wider z-10 select-none drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
                   {t("skills." + getLevelText(skill.level))}
                 </span>
               </div>
