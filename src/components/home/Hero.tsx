@@ -10,13 +10,7 @@ export default function Hero() {
   return (
     <section className="relative w-full h-[100dvh] min-h-[600px] flex items-center bg-[#0a0a0a] overflow-hidden border-b border-white/5 pt-16">
       <div
-        className="absolute inset-0 z-0 pointer-events-none opacity-40 mix-blend-screen"
-        style={{
-          backgroundImage: `url('/assets/me-dithered.svg')`,
-          backgroundPosition: 'right center',
-          backgroundSize: 'auto 100%',
-          backgroundRepeat: 'no-repeat'
-        }}
+        className="absolute inset-0 z-0 pointer-events-none opacity-40 mix-blend-screen hero-image"
         aria-hidden="true"
       />
 
@@ -35,7 +29,7 @@ export default function Hero() {
           {/* Name Block */}
           <h1 className="font-display text-[15vw] md:text-[9rem] lg:text-[11rem] leading-[0.85] tracking-tight m-0 select-none">
             <div className="text-primary transform hover:scale-[1.01] transition-transform origin-left">{t("hero.firstName", "YOUNES")}</div>
-            <div className="text-white transform hover:scale-[1.01] transition-transform origin-left">{t("hero.lastName", "BOUHOUCHE.")}</div>
+            <div className="text-white transform hover:scale-[1.01] transition-transform origin-left">{t("hero.lastName", "BOUHOUCHE")}.</div>
           </h1>
 
           {/* Bottom-left stat strip */}

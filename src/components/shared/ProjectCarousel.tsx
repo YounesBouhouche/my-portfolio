@@ -18,7 +18,7 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
   }, [embla]);
 
   return (
-    <div ref={emblaRef} className="overflow-hidden w-full relative">
+    <div ref={emblaRef} className="overflow-hidden w-full relative" dir="ltr">
       <div className="flex py-10 touch-pan-y touch-pinch-zoom">
         {projects.map((project, index) => (
           <div

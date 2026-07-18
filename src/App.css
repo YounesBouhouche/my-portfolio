@@ -22,10 +22,14 @@
   --font-heading: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  --font-arabic-display: 'Thmanyah display', sans-serif;
-  --font-arabic-heading: 'Thmanyah serif', sans-serif;
-  --font-arabic-body: 'Thmanyah sans', system-ui, -apple-system, sans-serif;
 }
+
+html[lang="ar"] {
+  --font-display: 'Thmanyah display', sans-serif;
+  --font-heading: 'Thmanyah serif', sans-serif;
+  --font-body: 'Thmanyah sans', system-ui, -apple-system, sans-serif;
+}
+
 
 /* ============================================================
    BASE STYLES
@@ -153,24 +157,12 @@ body {
   font-family: var(--font-display) !important;
 }
 
-html[lang="ar"] .font-display {
-  font-family: var(--font-arabic-display) !important;
-}
-
 .font-heading {
   font-family: var(--font-heading) !important;
 }
 
-html[lang="ar"] .font-heading {
-  font-family: var(--font-arabic-heading) !important;
-}
-
 .font-body {
   font-family: var(--font-body) !important;
-}
-
-html[lang="ar"] .font-body {
-  font-family: var(--font-arabic-body) !important;
 }
 
 .font-mono {
@@ -554,7 +546,7 @@ html[lang="ar"] .font-body {
 }
 
 /* ============================================================
-   HERO IMAGE ENTRANCE
+   HERO IMAGE
    ============================================================ */
 @keyframes float-in {
   0% {
@@ -566,6 +558,17 @@ html[lang="ar"] .font-body {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.hero-image {
+  background-image: url('/assets/me-dithered.svg');
+  background-position: right center;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+}
+
+html[lang="ar"] .hero-image {
+  background-position: left center;
 }
 
 .animate-float-in {

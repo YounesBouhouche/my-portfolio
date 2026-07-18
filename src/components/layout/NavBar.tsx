@@ -3,12 +3,13 @@ import { useState, useEffect } from "react";
 import { useAppContext } from "../../context/AppContext";
 import LogoAnimation from "../shared/LogoAnimation";
 import "./NavBar.css";
+import { useTranslation } from "react-i18next";
 
 const navLinks = [
-  { key: "work", label: "01/WORK", url: "/" },
-  { key: "projects", label: "02/PROJECTS", url: "/projects" },
-  { key: "about", label: "03/ABOUT", url: "/about" },
-  { key: "contact", label: "04/CONTACT", url: "/contact" },
+  { key: "work", url: "/" },
+  { key: "projects", url: "/projects" },
+  { key: "about", url: "/about" },
+  { key: "contact", url: "/contact" },
 ];
 
 export default function NavBar() {
@@ -18,6 +19,7 @@ export default function NavBar() {
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { t } = useTranslation();
 
   // Scroll listener for header shrink transition
   useEffect(() => {
@@ -56,6 +58,7 @@ export default function NavBar() {
         <ul className="nav-links" role="list">
           {navLinks.map((link) => {
             const active = isActive(link.url);
+            const label = t("nav." + link.key);
             return (
               <li key={link.url} className="nav-item">
                 <Link
@@ -63,7 +66,7 @@ export default function NavBar() {
                   className={`nav-link${active ? " nav-link--active" : ""}`}
                   aria-current={active ? "page" : undefined}
                 >
-                  <span className="nav-link-label">{link.label}</span>
+                  <span className="nav-link-label">{label}</span>
                 </Link>
               </li>
             );
@@ -115,6 +118,7 @@ export default function NavBar() {
         <ul className="nav-mobile-links" role="list">
           {navLinks.map((link) => {
             const active = isActive(link.url);
+            const label = t("nav." + link.key);
             return (
               <li key={link.url}>
                 <Link
@@ -123,8 +127,8 @@ export default function NavBar() {
                   onClick={() => setIsMobileMenuOpen(false)}
                   aria-current={active ? "page" : undefined}
                 >
-                  <span className="nav-mobile-num">{link.label.split("/")[0]}</span>
-                  <span>{link.label.split("/")[1]}</span>
+                  <span className="nav-mobile-num">{label.split("/")[0]}</span>
+                  <span>{label.split("/")[1]}</span>
                 </Link>
               </li>
             );
