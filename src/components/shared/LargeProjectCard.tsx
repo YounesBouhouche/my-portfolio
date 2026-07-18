@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import "./LargeProjectCard.css";
+import { useTranslation } from "react-i18next";
 
 interface LargeProjectCardProps {
   title: string;
@@ -26,6 +27,7 @@ export default function LargeProjectCard({
 }: LargeProjectCardProps) {
   const isUpcoming = !releaseDate || new Date(releaseDate) > new Date();
   const indexLabel = String(index).padStart(2, "0");
+  const { t } = useTranslation();
 
   return (
     <div className="lpc-root">
@@ -71,7 +73,7 @@ export default function LargeProjectCard({
               <span className="font-mono text-[0.55rem] text-gray-700">—</span>
               <span className="font-mono text-[0.6rem] text-gray-600 tracking-widest uppercase flex items-center gap-1">
                 <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" />
                 </svg>
                 {new Date(releaseDate).getFullYear()}
               </span>
@@ -100,7 +102,7 @@ export default function LargeProjectCard({
             className="btn-primary"
             onClick={(e) => { if (isUpcoming) e.preventDefault(); }}
           >
-            {isUpcoming ? "ACCESS DENIED" : "VIEW PROJECT →"}
+            {t(isUpcoming ? "projects.access_denied" : "projects.view_project")}
           </Link>
         </div>
       </div>

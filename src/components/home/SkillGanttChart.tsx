@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Skill } from "../../types/Skill";
+import { useTranslation } from "react-i18next";
 
 interface SkillGanttChartProps {
   category: string;
@@ -8,10 +9,11 @@ interface SkillGanttChartProps {
 }
 
 export default function SkillGanttChart({ category, skills, onSkillClick }: SkillGanttChartProps) {
+  const { t } = useTranslation();
   return (
     <div className="bg-[#0f0f11] shadow-xl chamfered-border p-6 md:p-8 mb-8">
-      <h3 className="text-lg font-heading font-bold text-white mb-6 border-l-2 border-primary pl-4 tracking-wide uppercase">
-        {category}
+      <h3 className="text-lg font-heading font-bold text-white mb-6 ltr:border-l-2 rtl:border-r-2 border-primary px-4 tracking-wide uppercase">
+        {t("skills." + category)}
       </h3>
       <div className="space-y-5">
         {skills.map((skill, index) => {
@@ -25,21 +27,19 @@ export default function SkillGanttChart({ category, skills, onSkillClick }: Skil
           }, [skill.level, index]);
 
           const getLevelText = (level: number) => {
-            if (level >= 90) return "Expert";
-            if (level >= 70) return "Advanced";
-            if (level >= 50) return "Intermediate";
-            if (level >= 30) return "Beginner";
-            return "Novice";
+            if (level >= 90) return "expert";
+            if (level >= 70) return "advanced";
+            if (level >= 50) return "intermediate";
+            return "beginner";
           };
 
           const hasResources = skill.resources && skill.resources.length > 0;
 
           return (
-            <div 
-              key={skill.name} 
-              className={`flex flex-col md:flex-row md:items-center gap-2 md:gap-6 group ${
-                hasResources ? "cursor-pointer" : ""
-              }`}
+            <div
+              key={skill.name}
+              className={`flex flex-col md:flex-row md:items-center gap-2 md:gap-6 group ${hasResources ? "cursor-pointer" : ""
+                }`}
               onClick={() => hasResources && onSkillClick?.(skill)}
             >
               {/* Skill Label */}
@@ -49,7 +49,7 @@ export default function SkillGanttChart({ category, skills, onSkillClick }: Skil
                     <img src={skill.icon} alt={skill.name} className="w-full h-full object-contain opacity-70 group-hover:opacity-100 transition-opacity" />
                   </div>
                 )}
-                <span className="font-heading font-semibold text-gray-400 group-hover:text-white transition-colors text-sm md:text-base">
+                <span className="font-heading font-semibold text-gray-400 group-hover:text-white transition-colors text-sm md:text-base w-full" dir="ltr">
                   {skill.name}
                 </span>
               </div>
@@ -57,18 +57,18 @@ export default function SkillGanttChart({ category, skills, onSkillClick }: Skil
               {/* Gantt Bar (Chamfered Container) */}
               <div className="flex-grow h-6 bg-white/5 relative chamfered flex items-center">
                 {/* Progress bar inside (also chamfered!) */}
-                <div 
-                  className="h-full transition-all duration-1000 ease-out absolute left-0 top-0 chamfered"
-                  style={{ 
+                <div
+                  className="h-full transition-all duration-1000 ease-out absolute ltr:left-0 rtl:right-0 top-0 chamfered"
+                  style={{
                     width: `${progress}%`,
                     background: `linear-gradient(90deg, ${skill.primaryColor || '#0088C1'} 0%, ${skill.secondaryColor || '#00b4d8'} 100%)`,
                     opacity: 0.85
                   }}
                 />
-                
+
                 {/* Level label overlaid on the bar */}
-                <span className="absolute left-3 font-mono text-[0.6rem] md:text-xs text-white font-bold tracking-wider z-10 select-none drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
-                  {getLevelText(skill.level).toUpperCase()}
+                <span className="absolute ltr:left-3 rtl:right-3 font-mono text-[0.6rem] md:text-xs text-white font-bold tracking-wider z-10 select-none drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+                  {t("skills." + getLevelText(skill.level))}
                 </span>
               </div>
 

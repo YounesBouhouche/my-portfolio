@@ -234,7 +234,7 @@ export default function ProjectLayout({ project }: { project: Project }) {
   );
 
   return (
-    <article className="min-h-screen bg-background text-white">
+    <article className="min-h-screen bg-background text-white" dir="ltr">
       {/* ═══════════════════════════════════════════════════════
           HERO — parallax background image
           ═══════════════════════════════════════════════════════ */}

@@ -57,6 +57,17 @@ const socials = [
 export default function ContactComponent() {
   const { t } = useTranslation();
 
+  const prompts = {
+    prompt1: t("contact.prompt1"),
+    prompt2: t("contact.prompt2"),
+    prompt3: t("contact.prompt3"),
+    sending: t("contact.sending"),
+    success: t("contact.success"),
+    errorEmail: t("contact.errorEmail"),
+    errorNetwork: t("contact.errorNetwork"),
+    errorMissing: t("contact.errorMissing"),
+  };
+
   // Scroll reveals
   const leftColRef = useScrollReveal<HTMLDivElement>();
   const rightColRef = useScrollReveal<HTMLDivElement>();
@@ -84,7 +95,7 @@ export default function ContactComponent() {
 
   const submitForm = async (finalData: typeof formData) => {
     setStep("SUBMITTING");
-    setHistory(prev => [...prev, { prompt: "> SENDING..." }]);
+    setHistory(prev => [...prev, { prompt: prompts.sending }]);
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -93,11 +104,11 @@ export default function ContactComponent() {
       });
       if (res.ok) {
         setStep("SUCCESS");
-        setHistory(prev => [...prev, { prompt: "> ✓ MESSAGE RECEIVED. I'LL GET BACK TO YOU SOON." }]);
+        setHistory(prev => [...prev, { prompt: prompts.success }]);
       } else throw new Error("Network error");
     } catch {
       setStep("ERROR");
-      setHistory(prev => [...prev, { prompt: "✗ TRANSMISSION FAILED. CHECK YOUR CONNECTION AND RETRY.", isError: true }]);
+      setHistory(prev => [...prev, { prompt: prompts.errorNetwork, isError: true }]);
     }
   };
 
@@ -111,23 +122,23 @@ export default function ContactComponent() {
       return;
     }
     if (step === "NAME") {
-      setHistory(prev => [...prev, { prompt: "> WHO ARE YOU?", answer: val }]);
+      setHistory(prev => [...prev, { prompt: prompts.prompt1, answer: val }]);
       setFormData(prev => ({ ...prev, name: val }));
       setInputValue(""); setStep("EMAIL");
     } else if (step === "EMAIL") {
       if (!validateEmail(val)) {
-        setHistory(prev => [...prev, { prompt: "✗ INVALID EMAIL FORMAT. TRY AGAIN.", isError: true }]);
+        setHistory(prev => [...prev, { prompt: prompts.errorEmail, isError: true }]);
         return;
       }
-      setHistory(prev => [...prev, { prompt: "> YOUR EMAIL?", answer: val }]);
+      setHistory(prev => [...prev, { prompt: prompts.prompt2, answer: val }]);
       setFormData(prev => ({ ...prev, email: val }));
       setInputValue(""); setStep("MESSAGE");
     } else if (step === "MESSAGE") {
       if (!val) {
-        setHistory(prev => [...prev, { prompt: "✗ THIS FIELD IS REQUIRED.", isError: true }]);
+        setHistory(prev => [...prev, { prompt: prompts.errorMissing, isError: true }]);
         return;
       }
-      setHistory(prev => [...prev, { prompt: "> WHAT'S ON YOUR MIND?", answer: val }]);
+      setHistory(prev => [...prev, { prompt: prompts.prompt3, answer: val }]);
       const finalData = { ...formData, message: val };
       setFormData(finalData);
       setInputValue("");
@@ -136,9 +147,9 @@ export default function ContactComponent() {
   };
 
   const getPrompt = () => {
-    if (step === "NAME") return "> WHO ARE YOU?";
-    if (step === "EMAIL") return "> YOUR EMAIL?";
-    if (step === "MESSAGE") return "> WHAT'S ON YOUR MIND?";
+    if (step === "NAME") return prompts.prompt1;
+    if (step === "EMAIL") return prompts.prompt2;
+    if (step === "MESSAGE") return prompts.prompt3;
     return "";
   };
 
@@ -157,22 +168,17 @@ export default function ContactComponent() {
           {/* ── LEFT COLUMN: Title + Social Links ─────── */}
           <div className="reveal-ready" ref={leftColRef}>
 
-            {/* Eyebrow */}
-            <p className="font-mono text-[0.65rem] tracking-[0.25em] text-primary uppercase mb-4">
-              INITIATE_HANDSHAKE
-            </p>
-
             {/* Title */}
             <h1 className="font-display text-[14vw] md:text-[5rem] lg:text-[6.5rem] leading-[0.85] tracking-tight text-white mb-6">
               {t("contact.title", "CONTACT")}<span className="text-primary">.</span>
             </h1>
 
             <p className="font-body text-gray-500 leading-relaxed mb-12 max-w-sm text-base">
-              {t("contact.subtitle", "Have a project, collaboration, or just want to say hello? Open a connection below or send a message.")}
+              {t("contact.subtitle", "")}
             </p>
 
             {/* Social Links — chamfered cards */}
-            <div className="space-y-3">
+            <div className="space-y-3" dir="ltr">
               {socials.map((s) => (
                 <a
                   key={s.label}
@@ -211,11 +217,6 @@ export default function ContactComponent() {
 
           {/* ── RIGHT COLUMN: Terminal Form ─────────── */}
           <div className="reveal-ready" ref={rightColRef}>
-
-            <div className="font-mono text-[0.65rem] tracking-[0.25em] text-gray-600 uppercase mb-4">
-              SEND_MESSAGE
-            </div>
-
             <div
               className="terminal-window flex flex-col chamfered-border cursor-text"
               style={{ height: "520px" }}
@@ -241,9 +242,9 @@ export default function ContactComponent() {
                 {/* Welcome message */}
                 {history.length === 0 && (
                   <div className="text-gray-600 mb-6 text-xs">
-                    {"> Secure channel open. Fill the form to initiate contact."}
+                    {t("contact.welcome1")}
                     <br />
-                    {"> Type your response and press [ENTER] to proceed."}
+                    {t("contact.welcome2")}
                   </div>
                 )}
 
@@ -302,7 +303,7 @@ export default function ContactComponent() {
                 {step === "SUCCESS" && (
                   <div className="mt-6 flex gap-4">
                     <button onClick={() => window.location.href = "/"} className="btn-ghost text-xs py-2 px-4">
-                      cd ~/ (GO HOME)
+                      {t("contact.goHome")}
                     </button>
                   </div>
                 )}
@@ -317,20 +318,18 @@ export default function ContactComponent() {
                   const currIdx = ["NAME", "EMAIL", "MESSAGE"].indexOf(step as string);
                   return (
                     <div key={s} className="flex items-center gap-2">
-                      <div className={`w-1.5 h-1.5 chamfered transition-colors duration-300 ${
-                        step === s ? "bg-primary" : 
+                      <div className={`w-1.5 h-1.5 chamfered transition-colors duration-300 ${step === s ? "bg-primary" :
                         currIdx > sIdx ? "bg-primary/40" : "bg-white/10"
-                      }`} />
-                      <span className={`font-mono text-[0.6rem] uppercase tracking-widest transition-colors duration-300 ${
-                        step === s ? "text-primary" : "text-gray-700"
-                      }`}>
-                        {s === "NAME" ? "01/NAME" : s === "EMAIL" ? "02/EMAIL" : "03/MSG"}
+                        }`} />
+                      <span className={`font-mono text-[0.6rem] uppercase tracking-widest transition-colors duration-300 ${step === s ? "text-primary" : "text-gray-700"
+                        }`}>
+                        {String(currIdx + 1).padStart(2, "0")}/{t("contact." + s.toLowerCase()).toUpperCase()}
                       </span>
                     </div>
                   );
                 })}
                 <div className="ml-auto font-mono text-[0.6rem] text-gray-700">
-                  PRESS [ENTER]
+                  {t("contact.press_enter")}
                 </div>
               </div>
             </div>
