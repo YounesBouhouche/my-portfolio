@@ -49,7 +49,7 @@ export default function SkillGanttChart({ category, skills, onSkillClick }: Skil
                     <img src={skill.icon} alt={skill.name} className="w-full h-full object-contain opacity-70 group-hover:opacity-100 transition-opacity" />
                   </div>
                 )}
-                <span className="font-heading font-semibold text-gray-400 group-hover:text-white transition-colors text-sm md:text-base">
+                <span className="font-heading font-semibold text-gray-400 group-hover:text-white transition-colors text-sm md:text-base w-full" dir="ltr">
                   {skill.name}
                 </span>
               </div>
