@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "./styles/fonts.css";
+
 
 /* ============================================================
    DESIGN TOKENS
@@ -20,7 +22,9 @@
   --font-heading: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  --font-arabic: 'Noto Kufi Arabic', sans-serif;
+  --font-arabic-display: 'Thmanyah display', sans-serif;
+  --font-arabic-heading: 'Thmanyah serif', sans-serif;
+  --font-arabic-body: 'Thmanyah sans', system-ui, -apple-system, sans-serif;
 }
 
 /* ============================================================
@@ -35,11 +39,6 @@
 
 html {
   scroll-behavior: smooth;
-}
-
-html[lang="ar"] body,
-html[lang="ar"] * {
-  font-family: 'Noto Kufi Arabic', sans-serif !important;
 }
 
 body {
@@ -154,12 +153,24 @@ body {
   font-family: var(--font-display) !important;
 }
 
+html[lang="ar"] .font-display {
+  font-family: var(--font-arabic-display) !important;
+}
+
 .font-heading {
   font-family: var(--font-heading) !important;
 }
 
+html[lang="ar"] .font-heading {
+  font-family: var(--font-arabic-heading) !important;
+}
+
 .font-body {
   font-family: var(--font-body) !important;
+}
+
+html[lang="ar"] .font-body {
+  font-family: var(--font-arabic-body) !important;
 }
 
 .font-mono {
