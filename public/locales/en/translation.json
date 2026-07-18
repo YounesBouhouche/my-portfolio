@@ -2,8 +2,7 @@
   "nav": {
     "home": "01/home",
     "projects": "02/PROJECTS",
-    "about": "03/ABOUT",
-    "contact": "04/CONTACT"
+    "contact": "03/CONTACT"
   },
   "hero": {
     "role": "3RD YEAR CS STUDENT / ANDROID & REACT DEVELOPER",
@@ -12,6 +11,7 @@
     "stat2": "ESI-SBA, ALGERIA",
     "stat3": "OPEN TO REMOTE",
     "cta": "GET IN TOUCH",
+    "cvButton": "DOWNLOAD CV",
     "firstName": "Younes",
     "lastName": "Bouhouche"
   },
@@ -50,22 +50,6 @@
     "intermediate": "Intermediate",
     "beginner": "Beginner"
   },
-  "about": {
-    "title": "ABOUT ME",
-    "introTitle": "WHO AM I",
-    "intro": "I'm Younes Bouhouche, a 3rd year Computer Science student at ESI-SBA, Algeria. I build native Android applications and React web experiences, with a focus on performance, clean architecture, and principled engineering decisions.",
-    "studiesTitle": "STUDIES",
-    "studiesContent": "Currently in my 3rd year of Computer Science at École Supérieure en Informatique de Sidi Bel-Abbès (ESI-SBA), Algeria. Focused on algorithms, systems programming, and software engineering fundamentals.",
-    "techTitle": "TECH FOCUS",
-    "techContent": "My primary stack is Native Android (Kotlin, Jetpack Compose, Clean Architecture) for mobile and React (TypeScript, TanStack Router) for web. I believe in mastering the platform, not abstracting it away.",
-    "compTitle": "COMPETITIVE PROGRAMMING",
-    "compContent": "Active member of the AlphaBit club at ESI-SBA — training in algorithms, data structures, and competitive problem-solving.",
-    "philosophyTitle": "NATIVE-FIRST PHILOSOPHY",
-    "philosophyContent": "Cross-platform frameworks solve 80% of use cases — but the remaining 20% (biometric auth, hardware access, real-time sensors, security-critical flows) demands native. I build native-first for the cases that matter.",
-    "cvButton": "DOWNLOAD CV",
-    "githubButton": "GITHUB",
-    "linkedinButton": "LINKEDIN"
-  },
   "contact": {
     "title": "CONTACT",
     "subtitle": "Have a project, collaboration, or just want to say hello? Open a connection below or send a message.",
@@ -98,7 +82,6 @@
     "copySection": "COPY",
     "goWork": "Go to Work",
     "goProjects": "Go to Projects",
-    "goAbout": "Go to About",
     "goContact": "Go to Contact",
     "toggleTheme": "Toggle Theme",
     "switchAr": "Switch to Arabic",

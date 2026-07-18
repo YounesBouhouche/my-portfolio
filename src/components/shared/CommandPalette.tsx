@@ -73,12 +73,6 @@ export default function CommandPalette() {
       action: () => { navigate({ to: "/projects", search: { q: "", stack: "", category: "", status: "" } }); closeCommandPalette(); },
     },
     {
-      id: "nav-about",
-      label: t("command.goAbout", "Go to About"),
-      category: "Navigation",
-      action: () => { navigate({ to: "/about" }); closeCommandPalette(); },
-    },
-    {
       id: "nav-contact",
       label: t("command.goContact", "Go to Contact"),
       category: "Navigation",
