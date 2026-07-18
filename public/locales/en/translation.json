@@ -81,7 +81,11 @@
     "errorMissing": "✗ THIS FIELD IS REQUIRED.",
     "retry": "RETRY",
     "submit": "SEND",
-    "goHome": "cd ~/ (GO HOME)"
+    "goHome": "cd ~/ (GO HOME)",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "press_enter": "PRESS [ENTER]"
   },
   "education": {
     "title": "Education"

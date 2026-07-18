@@ -323,13 +323,13 @@ export default function ContactComponent() {
                         }`} />
                       <span className={`font-mono text-[0.6rem] uppercase tracking-widest transition-colors duration-300 ${step === s ? "text-primary" : "text-gray-700"
                         }`}>
-                        {s === "NAME" ? "01/NAME" : s === "EMAIL" ? "02/EMAIL" : "03/MSG"}
+                        {String(currIdx + 1).padStart(2, "0")}/{t("contact." + s.toLowerCase()).toUpperCase()}
                       </span>
                     </div>
                   );
                 })}
                 <div className="ml-auto font-mono text-[0.6rem] text-gray-700">
-                  PRESS [ENTER]
+                  {t("contact.press_enter")}
                 </div>
               </div>
             </div>
