@@ -2,6 +2,7 @@ import useQueryFetch from "../../hooks/useFetch";
 import type { Education } from "../../types/Education";
 import LoadingContainer from "../shared/LoadingContainer";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
+import { useTranslation } from "react-i18next";
 
 export default function EducationSection() {
   const education = useQueryFetch<Education[]>(
@@ -11,12 +12,13 @@ export default function EducationSection() {
 
   const titleRef = useScrollReveal<HTMLHeadingElement>();
   const containerRef = useScrollReveal<HTMLDivElement>({ stagger: true });
+  const { t } = useTranslation();
 
   return (
     <section className="py-24 bg-[#0d0d0f] border-b border-white/5" id="education">
       <div className="container mx-auto px-6 md:px-12">
         <h2 className="section-title text-center md:text-right reveal-ready" ref={titleRef}>
-          Education <span className="text-primary ml-2">/</span>
+          {t("education.title")} <span className="text-primary ml-2">/</span>
         </h2>
 
         <div className="mt-16 space-y-8 reveal-stagger" ref={containerRef}>
@@ -29,6 +31,7 @@ export default function EducationSection() {
                   <div
                     key={index}
                     className="reveal-ready bg-[#0f0f11] chamfered-border group"
+                    dir="ltr"
                   >
                     <div className="p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-6 md:gap-12">
 

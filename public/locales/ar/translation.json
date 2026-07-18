@@ -84,6 +84,9 @@
     "submit": "إرســال",
     "goHome": "عــد إلى الصفحة الرئيسيــة"
   },
+  "education": {
+    "title": "التعليــم"
+  },
   "command": {
     "placeholder": "اكتب أمــراً أو ابحث...",
     "navSection": "التنقل",

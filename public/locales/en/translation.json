@@ -83,6 +83,9 @@
     "submit": "SEND",
     "goHome": "cd ~/ (GO HOME)"
   },
+  "education": {
+    "title": "Education"
+  },
   "command": {
     "placeholder": "TYPE A COMMAND OR SEARCH...",
     "navSection": "NAVIGATE",
