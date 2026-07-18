@@ -128,7 +128,7 @@ export default function CommandPalette() {
     label: `Project: ${p.name}`,
     category: "Projects",
     action: () => {
-      navigate({ to: "/projects/$project", params: { project: p.route } });
+      navigate({ to: "/projects/$project", params: { project: p.id.toString() } });
       closeCommandPalette();
     },
   }));
