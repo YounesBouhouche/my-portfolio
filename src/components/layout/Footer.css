@@ -22,10 +22,9 @@
 
 @media (min-width: 768px) {
   .footer-panel {
-    grid-template-columns: 1.4fr 1fr auto;
+    grid-template-columns: 1.4fr auto;
     align-items: center;
     padding: 1.75rem 2rem;
-    gap: 2.5rem;
   }
 }
 
