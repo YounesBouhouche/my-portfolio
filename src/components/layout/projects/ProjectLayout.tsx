@@ -150,7 +150,6 @@ export default function ProjectLayout({ project }: { project: Project }) {
             <div className="pl-sidebar-stat">
               <span className="pl-sidebar-stat-key">Language</span>
               <span className="pl-sidebar-stat-val">
-                <span className="pl-sidebar-dot" />
                 {primary_language}
               </span>
             </div>
@@ -388,9 +387,8 @@ export default function ProjectLayout({ project }: { project: Project }) {
                   {screenshots.map((src, idx) => (
                     <div
                       key={idx}
-                      className={`pl-screenshot-slide${
-                        idx === selectedIndex ? " is-selected" : ""
-                      }`}
+                      className={`pl-screenshot-slide${idx === selectedIndex ? " is-selected" : ""
+                        }`}
                     >
                       <img
                         src={src}
@@ -417,9 +415,8 @@ export default function ProjectLayout({ project }: { project: Project }) {
                       key={idx}
                       role="tab"
                       aria-selected={idx === selectedIndex}
-                      className={`pl-screenshot-dot${
-                        idx === selectedIndex ? " active" : ""
-                      }`}
+                      className={`pl-screenshot-dot${idx === selectedIndex ? " active" : ""
+                        }`}
                       onClick={() => screenshotEmbla?.scrollTo(idx)}
                       aria-label={`Screenshot ${idx + 1}`}
                     />
