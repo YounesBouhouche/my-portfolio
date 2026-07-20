@@ -17,6 +17,7 @@ export interface Project {
   name: string;
   description: string;
   heroImage: string;
+  thumbnail: string;
   image: string;
   screenshots: string[];
   technologies: string[];

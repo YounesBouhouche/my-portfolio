@@ -50,7 +50,7 @@ export default function ProjectCard({ project, index = 1 }: ProjectCardProps) {
       }}
     >
       <img
-        src={project.heroImage}
+        src={project.thumbnail}
         alt={project.name}
         className="spc-image"
         draggable={false}

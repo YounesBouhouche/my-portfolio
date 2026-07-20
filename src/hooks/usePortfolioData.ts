@@ -8,7 +8,7 @@ const CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour
 
 // Config URL: use env var in production, fall back to local JSON in dev
 const CONFIG_URL =
-  import.meta.env.VITE_PORTFOLIO_CONFIG_URL || '/db/projects.json';
+  import.meta.env.VITE_PORTFOLIO_CONFIG_URL;
 
 const GITHUB_API = 'https://api.github.com/repos';
 

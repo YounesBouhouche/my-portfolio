@@ -13,29 +13,12 @@ import { useScrollReveal } from "../../hooks/useScrollReveal";
 import SkillGanttChart from "./SkillGanttChart";
 
 // Helper to group skills by category
-const groupSkills = (skills: Skill[] = []) => {
-  const groups: Record<string, Skill[]> = {
-    languages: [],
-    frameworks: [],
-    design: [],
-    tools: [],
-    other: [],
-  };
-
-  skills.forEach((skill) => {
-    const category = skill.category || "Other";
-    if (groups[category]) {
-      groups[category].push(skill);
-    } else {
-      groups["Other"].push(skill);
-    }
-  });
-
+const groupSkills = (skillsRecord: Record<string, Skill[]> = {}) => {
   const orderedGroups = ["languages", "frameworks", "design", "tools", "other"];
   return orderedGroups
     .map((key) => ({
       category: key,
-      skills: groups[key],
+      skills: skillsRecord[key] || [],
     }))
     .filter((group) => group.skills.length > 0);
 };
@@ -46,7 +29,7 @@ export default function Home() {
 
   // Data
   const { projects, isLoading: projectsLoading, error: projectsError } = usePortfolioData();
-  const skillsData = useQueryFetch<Skill[]>("/db/skills.json", "skills");
+  const skillsData = useQueryFetch<Record<string, Skill[]>>("/db/skills.json", "skills");
 
   // Scroll reveals
   const projectsRef = useScrollReveal<HTMLDivElement>({ stagger: true });
