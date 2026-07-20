@@ -26,6 +26,3 @@ dist-ssr
 
 # Backup files
 backup_assets
-
-# Convert images script
-convert_images.py
