@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
 export default function useQueryFetch<T>(
-  url: string = '/db/projects.json',
+  url: string,
   key: string,
   map: (data: any) => T = (data) => data,
   options: RequestInit = {
@@ -11,9 +11,9 @@ export default function useQueryFetch<T>(
       accept: 'application/json',
     }
   },
-  defaultValue?: T|null
-): [T|null, string|null, boolean] {
-  const [errorMessage, setErrorMessage] = useState<string|null>(null);
+  defaultValue?: T | null
+): [T | null, string | null, boolean] {
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const fetching = async () => {
     const response = await fetch(url, options);
     if (!response.ok)
@@ -24,7 +24,7 @@ export default function useQueryFetch<T>(
     return map(data);
   };
 
-  const {data, isFetching} = useQuery({
+  const { data, isFetching } = useQuery({
     queryFn: fetching,
     queryKey: [key],
     initialData: defaultValue || null,
@@ -34,5 +34,5 @@ export default function useQueryFetch<T>(
     },
   });
 
-  return [ data || defaultValue || null, errorMessage, isFetching ];
+  return [data || defaultValue || null, errorMessage, isFetching];
 }
