@@ -78,6 +78,7 @@ export default function Hero() {
                 target="_blank"
                 rel="noreferrer"
                 className="hero-ribbon-link"
+                title={lib.name}
               >
                 {lib.icon && (
                   <img
@@ -86,7 +87,6 @@ export default function Hero() {
                     className="hero-ribbon-image"
                   />
                 )}
-                <span>{lib.name}</span>
               </a>
             ))}
           </div>

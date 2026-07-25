@@ -135,7 +135,7 @@ html[lang="ar"] .hero-lastname::before {
 
 /* ─── Bottom ribbon ──────────────────────────────────────────────────────── */
 .hero-ribbon {
-    @apply absolute bottom-0 left-0 right-0 h-12 border-t border-b border-white/5 bg-[#0d0d0f]/60 backdrop-blur-sm flex items-center overflow-hidden;
+    @apply absolute bottom-0 left-0 right-0 h-20 border-t border-b border-white/5 bg-[#0d0d0f]/30 backdrop-blur-xs flex items-center overflow-hidden;
     z-index: 30;
 }
 
@@ -144,9 +144,15 @@ html[lang="ar"] .hero-lastname::before {
 }
 
 .hero-ribbon-link {
-    @apply inline-flex items-center gap-3 text-gray-500 hover:text-white transition-colors duration-300 font-mono text-[0.65rem] tracking-wider uppercase select-none;
+    @apply inline-block hover:text-white transition-colors duration-300 font-mono text-[0.65rem] tracking-wider uppercase select-none;
 }
 
 .hero-ribbon-image {
-    @apply h-4 w-auto opacity-50 hover:opacity-100 transition-opacity duration-300 object-contain;
+    @apply h-8 w-auto max-w-none opacity-60 transition-all duration-300 object-contain shrink-0;
+    filter: grayscale(100%);
+}
+
+.hero-ribbon-link:hover .hero-ribbon-image {
+    @apply opacity-100;
+    filter: grayscale(0%);
 }
