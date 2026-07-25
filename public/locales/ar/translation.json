@@ -5,16 +5,33 @@
     "contact": "03/تواصــل معي"
   },
   "hero": {
-    "prefix": "حيـاكم الله، أدعــى",
     "role": "طالب علوم الحاسوب / مطور أندرويد وReact",
-    "specialties": "أندرويد الأصلي · React · بنية نظيفة",
-    "stat1": "مطور أندرويد وReact",
-    "stat2": "ESI-SBA، الجزائر",
-    "stat3": "متاح للعمل عن بُعـــد",
     "cta": "تواصــل معي",
     "cvButton": "حمـــل سيرتــي الذاتيــة",
     "firstName": "يونــس",
-    "lastName": "بوحــوش"
+    "lastName": "بوحــوش",
+    "typewriter": {
+      "state0": {
+        "prefix": "حيـاكم الله، أدعــى",
+        "firstWord": "يونــس",
+        "secondWord": "بوحــوش."
+      },
+      "state1": {
+        "prefix": "أبني تطبيقات",
+        "firstWord": "ANDROID",
+        "secondWord": "أصلية."
+      },
+      "state2": {
+        "prefix": "كذلك، مطــور",
+        "firstWord": "REACT",
+        "secondWord": "-ويب-."
+      },
+      "state3": {
+        "prefix": "حاليا، أستكشف مجــال",
+        "firstWord": "تعلــم",
+        "secondWord": "الآلـة."
+      }
+    }
   },
   "projects": {
     "title": "المختــارات من مشاريــعي",

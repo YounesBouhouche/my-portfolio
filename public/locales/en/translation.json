@@ -6,14 +6,32 @@
   },
   "hero": {
     "role": "3RD YEAR CS STUDENT / ANDROID & REACT DEVELOPER",
-    "specialties": "NATIVE ANDROID · REACT · CLEAN ARCHITECTURE",
-    "stat1": "ANDROID + REACT DEVELOPER",
-    "stat2": "ESI-SBA, ALGERIA",
-    "stat3": "OPEN TO REMOTE",
     "cta": "GET IN TOUCH",
     "cvButton": "DOWNLOAD CV",
     "firstName": "Younes",
-    "lastName": "Bouhouche"
+    "lastName": "Bouhouche",
+    "typewriter": {
+      "state0": {
+        "prefix": "WELCOME, I'M",
+        "firstWord": "YOUNES",
+        "secondWord": "BOUHOUCHE."
+      },
+      "state1": {
+        "prefix": "I BUILD FOR",
+        "firstWord": "ANDROID",
+        "secondWord": "NATIVE APPS."
+      },
+      "state2": {
+        "prefix": "I'M ALSO A",
+        "firstWord": "REACT",
+        "secondWord": "DEVELOPER."
+      },
+      "state3": {
+        "prefix": "CURRENTLY INTO",
+        "firstWord": "AI & MACHINE",
+        "secondWord": "LEARNING."
+      }
+    }
   },
   "projects": {
     "title": "Featured Projects",
