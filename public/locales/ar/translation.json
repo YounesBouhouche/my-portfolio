@@ -19,17 +19,17 @@
       "state1": {
         "prefix": "أبني تطبيقات",
         "firstWord": "ANDROID",
-        "secondWord": ""
+        "secondWord": "أصلية."
       },
       "state2": {
-        "prefix": "أطور تطبيقات",
+        "prefix": "كذلك، مطــور",
         "firstWord": "REACT",
-        "secondWord": ""
+        "secondWord": "-ويب-."
       },
       "state3": {
-        "prefix": "أتعلم",
-        "firstWord": "LARAVEL.",
-        "secondWord": ""
+        "prefix": "حاليا، أستكشف مجــال",
+        "firstWord": "تعلــم",
+        "secondWord": "الآلـة."
       }
     }
   },
