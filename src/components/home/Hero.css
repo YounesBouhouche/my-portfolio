@@ -8,6 +8,23 @@
     @apply absolute inset-0 z-0 pointer-events-none opacity-40 mix-blend-screen;
 }
 
+/* ─── Background Grid Pattern ────────────────────────────────────────────── */
+.hero-grid-pattern {
+    @apply absolute inset-0 pointer-events-none;
+    z-index: 0;
+    background-size: 50px 50px;
+    background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    -webkit-mask-image: linear-gradient(to left, black 20%, transparent 100%);
+    mask-image: linear-gradient(to left, black 20%, transparent 100%);
+}
+
+html[lang="ar"] .hero-grid-pattern {
+    -webkit-mask-image: linear-gradient(to right, black 20%, transparent 100%);
+    mask-image: linear-gradient(to right, black 20%, transparent 100%);
+}
+
 /* ─── Lighting: Multi-layer gradient overlay ─────────────────────────────── */
 .hero-gradient-overlay {
     @apply absolute inset-0 pointer-events-none;
@@ -38,7 +55,7 @@ html[lang="ar"] .hero-gradient-overlay {
 /* ─── Lighting: Blurred orb hotspot behind the portrait ─────────────────── */
 .hero-glow-orb {
     position: absolute;
-    right: 10%;
+    right: 5%;
     top: 50%;
     transform: translateY(-50%);
     width: 520px;

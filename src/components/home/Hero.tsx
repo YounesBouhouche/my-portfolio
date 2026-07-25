@@ -22,6 +22,9 @@ export default function Hero() {
         "--color-primary-glow": colors.primaryGlow,
       } as React.CSSProperties}
     >
+      {/* Background Grid Pattern */}
+      <div className="hero-grid-pattern" aria-hidden="true" />
+
       <div
         className="hero-bg-image hero-image"
         aria-hidden="true"
