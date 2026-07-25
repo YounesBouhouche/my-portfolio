@@ -594,12 +594,13 @@ html[lang="ar"] .hero-image {
 
 .cursor-blink {
   display: inline-block;
-  width: 0.6em;
-  height: 1em;
+  width: 10px;
+  height: 0.85em;
   background: var(--color-primary);
-  margin-left: 2px;
+  margin-left: 4px;
   vertical-align: text-bottom;
   animation: blink 1s step-end infinite;
+  transition: background 0.8s ease;
 }
 
 /* ============================================================
