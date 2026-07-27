@@ -5,17 +5,17 @@
 }
 
 .hero-bg-image {
-    @apply absolute inset-0 z-0 pointer-events-none opacity-40 mix-blend-screen;
+    @apply absolute inset-0 z-3 pointer-events-none opacity-70;
 }
 
 /* ─── Background Grid Pattern ────────────────────────────────────────────── */
 .hero-grid-pattern {
     @apply absolute inset-0 pointer-events-none;
     z-index: 0;
-    background-size: 50px 50px;
+    background-size: 100px 100px;
     background-image:
-        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
     -webkit-mask-image: linear-gradient(to left, black 20%, transparent 100%);
     mask-image: linear-gradient(to left, black 20%, transparent 100%);
 }
