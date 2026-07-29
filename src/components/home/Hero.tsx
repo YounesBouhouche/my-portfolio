@@ -88,6 +88,10 @@ export default function Hero() {
                     src={lib.icon}
                     alt={lib.name}
                     className="hero-ribbon-image"
+                    loading="lazy"
+                    decoding="async"
+                    width="32"
+                    height="32"
                   />
                 )}
               </a>
