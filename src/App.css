@@ -562,7 +562,7 @@ body {
 }
 
 .hero-image {
-  background-image: url('/assets/me-dithered.svg');
+  background-image: url('/assets/png/me_new.png');
   background-position: right center;
   background-size: auto 100%;
   background-repeat: no-repeat;
