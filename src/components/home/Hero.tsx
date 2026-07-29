@@ -25,9 +25,13 @@ export default function Hero() {
       {/* Background Grid Pattern */}
       <div className="hero-grid-pattern" aria-hidden="true" />
 
-      <div
-        className="hero-bg-image hero-image"
+      <img
+        src="/assets/png/me_new.png"
+        alt=""
+        className="hero-bg-img"
         aria-hidden="true"
+        fetchPriority="high"
+        decoding="async"
       />
 
       {/* Multi-layer gradient overlay */}
