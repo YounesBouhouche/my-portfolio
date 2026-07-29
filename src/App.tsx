@@ -12,8 +12,8 @@ function App() {
   const [isInitialLoad, setIsInitialLoad] = useState(true);
 
   useEffect(() => {
-    const timer = window.setTimeout(() => setIsInitialLoad(false), 800);
-    return () => window.clearTimeout(timer);
+    // Remove overlay immediately — route transitions are handled by isRouteLoading
+    setIsInitialLoad(false);
   }, []);
 
   const showOverlay = isInitialLoad || isRouteLoading;
