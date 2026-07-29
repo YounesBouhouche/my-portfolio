@@ -54,6 +54,8 @@ export default function ProjectCard({ project, index = 1 }: ProjectCardProps) {
         alt={project.name}
         className="spc-image"
         draggable={false}
+        loading="lazy"
+        decoding="async"
       />
 
       <div className="spc-scanline" />

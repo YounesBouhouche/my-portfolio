@@ -82,9 +82,11 @@ export interface TypewriterResult {
 export function useTypewriter(): TypewriterResult {
   const { t } = useTranslation();
   const [stateIndex, setStateIndex] = useState(0);
-  const [displayedFirst, setDisplayedFirst] = useState("");
-  const [displayedSecond, setDisplayedSecond] = useState("");
-  const [phase, setPhase] = useState<Phase>("typing-first");
+  // Pre-populate state0 defaults so the h1 has content on first paint (LCP fix).
+  // The language-switch effect below resets these if the locale differs.
+  const [displayedFirst, setDisplayedFirst] = useState("YOUNES");
+  const [displayedSecond, setDisplayedSecond] = useState("BOUHOUCHE.");
+  const [phase, setPhase] = useState<Phase>("pause");
 
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 

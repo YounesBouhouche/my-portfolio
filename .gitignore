@@ -23,6 +23,12 @@ dist-ssr
 *.sln
 *.sw?
 .env
+lighthouse-agent.js
+lighthouse-agent.cjs
+.lighthouse-state.json
+.lighthouse-report.json
+prompt.md
+summary.md
 
 # Backup files
 backup_assets

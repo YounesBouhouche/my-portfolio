@@ -1,10 +1,11 @@
 import NavBar from "./components/layout/NavBar";
 import Footer from "./components/layout/Footer";
 import { Outlet, ScrollRestoration, useRouterState } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import "./App.css";
-import CommandPalette from "./components/shared/CommandPalette";
 import LoadingOverlay from "./components/shared/LoadingOverlay";
+
+const CommandPalette = lazy(() => import("./components/shared/CommandPalette"));
 
 function App() {
   const routerState = useRouterState();
@@ -12,8 +13,8 @@ function App() {
   const [isInitialLoad, setIsInitialLoad] = useState(true);
 
   useEffect(() => {
-    const timer = window.setTimeout(() => setIsInitialLoad(false), 800);
-    return () => window.clearTimeout(timer);
+    // Remove overlay immediately — route transitions are handled by isRouteLoading
+    setIsInitialLoad(false);
   }, []);
 
   const showOverlay = isInitialLoad || isRouteLoading;
@@ -24,7 +25,9 @@ function App() {
       <NavBar />
       <Outlet />
       <Footer />
-      <CommandPalette />
+      <Suspense fallback={null}>
+        <CommandPalette />
+      </Suspense>
       <ScrollRestoration />
     </>
   );

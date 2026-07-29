@@ -57,6 +57,12 @@ body {
   overflow-x: hidden;
 }
 
+/* Below-fold sections: defer layout/paint until scrolled into view */
+main > section:not(:first-child) {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
+}
+
 /* ============================================================
    CHAMFER TOKENS
    ============================================================ */
@@ -561,16 +567,7 @@ body {
   }
 }
 
-.hero-image {
-  background-image: url('/assets/png/me_new.png');
-  background-position: right center;
-  background-size: auto 100%;
-  background-repeat: no-repeat;
-}
 
-html[lang="ar"] .hero-image {
-  background-position: left center;
-}
 
 .animate-float-in {
   animation: float-in 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;

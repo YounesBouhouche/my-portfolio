@@ -38,6 +38,8 @@ export default function LargeProjectCard({
         alt={title}
         className="lpc-image"
         draggable={false}
+        loading="lazy"
+        decoding="async"
       />
 
       {/* Scan-line shimmer */}
