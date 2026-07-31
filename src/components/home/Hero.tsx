@@ -26,7 +26,7 @@ export default function Hero() {
       <div className="hero-grid-pattern" aria-hidden="true" />
 
       <img
-        src="/assets/png/me_new.png"
+        src="/assets/png/me_new.webp"
         alt=""
         className="hero-bg-img"
         aria-hidden="true"
