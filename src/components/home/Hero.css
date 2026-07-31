@@ -128,13 +128,13 @@ html[lang="ar"] .hero-glow-orb {
 /* ─── Underline sweep — only fires when .typing-complete is present ──────── */
 .hero-firstname::before,
 .hero-lastname::before {
-    @apply content-[''] absolute bottom-4 -left-1 h-10 bg-current/20;
+    @apply content-[''] absolute bottom-0 md:bottom-4 -left-1 h-4 md:h-10 bg-current/20;
     width: 0;
 }
 
 html[lang="ar"] .hero-firstname::before,
 html[lang="ar"] .hero-lastname::before {
-    @apply left-auto right-0 -bottom-4;
+    @apply left-auto right-0 -bottom-2 md:-bottom-4;
 }
 
 .hero-name.typing-complete .hero-firstname::before,
